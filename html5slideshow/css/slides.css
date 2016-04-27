@@ -1,0 +1,141 @@
+body {
+	margin:0;
+	padding:0;
+	color:white;
+	overflow:hidden;
+}
+
+p {
+	margin:0;
+	padding:0;
+}
+
+#fullarea {
+	width: 100%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:10px;
+	overflow-x: hidden;
+	cursor:default;
+}
+
+#controls {
+	padding-top:2px;
+	padding-bottom:3px;
+	text-align:center;
+}
+
+div.spribut {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	cursor: pointer;
+	vertical-align: text-bottom;
+	background-image: url(icons/cb1.png);
+}
+
+#cb_stop { background-position: 0 0; }
+#cb_rwnd { background-position: -18px 0; }
+#cb_prev { background-position: -36px 0; }
+#cb_paus { background-position: -72px 0; }
+#cb_next { background-position: -90px 0; }
+#cb_last { background-position: -108px 0; }
+#cb_full { background-position: -126px 0; }
+#cb_less { background-position: -162px 0; }
+#cb_more { background-position: -180px 0; }
+
+div.albnam, div.sldctls, div.ofslid {
+	display: inline-block;
+}
+div.albnam {
+	float: left;
+	margin-left: 2em;
+	width: 30%;
+	text-align: left;
+}
+div.ofslid {
+	text-align:right;
+	float: right;
+	margin-right: 2em;
+	width: 30%;
+}
+img.sscfg {
+	float: right;
+	margin-top: 2px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+:-webkit-full-screen img.sscfg { display: none; }
+:-moz-full-screen img.sscfg { display: none; }
+:-ms-full-screen img.sscfg { display: none; }
+:full-screen img.sscfg { display: none; }
+:fullscreen img.sscfg { display: none; }
+
+#ptext {
+	padding: 1px 0;
+	line-height: 1.5em;
+	text-align: center;
+}
+.errMsg {
+	color: red;
+	background-color: yellow;
+}
+#loading {
+	text-align: center;
+	position: absolute;
+	z-index: 99;
+	width: 16em;
+	top: 7em;
+	left: 50%;
+	margin-left: -8em;
+	color: #FFF;
+	background-color: #000;
+}
+img {
+	border:0;
+}
+
+/** NEW SLIDE SHOW **/
+.islide {
+	position:absolute;
+}
+.initial {
+	opacity:0;
+	top:-9999px;
+	left:-9999px;
+}
+.img_show {
+	opacity:1;
+}
+.img_hide {
+	opacity:0;
+}
+.img_off {
+	opacity:0;
+	transition: 0.75s opacity;
+	transition-timing-function: ease;
+}
+.img_on {
+	opacity:1;
+	transition: 0.75s opacity;
+	transition-delay: 0.25s;
+	transition-timing-function: ease;
+}
+
+/* slide left/right */
+.img_slin {
+	transition: 0.75s left;
+	transition-timing-function: ease-out;
+}
+
+@media only screen and (max-width: 50em) {
+	#albNam, #cb_prev, #cb_next, #cb_full, img.sscfg {
+		display: none;
+	}
+	div.albnam {
+		margin-left: 5px;
+	}
+	div.ofslid {
+		margin-right: 5px;
+	}
+}

@@ -1,0 +1,47 @@
+/**************************************************
+  Coppermine 1.5.x Plugin - external_edit
+  *************************************************
+  Copyright (c) 2010 Joachim Mller
+  *************************************************
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+  ********************************************
+  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/branches/cpg1.5.x/plugins/external_edit/changelog.txt $
+  $Revision: 7977 $
+  $LastChangedBy: gaugau $
+  $Date: 2010-10-15 17:08:34 +0200 (Fr, 15 Okt 2010) $
+
+  Prepared for CPG 1.6 by ron4mac, 2016-04-26
+  **************************************************/
+
+Changelog
+=========
+[A] = Added new feature
+[B] = Bugfix (fix something that wasn't working as expected)
+[C] = Cosmetical fix (layout, typo etc.)
+[D] = Documentation improvements
+[M] = Maintenance works
+[O] = Optimization of code
+[S] = Security fix (issues that are related to security)
+*********************************************
+
+2016-04-26 [A] Prepared for use with CPG 1.6 using include/plgcompat.inc.php {ron4mac}
+2010-10-15 [A] Added Italian language file (user contribution) {GauGau}
+2010-10-15 [M] Updated file header info to reflect year {GauGau}
+2010-10-15 [M] Counted version up to 2.5 {GauGau}
+2009-06-19 [M] Added SVN header data {GauGau}
+2009-06-19 [M] Counted version up to 2.4 {GauGau}
+2009-06-18 [B] Fixed icon display bug {eenemeenemuu}
+2009-06-18 [M] Added plugin to SVN repository {GauGau}
+2009-06-18 [M] Release of plugin version 2.3 {GauGau}
+2009-06-18 [B] Fixed broken link to reference image {GauGau}
+2009-06-17 [A] First public release (v2.2) {GauGau}
+2009-06-17 [A] Added German translation {GauGau}
+2009-06-17 [A] Added database-driven token checks {GauGau}
+2009-06-15 [M] Complete re-design - building on the API of Fotoflexer.com instead of Aviary.com. Features below this line do not apply. {GauGau}
+2009-06-13 [A] Added support for bitmaps as well as vectors (svg) {GauGau}
+2009-06-12 [A] Added icons {GauGau}
+2009-06-11 [A] Created config screen to allow adding the API key {GauGau}
+2009-06-10 [M] Created initial draft (v1.0) using the API for aviary.com {GauGau}
