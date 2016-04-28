@@ -8,20 +8,15 @@
   $Revision: 8843 $
   $LastChangedBy: eenemeenemuu $
   $Date: 2016-03-23 12:11:09 +0100 (Wed, 23 Mar 2016) $
-
-  Prepared for CPG 1.6 by ron4mac, 2016-04-26
   **************************************************/
 
 if (!GALLERY_ADMIN_MODE) {
     cpg_die(ERROR, $lang_errors['access_denied'], __FILE__, __LINE__);
 }
 
-require_once './include/plgcompat.inc.php';
-
 pageheader("Remote Videos - ".$lang_gallery_admin_menu['admin_lnk']);
 $superCage = Inspekt::makeSuperCage();
 global $lang_common;
-
 
 if ($superCage->post->keyExists('submit')) {
     if (!checkFormToken()) {
@@ -35,7 +30,7 @@ if ($superCage->post->keyExists('submit')) {
             if (strpos($CONFIG['allowed_mov_types'], $filetype) === FALSE) {
                 $CONFIG['allowed_mov_types'] .= "/{$filetype}";
             }
-            if (Plg_DB::result(cpg_db_query("SELECT COUNT(*) FROM {$CONFIG['TABLE_FILETYPES']} WHERE extension = '{$filetype}'"),0) == "0") {
+            if (cpg_db_result(cpg_db_query("SELECT COUNT(*) FROM {$CONFIG['TABLE_FILETYPES']} WHERE extension = '{$filetype}'"),0) == "0") {
                 cpg_db_query("INSERT INTO {$CONFIG['TABLE_FILETYPES']} (extension,mime,content,player) VALUES ('{$filetype}','application/x-shockwave-flash','movie','SWF')");
             }
         } else {

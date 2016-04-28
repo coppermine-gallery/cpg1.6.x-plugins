@@ -21,12 +21,10 @@ if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
 
 function external_edit_init() {
     global $CONFIG, $lang_plugin_external_edit, $external_edit_icon_array;
-    if (version_compare(COPPERMINE_VERSION, '1.6', '<')) {
-		require "./plugins/external_edit/lang/english.php";
-		if ($CONFIG['lang'] != 'english' && file_exists("./plugins/external_edit/lang/{$CONFIG['lang']}.php")) {
-			require "./plugins/external_edit/lang/{$CONFIG['lang']}.php";
-		}
-    }
+//    require "./plugins/external_edit/lang/english.php";
+//    if ($CONFIG['lang'] != 'english' && file_exists("./plugins/external_edit/lang/{$CONFIG['lang']}.php")) {
+//        require "./plugins/external_edit/lang/{$CONFIG['lang']}.php";
+//    }
     if ($CONFIG['enable_menu_icons'] > 0) {
         $external_edit_icon_array['fotoflexer'] = '<img src="./plugins/external_edit/images/icons/fotoflexer.png" width="16" height="16" border="0" alt="" class="icon" />';
     } else {

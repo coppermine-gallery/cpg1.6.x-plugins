@@ -8,14 +8,12 @@
   $Revision: 8843 $
   $LastChangedBy: eenemeenemuu $
   $Date: 2016-03-23 12:11:09 +0100 (Wed, 23 Mar 2016) $
-
-  Prepared for CPG 1.6 by ron4mac, 2016-04-26
   **************************************************/
 
 $name = 'Remote Videos';
 $description = 'Upload videos from video file hosters to your gallery (YouTube, Google, Yahoo!, ...)';
 $author = '<a href="http://forum.coppermine-gallery.net/index.php?action=profile;u=24278" rel="external" class="external">eenemeenemuu</a>';
-$version = '1.12';
+$version = '1.11';
 $plugin_cpg_version = array('min' => '1.5.10');
 
 global $lang_gallery_admin_menu;
@@ -31,3 +29,5 @@ $install_info = <<<EOT
     <a href="http://forum.coppermine-gallery.net/index.php/topic,60195.0.html" rel="external" class="admin_menu">{$announcement_icon}Announcement thread</a>
     <strong>Please consider your country's law, if you are liable when embedding content.</strong>
 EOT;
+
+?>

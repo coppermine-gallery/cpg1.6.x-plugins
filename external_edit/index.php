@@ -21,7 +21,6 @@ if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
 
 require_once './plugins/external_edit/init.inc.php';
 require_once './include/picmgmt.inc.php';
-require_once './include/plgcompat.inc.php';
 
 //pageheader($lang_plugin_external_edit['plugin_name'] . ': ' . $lang_plugin_external_edit['importing_remote_image']);
 
@@ -40,8 +39,8 @@ if ($superCage->get->keyExists('image') == TRUE && $superCage->get->keyExists('t
     $query = "SELECT * FROM {$CONFIG['TABLE_PREFIX']}plugin_external_edit "
             . " WHERE token_id = '$token' LIMIT 1";
     $result = cpg_db_query($query);
-    if (Plg_Db::num_rows($result) > 0) {
-        $row     = Plg_Db::fetch_assoc($result, true);
+    if (cpg_db_num_rows($result) > 0) {
+        $row = cpg_db_fetch_assoc($result, true);
         $pid = $row['pid'];
         $aid = $row['aid'];
 		$output .= '<li>' . $external_edit_icon_array['ok'] . sprintf($lang_plugin_external_edit['token_check'], $lang_plugin_external_edit['success']) . '</li>';
@@ -59,12 +58,12 @@ if ($superCage->get->keyExists('image') == TRUE && $superCage->get->keyExists('t
     cpg_db_query($query);
     $query = "SELECT filepath, filename, pwidth, pheight FROM {$CONFIG['TABLE_PICTURES']} WHERE pid = '$pid'";
     $result = cpg_db_query($query);
-    if (Plg_Db::num_rows($result) != 1) {
+    if (cpg_db_num_rows($result) != 1) {
     	cpgRedirectPage('displayimage.php?album='.$aid.'&pid='.$pid, $lang_plugin_external_edit['error_lookup'], sprintf($lang_plugin_external_edit['database_record'], $lang_plugin_external_edit['failed']), 0, 'error');
     } else {
 		$output .= '<li>' . $external_edit_icon_array['ok'] . sprintf($lang_plugin_external_edit['database_record'], $lang_plugin_external_edit['success']) . '</li>';
 	}
-    $row = Plg_Db::fetch_assoc($result, true);
+    $row = cpg_db_fetch_assoc($result, true);
 
 	$image   = $CONFIG['fullpath'] . $row['filepath'] . $row['filename'];
 	$renamed = $CONFIG['fullpath'] . $row['filepath'] . 'renamed_'.$row['filename'];

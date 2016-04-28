@@ -8,13 +8,9 @@
   $Revision: 8843 $
   $LastChangedBy: eenemeenemuu $
   $Date: 2016-03-23 12:11:09 +0100 (Wed, 23 Mar 2016) $
-
-  Prepared for CPG 1.6 by ron4mac, 2016-04-26
   **************************************************/
 
 if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
-
-require_once './include/plgcompat.inc.php';
 
 $thisplugin->add_action('plugin_install', 'remote_videos_install');
 $thisplugin->add_action('plugin_uninstall', 'remote_videos_uninstall');
@@ -141,7 +137,7 @@ function remote_videos_html_replace($params, $pic_html) {
     global $CONFIG, $CURRENT_PIC_DATA;
     $check_result = preg_match($params['search_pattern']."i", file_get_contents(urldecode($CURRENT_PIC_DATA['url'])), $video_id);
     if ($check_result == "1") {
-        $row = Plg_Db::fetch_array(cpg_db_query("SELECT pwidth, pheight FROM {$CONFIG['TABLE_PICTURES']} WHERE pid = '{$CURRENT_PIC_DATA['pid']}'"), MYSQL_ASSOC, true);
+        $row = cpg_db_fetch_array(cpg_db_query("SELECT pwidth, pheight FROM {$CONFIG['TABLE_PICTURES']} WHERE pid = '{$CURRENT_PIC_DATA['pid']}'"), MYSQL_ASSOC, true);
         $pwidth = $row['pwidth'];
         $pheight = $row['pheight'];
         if ($pwidth == 0 || $pheight == 0) {

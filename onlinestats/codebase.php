@@ -23,8 +23,6 @@ if (!defined('ADMIN_PHP')) {
     define('ADMIN_PHP', true);
 }
 
-require_once './include/plgcompat.inc.php';
-
 $icon_array['ok']  = cpg_fetch_icon('ok', 2);
 $icon_array['config']  = cpg_fetch_icon('config', 2);
 
@@ -133,19 +131,19 @@ function online_mainpage() {
     $num_users = $cpg_udb->get_user_count();
 
     $result = cpg_db_query("SELECT COUNT(*) FROM {$CONFIG['TABLE_ONLINE']}");
-    list($num_online) = Plg_Db::fetch_row($result);
+    list($num_online) = cpg_db_fetch_row($result);
 
     $result = cpg_db_query("SELECT COUNT(*) FROM {$CONFIG['TABLE_ONLINE']} WHERE user_id <> 0");
-    list($num_reg_online) = Plg_Db::fetch_row($result);
+    list($num_reg_online) = cpg_db_fetch_row($result);
 
     $result = cpg_db_query("SELECT {$cpg_udb->field['user_id']} AS user_id, {$cpg_udb->field['username']} AS user_name FROM {$cpg_udb->usertable} ORDER BY user_id DESC LIMIT 1");
-    $newest = Plg_Db::fetch_assoc($result);
+    $newest = cpg_db_fetch_assoc($result);
 
     $result = cpg_db_query("SELECT user_id, user_name FROM {$CONFIG['TABLE_ONLINE']} WHERE user_id <> 0");
 
     $logged_in_array = array();
 
-    while ($row = Plg_Db::fetch_row($result)) {
+    while ($row = cpg_db_fetch_row($result)) {
         $logged_in_array[] = vsprintf('<a href="profile.php?uid=%d">%s</a>', $row);
     }
 
