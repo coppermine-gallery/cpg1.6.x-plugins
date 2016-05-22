@@ -59,3 +59,6 @@ Added option to start slideshow(s) from album list view
 When allowed, users can configure their own slideshow options when viewing any slideshow
 Made compatible with and aware of CPG 1.6 (CPG 1.6 ready)
 
+Version 1.3.7 Release Notes:
+----------------------------
+Modifications to Internet Explorer detection for IE11+

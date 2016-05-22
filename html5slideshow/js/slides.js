@@ -7,7 +7,7 @@
 			reqFull: 'requestFullScreen',
 			canFull: 'cancelFullScreen'
 		};
-	if (navigator.appName == 'Microsoft Internet Explorer') {
+	if (navigator.userAgent.indexOf('MSIE')!==-1 || navigator.appVersion.indexOf('Trident/') > 0) {
 		vendorQuirk.vendorID = 'ie';
 		vendorQuirk.browserPrefix = 'ms';
 //		vendorQuirk.tranEnd = '';
@@ -194,7 +194,8 @@ var	ssCtl = (function() {
 	function loadElm (elm, lix, lft) {
 		elm.eMsg = null;
 		if (vendorQuirk.vendorID == "ff") { elm.src = ''; elm.completed = false; }	//for FF to full load image
-		elm.src = imagelist[lix].fpath;	$(elm).reflect();
+		elm.src = null;
+		elm.src = imagelist[lix].fpath;
 		elm.slidnum = lix;
 		elm.isSized = false;
 		trzn.preS(elm, lft);

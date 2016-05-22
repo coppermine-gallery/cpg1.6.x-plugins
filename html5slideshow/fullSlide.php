@@ -81,10 +81,7 @@ $dcolors = split(',', $H5ss_cfg['dC']);
 	div#screen { background-color:<?=$dcolors[4]?>; overflow:hidden; }
 	div.spribut { background: url('plugins/html5slideshow/css/icons/<?=$icons?>.png') no-repeat; }
 </style>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="plugins/html5slideshow/js/<?=$H5ss_jsf?>" type="text/javascript"></script>
-<script src="plugins/html5slideshow/js/reflection/src/reflection.js" type="text/javascript"></script>
-<!-- <script src="plugins/html5slideshow/js/reflection/src/autoload.js" type="text/javascript"></script> -->
 <script type="text/javascript">
 	var albumID = '<?=$album?>';
 	var popdwin = <?=$popdwin?'true':'false'?>;
