@@ -2,7 +2,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-require_once "./plugins/html5slideshow/initialize.inc.php";
 $H5ss_jsf = 'slides';
 
 if ($CONFIG['debug_mode']==1 || ($CONFIG['debug_mode']==2 && GALLERY_ADMIN_MODE)) {
@@ -14,7 +13,7 @@ if ($CONFIG['debug_mode']==1 || ($CONFIG['debug_mode']==2 && GALLERY_ADMIN_MODE)
 $H5ss_cfg = unserialize($CONFIG['html5slideshow_cfg']);
 
 $uid = USER_ID;
-$usrData = h5ss_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg` FROM {$CONFIG['TABLE_USERS']} WHERE user_id = {$uid}"));
+$usrData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg` FROM {$CONFIG['TABLE_USERS']} WHERE user_id = {$uid}"));
 if ($usrCfg = unserialize($usrData['H5ss_cfg'])) {
 	$H5ss_cfg = array_merge($H5ss_cfg, $usrCfg);
 }
@@ -27,7 +26,7 @@ if ($superCage->get->testAlpha('album')) {
 	$album = $superCage->get->getAlpha('album');
 } else {
 	$album = $superCage->get->getInt('album');
-	$albData = h5ss_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg`,owner FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid = {$album}"));
+	$albData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg`,owner FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid = {$album}"));
 	if (!$albData) {
 	    cpg_die(ERROR, $lang_errors['non_exist_ap']);
 	}
@@ -63,7 +62,7 @@ if (!count($filelist)) $errmsg .= $lang_plugin_html5slideshow['noimgerr'];
 if ($H5ss_cfg['sI']) shuffle($filelist);
 $popdwin = ($superCage->get->getInt('h5sspu') == 1);
 $icons = $H5ss_cfg['iS'];
-$dcolors = split(',', $H5ss_cfg['dC']);
+$dcolors = explode(',', $H5ss_cfg['dC']);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US" dir="<?=$lang_text_dir?>">

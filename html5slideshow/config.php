@@ -1,8 +1,5 @@
 <?php
 if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
-/* FOR USE WITH NEW ADMIN PLUGIN CONFIGURATION SCHEME */
-
-require_once './plugins/html5slideshow/initialize.inc.php';
 
 // make sure that there is an album or that we are administering the plugin
 $h5ss_album = $superCage->get->getInt('album');
@@ -63,7 +60,7 @@ function h5ss_resolve_cfg ($album, $user, &$albname, &$uio)
 	if (GALLERY_ADMIN_MODE && !$album) return $cfg;
 
 	if ($album) {	// user is configuring their album settings
-		$albData = h5ss_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg`,owner,title FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid = {$album}"));
+		$albData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg`,owner,title FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid = {$album}"));
 		if (!$albData) {
 			cpg_die(ERROR, $lang_errors['non_exist_ap']);
 		}
@@ -75,7 +72,7 @@ function h5ss_resolve_cfg ($album, $user, &$albname, &$uio)
 		}
 	}
 
-	$usrData = h5ss_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg`,user_name FROM {$CONFIG['TABLE_USERS']} WHERE user_id = {$user}"));
+	$usrData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg`,user_name FROM {$CONFIG['TABLE_USERS']} WHERE user_id = {$user}"));
 	if ($usrCfg = unserialize($usrData['H5ss_cfg'])) {
 		$cfg = array_merge($cfg, $usrCfg);
 	}

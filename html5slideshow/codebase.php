@@ -1,8 +1,6 @@
 <?php
 if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
 
-require_once "./plugins/html5slideshow/initialize.inc.php";
-
 $H5ss_cfg = unserialize($CONFIG['html5slideshow_cfg']);
 
 // cause the popup script to get included
@@ -75,13 +73,13 @@ function html5slideshow_resolved_cfg($album) {
 	global $CONFIG, $lang_errors, $lang_plugin_html5slideshow;
 	$cfg = unserialize($CONFIG['html5slideshow_cfg']);
 	if ($user = USER_ID) {
-		$usrData = h5ss_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg` FROM {$CONFIG['TABLE_USERS']} WHERE user_id = {$user}"));
+		$usrData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg` FROM {$CONFIG['TABLE_USERS']} WHERE user_id = {$user}"));
 		if ($usrCfg = unserialize($usrData['H5ss_cfg'])) {
 			$cfg = array_merge($cfg, $usrCfg);
 		}
 	}
 	if ($album && preg_match("/^\d+$/", $album)) {
-		$albData = h5ss_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg` FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid = {$album}"));
+		$albData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg` FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid = {$album}"));
 		if ($albCfg = unserialize($albData['H5ss_cfg'])) {
 			$cfg = array_merge($cfg, $albCfg);
 		}
