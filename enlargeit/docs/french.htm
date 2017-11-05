@@ -1,0 +1,798 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<title>Agrandissement ! (EnlargeIt!) Plugin pour cpg1.6.x</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="fr" />
+<meta name="copyright" content="Joachim Müller" />
+<meta name="description" content="" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="stylesheet" type="text/css" href="../../../docs/style/style.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../../../docs/style/screen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../../../docs/style/print.css" media="print" />
+<link rel="shortcut icon" href="../../../favicon.ico" />
+<script src="../../../js/jquery-1.4.2.js" type="text/javascript"></script>
+<script src="../../../js/jquery.treeview.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        $("#toclist").treeview({
+            collapsed: true,
+            animated: "medium",
+            control:"#sidetreecontrol"
+        });
+    });
+</script>
+</head>
+<body>
+<a name="header"></a><h1 id="docheader">Agrandissement ! (EnlargeIt!) Plugin pour cpg1.6.x: Documentation<a href="#header" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h1>
+<a name="top"></a>
+
+<div id="toc">
+Agrandissement ! (EnlargeIt!) Plugin pour cpg1.6.x
+<ul id="toclist" class="tree">
+    <li><a href="#purpose">Qu'est-ce que c'est ?</a></li>
+    <li><a href="#unobtrusive">Visibilité</a>
+        <ul>
+            <li><a href="#compatibility">Tableau de compatibilité des navigateurs</a></li>
+        </ul>
+    </li>
+    <li><a href="#features">Caractéristiques</a></li>
+    <li><a href="#install">Comment faire l’installation</a></li>
+    <li><a href="#upgrade">Mise à jour</a></li>
+    <li><a href="#uninstall">Comment faire pour la désinstallation</a></li>
+    <li><a href="#configuration">Configuration</a>
+        <ul>
+            <li><a href="#configuration_type">Type d'élargissement</a>
+                <ul>
+                    <li><a href="#configuration_type_enablefor">Activer pour</a></li>
+                    <li><a href="#configuration_type_enlargetopicin">Zoom de l’image</a></li>
+                    <li><a href="#configuration_type_maximize">Maximiser la méthode</a></li>
+                </ul>
+            </li>
+            <li><a href="#configuration_animation">Animation</a>
+                <ul>
+                    <li><a href="#configuration_animation_animationtype">Type d'animation</a></li>
+                    <li><a href="#configuration_animation_time">Temps entre les étapes d'animations</a></li>
+                    <li><a href="#configuration_animation_steps">Nombre d'étapes pour les animations</a></li>
+                    <li><a href="#configuration_animation_transparency">Effet de transparence pour les animations glissées</a></li>
+                </ul>
+            </li>
+            <li><a href="#configuration_border">Bordure</a>
+                <ul>
+                    <li><a href="#configuration_border_width">Largeur de la bordure</a></li>
+                    <li><a href="#configuration_border_color">Couleur de la bordure</a></li>
+                    <li><a href="#configuration_border_texture">Texture de la bordure</a></li>
+                    <li><a href="#configuration_border_round">Bords arrondis</a></li>
+                </ul>
+            </li>
+            <li><a href="#configuration_shadow">Ombre</a>
+                <ul>
+                    <li><a href="#configuration_shadow_size">Taille de l'ombre</a></li>
+                    <li><a href="#configuration_shadow_opacity">Opacité de l'ombre</a></li>
+                    <li><a href="#configuration_shadow_color">Couleur de l'ombre</a></li>
+                </ul>
+            </li>
+            <li><a href="#configuration_title">Barre de titre</a>
+                <ul>
+                    <li><a href="#configuration_title_show_inactive">Voir la barre de titre lorsque les boutons sont inactifs</a></li>
+                    <li><a href="#configuration_title_text_color">Couleur du texte de la barre de titre</a></li>
+                    <li><a href="#configuration_title_background_color">La couleur de l'arrière plan de la zone AJAX</a></li>
+                </ul>
+            </li>
+            <li><a href="#configuration_action">Action</a>
+                <ul>
+                    <li><a href="#configuration_action_center">Centrage de l'image agrandie</a></li>
+                    <li><a href="#configuration_action_move">Autoriser images agrandies à être déplacés</a></li>
+                    <li><a href="#configuration_action_wheel">Navigation avec la molette de la souris</a></li>
+                    <li><a href="#configuration_action_darken_toggle">Assombrir l’écran lors des agrandissements</a></li>
+                    <li><a href="#configuration_action_darken_strength">Forçage de l’assombrissement</a></li>
+                    <li><a href="#configuration_action_darken_speed">Vitesse d’assombrissement</a></li>
+                </ul>
+            </li>
+            <li><a href="#configuration_buttons">Boutons</a>
+                <ul>
+                    <li><a href="#configuration_buttons_picture">Affichage du bouton "Afficher l'image"</a></li>
+                    <li><a href="#configuration_buttons_info">Voir le bouton "Info"</a></li>
+                    <li><a href="#configuration_buttons_favorites">Voir mes favoris</a></li>
+                    <li><a href="#configuration_buttons_vote" style="text-decoration:line-through;">Affichage du bouton "Vote"</a></li>
+                    <li><a href="#configuration_buttons_comments" style="text-decoration:line-through;">Affichage du bouton "Commentaires"</a></li>
+                    <li><a href="#configuration_buttons_download">Affichage du bouton "Téléchargement"</a></li>
+                    <li><a href="#configuration_buttons_bbcode">Affichage du bouton "BBCode"</a></li>
+                    <li><a href="#configuration_buttons_histogram">Affichage du bouton "Histogramme"</a></li>
+                    <li><a href="#configuration_buttons_navigation">Affichage des boutons de "Navigation"</a></li>
+                    <li><a href="#configuration_buttons_close">Affichage du bouton "Fermeture"</a></li>
+                </ul>
+            </li>
+            <li><a href="#configuration_multimedia">Multimédia</a>
+                <ul>
+                    <li><a href="#configuration_multimedia_imageformats">Formats d'image</a></li>
+                    <li><a href="#configuration_multimedia_videoformats">Formats vidéo</a></li>
+                    <li><a href="#configuration_multimedia_flv">Utilisation d'un logiciel de lecture de fichiers FLV</a></li>
+                </ul>
+            </li>
+            <li><a href="#configuration_setup">Configuration du plugin</a>
+                <ul>
+                    <li><a href="#configuration_setup_adminmenu">Afficher un lien vers la configuration du plugin dans le menu configuration</a></li>
+                    <li><a href="#configuration_setup_histogram">Durée de vie du cache du fichier histogramme</a>
+                        <ul>
+                            <li><a href="#configuration_setup_histogram_concept">Concept</a></li>
+                            <li><a href="#configuration_setup_histogram_permissions">Permissions</a></li>
+                            <li><a href="#configuration_setup_histogram_naming_scheme">Schéma de nommage</a></li>
+                            <li><a href="#configuration_setup_histogram_file_size">Taille du fichier</a></li>
+                            <li><a href="#configuration_setup_histogram_age">Suppression automatique du cache du fichier de l’histogramme après un certain temps</a></li>
+                            <li><a href="#configuration_setup_histogram_size">Suppression automatique du cache de l’histogramme via la taille maximum du fichier</a></li>
+                            <li><a href="#configuration_setup_histogram_information">Informations supplémentaires concernant le cache</a></li>
+                            <li><a href="#configuration_setup_histogram_default">Valeur par défaut</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#configuration_color_picker">Nuanciers</a></li>
+            <li><a href="#configuration_multi_select">Sélection de plusieurs champs</a></li>
+        </ul>
+    </li>
+    <li><a href="#firstaid">Premiers secours - si elle ne fonctionne pas</a></li>
+    <li><a href="#support">Support</a></li>
+    <li><a href="#credits">Credits</a></li>
+    <li><a href="#todo">À faire</a></li>
+</ul>
+</div>
+<a name="purpose"></a><h2>Qu'est-ce que c'est ?<a href="#purpose" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>Ce plugin remplace l’affichage des images intermédiaire de Coppermine avec un système d’affichage en AJAX qui est largement configurable. Il fournit l'un des moyens les plus rapides possible afin de parcourir une galerie de photos.</p>
+
+<a name="unobtrusive"></a><h2>Visibilité<a href="#unobtrusive" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>Ce plugin fonctionne très bien graphiquement avec n'importe quel navigateur web moderne afin que vous ne perdiez pas de visiteurs en raison de problèmes de compatibilité. Les utilisateurs avec un navigateur sans JavaScript ou qui ont désactivé les scripts dans leur navigateur peuvent utiliser la galerie comme si le plugin Agrandissement ! (EnlargeIt!) N'était pas du tout là, donc ce plugin fonctionne bien si quelque chose ne va pas.</p>
+<p>Les robots des moteurs de recherche ne seront pas concernés par l'indexation de votre galerie, ainsi ce plugin n'a pas un impact négatif sur le classement via votre moteur de recherche.</p>
+
+<a name="compatibility"></a><h3>Tableau de compatibilité des navigateurs<a href="#compatibility" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+C'est un tableau qui représente les environnements avec lesquelles le plugin Agrandissement ! (EnlargeIt!) a été testé. C'est loin d'être complet, mais devrait couvrir la plupart des configurations qui sont actuellement utilisés. Entre parenthèses, vous trouverez des détails sur les bancs d'essai réel avec lesquels des contributeurs de ce plugin ont fait des tests.
+<table border="0" cellspacing="0" cellpadding="0" class="maintable">
+    <tr>
+        <th class="tableh1" colspan="2">Navigateur</th>
+        <th class="tableh1">Version</th>
+        <th class="tableh1">Version opérationnel</th>
+        <th class="tableh1">Résultat</th>
+    </tr>
+    <tr>
+        <td class="tableb"><img src="../../../images/browser/msie.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb">Internet Explorer</td>
+        <td class="tableb">5.0</td>
+        <td class="tableb"><img src="../../../images/os/win.png" width="16" height="16" border="0" class="icon" alt="" title="Windows" /></td>
+        <td class="tableb"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb tableb_alternate"><img src="../../../images/browser/msie.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb tableb_alternate">Internet Explorer</td>
+        <td class="tableb tableb_alternate">5.5</td>
+        <td class="tableb tableb_alternate"><img src="../../../images/os/win.png" width="16" height="16" border="0" class="icon" alt="" title="Windows" /></td>
+        <td class="tableb tableb_alternate"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb"><img src="../../../images/browser/msie6.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb">Internet Explorer</td>
+        <td class="tableb">6.0</td>
+        <td class="tableb"><img src="../../../images/os/win.png" width="16" height="16" border="0" class="icon" alt="" title="Windows" /></td>
+        <td class="tableb"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb tableb_alternate"><img src="../../../images/browser/msie7.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb tableb_alternate">Internet Explorer</td>
+        <td class="tableb tableb_alternate">7.0</td>
+        <td class="tableb tableb_alternate"><img src="../../../images/os/winxp.png" width="16" height="16" border="0" class="icon" alt="" title="Windows XP" /></td>
+        <td class="tableb tableb_alternate"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb"><img src="../../../images/browser/msie8.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb">Internet Explorer</td>
+        <td class="tableb">8.0</td>
+        <td class="tableb"><img src="../../../images/os/win.png" width="16" height="16" border="0" class="icon" alt="" title="Windows" /></td>
+        <td class="tableb"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb tableb_alternate"><img src="../../../images/browser/firefox.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb tableb_alternate">Mozilla Firefox</td>
+        <td class="tableb tableb_alternate">1.5</td>
+        <td class="tableb tableb_alternate"><img src="../../../images/os/win.png" width="16" height="16" border="0" class="icon" alt="" title="Windows" /></td>
+        <td class="tableb tableb_alternate"></td>
+    </tr>
+<tr>
+        <td class="tableb"><img src="../../../images/browser/firefox.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb">Mozilla Firefox</td>
+        <td class="tableb">3.5</td>
+        <td class="tableb"><img src="../../../images/os/win.png" width="16" height="16" border="0" class="icon" alt="" title="Windows" /> <img src="../../../images/os/linux.png" width="16" height="16" border="0" class="icon" alt="" title="Linux" /> <img src="../../../images/os/linuxubuntu.png" width="16" height="16" border="0" class="icon" alt="" title="Ubuntu 9.10" /></td>
+        <td class="tableb"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb tableb_alternate"><img src="../../../images/browser/opera.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb tableb_alternate">Opera</td>
+        <td class="tableb tableb_alternate">8</td>
+        <td class="tableb tableb_alternate"></td>
+        <td class="tableb tableb_alternate"></td>
+    </tr>
+    <tr>
+        <td class="tableb"><img src="../../../images/browser/opera.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb">Opera</td>
+        <td class="tableb">9</td>
+        <td class="tableb"><img src="../../../images/os/linux.png" width="16" height="16" border="0" class="icon" alt="" title="Linux" /> <img src="../../../images/os/linuxubuntu.png" width="16" height="16" border="0" class="icon" alt="" title="Ubuntu 9.10" /></td>
+        <td class="tableb"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb tableb_alternate"><img src="../../../images/browser/konqueror.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb tableb_alternate">Konqueror</td>
+        <td class="tableb tableb_alternate">3.5</td>
+        <td class="tableb tableb_alternate"></td>
+        <td class="tableb tableb_alternate"></td>
+    </tr>
+    <tr>
+        <td class="tableb"><img src="../../../images/browser/chrome.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb">Google Chrome</td>
+        <td class="tableb">3.0</td>
+        <td class="tableb"><img src="../../../images/os/win.png" width="16" height="16" border="0" class="icon" alt="" title="Windows" /></td>
+        <td class="tableb"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb tableb_alternate"><img src="../../../images/browser/epiphany.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb tableb_alternate">Epiphany (WebKit)</td>
+        <td class="tableb tableb_alternate">2.28</td>
+        <td class="tableb tableb_alternate"><img src="../../../images/os/linux.png" width="16" height="16" border="0" class="icon" alt="" title="Linux" /> <img src="../../../images/os/linuxubuntu.png" width="16" height="16" border="0" class="icon" alt="" title="Ubuntu 9.10" /></td>
+        <td class="tableb tableb_alternate"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb"><img src="../../../images/browser/galeon.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb">Galeon</td>
+        <td class="tableb">2.0.7</td>
+        <td class="tableb"><img src="../../../images/os/linux.png" width="16" height="16" border="0" class="icon" alt="" title="Linux" /> <img src="../../../images/os/linuxubuntu.png" width="16" height="16" border="0" class="icon" alt="" title="Ubuntu 9.10" /></td>
+        <td class="tableb"><img src="../../../images/icons/ok.png" width="16" height="16" border="0" class="icon" alt="" title="OK" /></td>
+    </tr>
+    <tr>
+        <td class="tableb tableb_alternate"><img src="../../../images/browser/netsurf.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb tableb_alternate">NetSurf</td>
+        <td class="tableb tableb_alternate">1.2</td>
+        <td class="tableb tableb_alternate"><img src="../../../images/os/linux.png" width="16" height="16" border="0" class="icon" alt="" title="Linux" /> <img src="../../../images/os/linuxubuntu.png" width="16" height="16" border="0" class="icon" alt="" title="Ubuntu 9.10" /></td>
+        <td class="tableb tableb_alternate"><img src="../../../images/icons/stop.png" width="16" height="16" border="0" class="icon" alt="" title="does not work (Browser is not JavaScript-enabled)" /></td>
+    </tr>
+    <tr>
+        <td class="tableb"><img src="../../../images/browser/safari.png" width="16" height="16" border="0" alt="" /></td>
+        <td class="tableb">Safari</td>
+        <td class="tableb">3</td>
+        <td class="tableb"></td>
+        <td class="tableb"></td>
+    </tr>
+    <!--<tr>
+        <td class="tableb tableb_alternate"></td>
+        <td class="tableb tableb_alternate"></td>
+        <td class="tableb tableb_alternate"></td>
+        <td class="tableb tableb_alternate"></td>
+        <td class="tableb tableb_alternate"></td>
+    </tr>
+    <tr>
+        <td class="tableb"></td>
+        <td class="tableb"></td>
+        <td class="tableb"></td>
+        <td class="tableb"></td>
+        <td class="tableb"></td>
+    </tr>-->
+</table>
+
+<a name="features"></a><h2>Caractéristiques<a href="#features" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<ul>
+    <li>Boutons pour avoir une information sur image, image en taille réelle, photos préférées, téléchargement, histogramme</li>
+    <li>Navigation et avec boutons de fermeture</li>
+    <li>Navigation avec les touches fléchées ou la molette de la souris (molette de la souris en charge uniquement avec mozilla et IE)</li>
+    <li>Cinq types différents d'animation</li>
+    <li>Choisi la vitesse d'animation et des étapes</li>
+    <li>Choisissez la taille de la bordure, la couleur et l'ombrage</li>
+    <li>Centrage et l'assombrissement de l’écran (comme lightbox)</li>
+    <li>Agrandir la taille intermédiaire ou des photos en taille réelle</li>
+    <li>Ne pas exploser votre taille de page - seulement 22 ko de JavaScript et 1 ko de CSS est ajouté</li>
+    <li>Toujours trop grand pour vous ? Aller à http://enlargeit.timos-welt.de/english/11/building_blocks.php
+  et générer vos propres petits, version personnalisée de la partie JavaScript</li>
+    <li>Support pour la lecture des fichiers Flash (*.swf)</li>
+    <li>Support pour la lecture des fichiers *.flv - il suffit de les télécharger dans votre CPG et ils fonctionneront</li>
+    <li>Support pour la lecture des fichiers *.divx via DivX Web Player (http://labs.divx.com/WebPlayer) - 
+  il suffit de télécharger un fichier *.divx dans votre galerie, et le plugin Agrandissement ! (EnlargeIt!) Le fera fonctionner sur Windows et Mac</li>
+    <li>Vous pouvez configurer pratiquement tout dans la page de configuration - mais ce n'est pas obligatoire</li>
+</ul>
+
+<a name="install"></a><h2>Comment faire l’installation<a href="#install" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>Ce plugin s’installe comme n'importe quel autre plugin, il n'y a pas étapes d'installation supplémentaires, de sorte que vous devriez bêtement faire comme suggéré dans la section correspondante de la documentation qui vient avec Coppermine.</p>
+
+<a name="upgrade"></a><h2>Mise à jour<a href="#upgrade" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>Si vous mettez à jour ce plugin à partir d'une version précédente, veillez à toujours désinstaller complètement l'ancienne version avant d'installer la nouvelle, et à vider le cache de votre navigateur après la désinstallation.</p>
+
+<a name="uninstall"></a><h2>Comment faire pour la désinstallation<a href="#uninstall" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>Désinstaller via gestionnaire de plugins.</p>
+
+<a name="configuration"></a><h2>Configuration<a href="#configuration" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>Utilisez le bouton supplémentaire <button type="button" style="font-size: 85%;" name="config" value="EnlargeIt"><img src="../images/icons/configure.png" width="16" height="16" border="0" alt="" />Agrandissement ! configuration</button> à l'intérieur du menu administrateur de Coppermine ou dans la page du gestionnaire de plugins pour accéder à l'écran de configuration du plugin Agrandissement ! (EnlargeIt).</p>
+
+    <div class="indent">
+    
+    <a name="configuration_type"></a><h3>Type d'élargissement<a href="#configuration_type" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    
+        <div class="indent">
+        <a name="configuration_type_enablefor"></a><h4>Activer pour<a href="#configuration_type_enablefor" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Cases possibles:
+        <ul>
+            <li><em>Administrateurs</em></li>
+            <li><em>Utilisateurs enregistrés</em></li>
+            <li><em>Invité</em></li>
+        </ul>
+        Cette option détermine qui va voir le plugin Agrandissement ! (EnlargeIt) en premier lieu. Notez que cela ne change rien concernant, quoi que ce soit sur les autorisations d'afficher ou de télécharger dans Coppermine: ces paramètres sont encore contrôlés par les mécanismes « normaux » de Coppermine. Au lieu de cela, cette option détermine pour laquelle le groupe du plugin Agrandissement ! (enlargeIt) est activé en premier lieu. Tous les visiteurs qui n'appartiennent pas à un groupe activé du plugin Agrandissement ! (enlargeIt) verront le mécanisme classique de Coppermine pour afficher des images, c'est à dire qu'ils seront envoyés à partir de l'écran des miniatures, à l'écran d'image de taille intermédiaire (displayimage.php).<br />
+        Par défaut, les trois cases sont cochées.
+        
+        <a name="configuration_type_enlargetopicin"></a><h4>Zoom de l’image<a href="#configuration_type_enlargetopicin" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Précise le "facteur de grossissement" d’une vignette accédé (en cliquant dessus). Il y a trois options possibles:
+        <ul>
+            <li><em>Taille intermédiaire</em></li>
+            <li><em>Taille réelle</em></li>
+            <li><em>Forcer la taille intermediaire</em></li>
+        </ul>
+        
+        <a name="configuration_type_maximize"></a><h4>Maximiser la méthode<a href="#configuration_type_maximize" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine comment les images en taille réelle doivent être ouvertes.<br />
+        Available options:
+        <ul>
+            <li><em>Dans une fenêtre pop-up</em> (non recommandée)</li>
+            <li><em>Ouvrir en tant que snippet AJAX</em> (recommandée)</li>
+        </ul>
+        Cette option s'applique uniquement si vous permettez les images en taille réelle, en premier lieu, afin que les deux l'option de Agrandissement (EnlargeIt) &quot;<a href="#configuration_type_enlargetopicin">Zoom de l’image</a>&quot; ainsi que les options de configuration de Coppermine qui ont un impact sur le redimensionnement des images en taille réelle puissent être prises en compte.
+        </div>
+        
+    <a name="configuration_type_end"></a>
+    
+    <a name="configuration_animation"></a><h3>Animation<a href="#configuration_animation" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    <a name="configuration_animation_end"></a>
+    
+        <div class="indent">
+			<a name="configuration_animation_animationtype"></a><h4>Type d'animation<a href="#configuration_animation_animationtype" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+			Préciser l'animation qui doit être utilisée quand un utilisateur clique sur la vignette ou lorsqu'on passe d'une image à l'autre.<br />
+			Les options possibles:
+			<ul>
+				<li><em>Aucun</em><br />
+				Pas d'animation du tout - la case Agrandissement (EnlargeIt) apparaitra instantanément sans aucun effet d'animation.</li>
+				<li><em>Apparition et disparition graduellement du fondu</em></li>
+				<li><em>Glissement</em></li>
+				<li><em>Glissement par à coup</em></li>
+				<li><em>Glissement doux</em></li>
+				<li><em>Glissement rapide</em></li>
+				<li><em>Glissement par le haut</em></li>
+				<li><em>Glissement par la gauche</em></li>
+				<li><em>Glissement par le haut gauche</em></li>
+			</ul>
+			
+			<a name="configuration_animation_time"></a><h4>Temps entre les étapes d'animations<a href="#configuration_animation_time" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+			L'animation est en fait un ensemble d'étapes d'animation individuels qui se déclenche quand un visiteur accède la vignette. Considérez-les comme les images d'une vidéo. Vous pouvez spécifier le délai en millisecondes entre les étapes d'animations, cette option détermine la vitesse de l'animation. La valeur par défaut est de 12 <abbr title="milliseconds">ms</abbr>. Vous pouvez jouer avec ce paramètre pour le <a href="#configuration_animation_animationtype">type d'animation</a> que vous souhaitez voir.
+			
+			<a name="configuration_animation_steps"></a><h4>Nombre d'étapes pour les animations<a href="#configuration_animation_steps" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+			Le nombre d'étapes d'animation. La valeur par défaut est 18. La valeur minimale est de 4, la valeur maximale est de 30. Ce paramètre détermine la façon dont l'animation sera vue. Plus la valeur est grande, plus lisse sera l'animation. L'inconvénient de cette option à une valeur élevée, est qu'elle provoque des décalages sur les ordinateurs lents des visiteurs, les plus âgés. Lors de l'essai de ce paramètre, ne vous ne laissez pas bercer d’illusions en croyant que tout ira bien si cela semble OK sur votre PC: sur d'autres machines moins puissantes un grand nombre d'étapes d'animation peut causer des problèmes.
+			
+			<a name="configuration_animation_transparency"></a><h4>Effet de transparence pour les animations glissées<a href="#configuration_animation_transparency" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+			Lorsque cette option est cochée, le script tente d'utiliser la transparence pour l'effet de glissement, ce qui aura un impact sur les performances des ordinateurs les plus âgés. Le réglage par défaut est désactivé.
+        </div>
+    
+    <a name="configuration_border"></a><h3>Bordure<a href="#configuration_border" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+	Paramètres concernant la bordure autour des images individuelles lors de l'utilisation d’Agrandissement (EnlargeIt) pour afficher une image qui réside dans votre galerie.
+        <div class="indent">
+			<a name="configuration_border_width"></a><h4>Largeur de la bordure<a href="#configuration_border_width" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		<img src="../images/docs/border_width.png" border="0" width="156" height="103" alt="" title="border width" style="margin:5px" align="right" />La largeur de la bordure est en pixels. La valeur par défaut est 22. Mettez à zéro pour désactiver la bordure. Tous les paramètres ci-dessous concernant la bordure ne seront pas pris en compte si vous définissez la largeur de la bordure à 0.
+			
+			<a name="configuration_border_color"></a><h4>Couleur de la bordure<a href="#configuration_border_color" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+			<img src="../images/docs/border_bg.png" border="0" width="156" height="103" alt="" title="border color" style="margin:5px" align="left" />Couleur de fond de la bordure, en utilisant la notation hexadécimale avec le premier caractère #. Vous pouvez entrer la valeur manuellement ou utiliser le <a href="#configuration_color_picker">sélecteur de couleur.</a>.<br />
+			La valeur par défaut est # FFFFFF, ce qui est blanc uni.
+			<br clear="all" />
+			
+			<a name="configuration_border_texture"></a><h4>Texture de la bordure<a href="#configuration_border_texture" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+			En plus de la couleur de fond, vous pouvez affecter une texture de fond de la bordure. Lorsque vous spécifiez une texture, la couleur de fond ne sera pas prise en compte. Le réglage de la texture des bordures est une liste déroulante où vous pouvez sélectionner l'une des images. Un aperçu sera affiché dans la colonne à droite. La valeur par défaut est "Aucune ".<br />
+			Les options disponibles sont:
+			<ul>
+				<li>Aucune</li>
+				<li style="background-image:url(../images/backgrounds/marble.png);width:200px;">Marbre</li>
+				<li style="background-image:url(../images/backgrounds/metallight.png);width:200px;">Métal brossé</li>
+				<li style="background-image:url(../images/backgrounds/metalwhite.png);width:200px;">Blanc métal</li>
+				<li style="background-image:url(../images/backgrounds/metalwhite2.png);width:200px;">Blanc métal 2</li>
+				<li style="background-image:url(../images/backgrounds/metalblue.png);width:200px;">Bleu métal</li>
+				<li style="background-image:url(../images/backgrounds/metalred.png);width:200px;">Rouge métal</li>
+				<li style="background-image:url(../images/backgrounds/metalgreen.png);width:200px;">Vert métal</li>
+				<li style="background-image:url(../images/backgrounds/metalsilver.png);width:200px;">Argent métal</li>
+				<li style="background-image:url(../images/backgrounds/metalblack.png);width:200px;color:white;">Noir métal</li>
+				<li style="background-image:url(../images/backgrounds/rain.png);width:200px;">Pluie</li>
+				<li style="background-image:url(../images/backgrounds/rainlight.png);width:200px;">Petite pluie</li>
+				<li style="background-image:url(../images/backgrounds/woodlight.png);width:200px;">Bois clair</li>
+				<li style="background-image:url(../images/backgrounds/wooddark.png);width:200px;color:white;">Bois foncé</li>
+				<li style="background-image:url(../images/backgrounds/paper.png);width:200px;">Papier</li>
+				<li style="background-image:url(../images/backgrounds/leather.png);width:200px;color:white;">Cuir</li>
+				<li style="background-image:url(../images/backgrounds/green.png);width:200px;color:white;">Vert foncé</li>
+				<li style="background-image:url(../images/backgrounds/greenliquid.png);width:200px;color:white;">Vert liquide</li>
+				<li style="background-image:url(../images/backgrounds/choc.png);width:200px;color:white;">Chocolat</li>
+			</ul>
+			
+			<a name="configuration_border_round"></a><h4>Bords arrondis<a href="#configuration_border_round" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+			<div style="background-color:#BFBFBF; -moz-border-radius: 22px;padding:10px;">
+				<div style="background-color:#F7F7F7; -moz-border-radius: 22px;padding:10px;height:110px">
+					<img src="../images/docs/rounded_corner.png" border="0" width="156" height="103" alt="" title="rounded border" style="margin:5px" align="right" /><img src="../images/docs/rounded_corner_zoomed.png" border="0" width="47" height="54" alt="" title="rounded border detail" style="margin:5px" align="left" />Case à cocher pour permettre les bords arrondis. La fonction bordure arrondie ne fonctionne qu’avec Mozilla / Safari seulement, de sorte qu'elle ne fonctionne pas avec <abbr title="Internet Explorer">IE</abbr>. Toutefois, si vous l'activez, rien de mauvais ne se passera pour les visiteurs qui ont un navigateur qui ne prend pas en charge cette fonctionnalité: il n'y aura aucun message d'erreur si vous activez cette fonctionnalité. Au lieu de cela, l'objet Agrandissement (EnlargeIt) sera affiché avec des bords "ordinaire", non arrondis.<br />
+					Est désactivée par défaut.
+				</div>
+			</div>
+		</div>
+    <a name="configuration_border_end"></a>
+    
+    <a name="configuration_shadow"></a><h3>Ombre<a href="#configuration_shadow" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+        <div class="indent">
+        <a name="configuration_shadow_size"></a><h4>Taille de l'ombre<a href="#configuration_shadow_size" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		Ce paramètre vous permet de spécifier la largeur de l'effet d'ombre. L'effet d'ombre s'étire à la fois vers la droite et vers le bas, comme si la lumière venait du haut à gauche de l'écran. Réglez cette option à zéro pour désactiver l'effet d'ombre entièrement. Les valeurs peuvent aller de 1 (petite ombre) à 9 (grande ombre).
+		
+		<a name="configuration_shadow_opacity"></a><h4>Opacité de l'ombre<a href="#configuration_shadow_opacity" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		Déterminer comment l'ombre sera "sombre ", c'est à dire l’opacité de celle-ci. La valeur peut être comprise entre 1 et 30. Le réglage par défaut est 20.
+		
+		<a name="configuration_shadow_color"></a><h4>Couleur de l'ombre<a href="#configuration_shadow_color" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		Déterminer la couleur de l'ombre - peut être utile pour des thèmes sombres. Précisez la couleur en utilisant la représentation hexadécimale. Utilisez le <a href="#configuration_color_picker">sélecteur de couleur</a> pour choisir très facilement la couleur avec votre souris.<br />
+		La valeur par défaut est <tt class="code">#000000</tt>, c'est à dire noir.
+		</div>
+    <a name="configuration_shadow_end"></a>
+    
+    <a name="configuration_title"></a><h3>Barre de titre<a href="#configuration_title" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+        <div class="indent">
+        <a name="configuration_title_show_inactive"></a><h4>Voir la barre de titre lorsque les boutons sont inactifs<a href="#configuration_title_show_inactive" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		<em>Je n'ai aucune idée de ce que fait cette option. Si d’autres développeurs  pouvaient préciser s’il vous plaît ? Merci. Joachim</em><br />
+		Par défaut cette option est activée.
+		
+		<a name="configuration_title_text_color"></a><h4>Couleur du texte de la barre de titre<a href="#configuration_title_text_color" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		<img src="../images/docs/title_text.png" border="0" width="156" height="103" alt="" title="title bar text color" style="margin:5px" align="right" />La couleur de police pour la barre de titre, c'est à dire la couleur de la représentation en hexadécimal avec le signe # pour, le titre de l'image individuelle. Il est nécessaire d'utiliser une couleur ayant un bon contraste par rapport à l'arrière plan de la barre de titre, à savoir la <a href="#configuration_border_color">couleur de la bordure</a> ou de la <a href="#configuration_border_texture">texture des bordures</a>. Utilisez le <a href="#configuration_color_picker">sélecteur de couleur</a> pour définir la couleur en utilisant votre souris.<br />
+		La valeur par défaut est <tt class="code">#44554</tt>, ce qui est d'un vert foncé.
+		
+		<a name="configuration_title_background_color"></a><h4>La couleur de l'arrière plan de la zone AJAX<a href="#configuration_title_background_color" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		La couleur de l’arrière plan pour le contenu d’Agrandissement (EnlargeIt). Utilisez le <a href="#configuration_color_picker">sélecteur de couleur</a> pour définir la couleur en utilisant votre souris.<br />
+		La valeur par défaut est <tt class="code">#666677</tt>, qui est un gris moyen.
+		</div>
+    <a name="configuration_title_end"></a>
+    
+    <a name="configuration_action"></a><h3>Action<a href="#configuration_action" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+        <div class="indent">
+        <a name="configuration_action_center"></a><h4>Centrage de l'image agrandie<a href="#configuration_action_center" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		Détermine si l'image doit être centrée à l'intérieur de l’objet Agrandissement (EnlargeIt!). Est par défaut (et recommandé) sur "on".
+		
+		<a name="configuration_action_move"></a><h4>Autoriser images agrandies à être déplacés<a href="#configuration_action_move" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		Lorsqu'il est activé, le visiteur peut déplacer l'objet Agrandissement (EnlargeIt) autour de l'écran en utilisant sa souris. Ceci est souvent utile si le thème est étroit et qu’il y a des informations sous l'image agrandie que le visiteur souhaite voir.<br />
+		Est désactivée par défaut. Il est recommandé de le mettre sur on.
+		
+		<a name="configuration_action_wheel"></a><h4>Navigation avec la molette de la souris<a href="#configuration_action_wheel" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		Lorsque cette option est activée les visiteurs peuvent utiliser la molette de leur souris pour faire défiler les images au lieu d'avoir à cliquer sur les touches PRÉCÉDENTE / SUIVANTE, qui rende la navigation à l'écran comme un jeu d'enfant. Le seul inconvénient de cette option réside dans le fait que le comportement "classique" avec la molette de la souris (défilement de la fenêtre du navigateur) est désactivé en faveur de la navigation via la molette de la souris.<br />
+		Par défaut, la navigation via la molette de la souris est activée.
+		
+		<a name="configuration_action_darken_toggle"></a><h4>Assombrir l’écran lors des agrandissements<a href="#configuration_action_darken_toggle" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		<em>Je n'ai aucune idée de ce que fait cette option. Si d’autres développeurs  pouvaient préciser s’il vous plaît ? Merci. Joachim</em><br />
+		Les options possibles sont:
+		<ul>
+			<li><em>Non</em></li>
+			<li><em>Oui: Assombrir lorsqu'une image est montrée</em><br />Option par défaut</li>
+			<li><em>Oui: reste sombre lorsque vous utilisez la navigation</em></li>
+		</ul>
+		
+		<a name="configuration_action_darken_strength"></a><h4>Forçage de l’assombrissement<a href="#configuration_action_darken_strength" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		Déterminer combien l'écran autour de l'objet Agrandissement (EnlargeIt) est sombre, à savoir l’assombrissement de l'effet boite grise. Les valeurs possibles vont de 0% à 100%.<br />
+		La valeur par défaut est de 20%
+		
+		<a name="configuration_action_darken_speed"></a><h4>Vitesse d’assombrissement<a href="#configuration_action_darken_speed" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+		Déterminer la vitesse à laquelle l'effet d'assombrissement doit être: la plage de valeur possible est de 1 à 20, ou 1 signifie "assombrir immédiatement" et 20 signifie "assombrir très lentement".<br />
+		La valeur par défaut est 20.
+		
+		</div>
+    <a name="configuration_action_end"></a>
+    
+    <a name="configuration_buttons"></a><h3>Boutons<a href="#configuration_buttons" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+        <div class="indent">
+        <a name="configuration_buttons_picture"></a><h4>Affichage du bouton "Afficher l'image"<a href="#configuration_buttons_picture" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine les conditions d’affichage du bouton le "Afficher l'image" (<img src="../images/icons/show.png" border="0" width="16" height="16" alt="" class="icon" />) doit être affichée lorsque l'objet Agrandissement (EnlargeIt) est affiché.<br />
+        Par défaut, l'image est affichée à chaque fois que l'objet Enlargeit est généré, ce petit bouton n'a de sens que pour offrir aux visteurs une option de retour à l'image si il est autorisé à voir autre chose dans un premier temps. Par la suite, vous ne devez activer cette option que si vous avez activé au moins un autre bouton dans la liste ci-dessous:
+        <ul>
+            <li><a href="#configuration_buttons_info">Voir le bouton "Info"</a></li>
+            <li><a href="#configuration_buttons_favorites">Voir mes favoris</a></li>
+            <li><a href="#configuration_buttons_vote">Affichage du bouton "Vote"</a></li>
+            <li><a href="#configuration_buttons_comments">Affichage du bouton "Commentaires"</a></li>
+            <li><a href="#configuration_buttons_download">Affichage du bouton "Téléchargement"</a></li>
+            <li><a href="#configuration_buttons_bbcode">Affichage du bouton "BBCode"</a></li>
+            <li><a href="#configuration_buttons_histogram">Affichage du bouton "Histogramme"</a></li>
+        </ul>
+        Est &quot;désactiver&quot; par défaut.
+        
+        <a name="configuration_buttons_info"></a><h4>Voir le bouton "Info"<a href="#configuration_buttons_info" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine si les informations du fichier doivent être disponible via un bouton distinct (<img src="../images/icons/info.png" border="0" width="16" height="16" alt="" class="icon" />) que le visiteur puisse cliquer. Les informations de fichier ne disent généralement pas grand-chose aux visiteurs sur d’une galerie, il est donc recommandé de laisser cette option désactivée afin de ne pas confondre le visiteur.<br />
+        Les options disponibles sont:
+        <ul>
+            <li><em>Non</em></li>
+            <li><em>Oui: Ouvrir en tant que snippet AJAX</em></li>
+            <li><em>Oui: Ouvrir une page intermédiaire "classique"</em></li>
+        </ul>
+        Par défaut cette option est sur &quot;<em>Non</em>&quot;.<br />
+        Les informations du fichier (si ce bouton est activé) ressemblent généralement à ceci:<br />
+        <table border="0" cellspacing="0" cellpadding="0" class="maintable">
+            <tr>
+                <td class="tableh2" colspan="2">Informations sur le fichier</td>
+            </tr>
+            <tr>
+                <td class="tableb">Nom du fichier:</td>
+                <td class="tableb">040804_LOTUS_1.jpg</td>
+            </tr>
+            <tr>
+                <td class="tableb">Nom de l'album:</td>
+                <td class="tableb">/ Flowers</td>
+            </tr>
+            <tr>
+                <td class="tableb">Taille du fichier:</td>
+                <td class="tableb">59 KiB</td>
+            </tr>
+            <tr>
+                <td class="tableb">Date d'ajout:</td>
+                <td class="tableb">Jun 11, 2009</td>
+            </tr>
+            <tr>
+                <td class="tableb">Dimensions:</td>
+                <td class="tableb">600 x 800 pixels</td>
+            </tr>
+            <tr>
+                <td class="tableb">Afficher:</td>
+                <td class="tableb">13 fois ()</td>
+            </tr>
+        </table>
+        
+        <a name="configuration_buttons_favorites"></a><h4>Voir mes favoris<a href="#configuration_buttons_favorites" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine si le bouton favoris (<img src="../images/icons/favorites.png" border="0" width="16" height="16" alt="" class="icon" />) doit être affichée lorsque l'objet Agrandissement (EnlargeIt) est en place. Le bouton favori permet à vos visiteurs d'ajouter rapidement un fichier à leur liste personnelle de favoris ou d’en retirer de cette même liste. Il s'agit d'un bouton qui peut aider à construire une communauté il est seulement recommandé si votre public cible, utilise la fonctionnalité favoris, intégrée dans Coppermine dans un premier temps.<br />
+        Est "désactiver" par défaut.
+        
+        <a name="configuration_buttons_vote"></a><h4>Affichage du bouton "Vote"<a href="#configuration_buttons_vote" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Fonctionnalité n'est actuellement pas mis en œuvre, il n'y a donc rien à faire ici.
+        
+        <a name="configuration_buttons_comments"></a><h4>Affichage du bouton "Commentaires"<a href="#configuration_buttons_comments" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Fonctionnalité n'est actuellement pas mis en œuvre, il n'y a donc rien à faire ici.
+
+        <a name="configuration_buttons_download"></a><h4>Affichage du bouton "Téléchargement"<a href="#configuration_buttons_download" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine la présence d'un bouton de téléchargement (<img src="../images/icons/download.png" border="0" width="16" height="16" alt="" class="icon" />) lorsque le plugin Agrandissement (EnlargeIt) sera activé. Avec l'activation de ce bouton, il sera plus facile, même pour les débutants de télécharger vos images. En fait, vous encouragez les visiteurs à télécharger vos images afin de les utiliser ailleurs, Ayez avec attention ce sujet en mémoire. Si vous désactivez cette option, il vous suffira de ne pas afficher le bouton de téléchargement, mais vos visiteurs seront toujours en mesure de les voler comme ils seraient en mesure de le faire en utilisant une galerie Coppermine classique.<br />
+        Les options disponibles sont:
+        <ul>
+            <li><em>Non</em></li>
+            <li><em>Oui: pour les utilisateurs enregistrés seulement</em></li>
+            <li><em>Oui: pour tous (les invités ainsi que les utilisateurs enregistrés)</em></li>
+        </ul>
+        L'option par défaut est &quot;<em>Non</em>&quot;
+        
+        <a name="configuration_buttons_bbcode"></a><h4>Affichage du bouton "BBCode"<a href="#configuration_buttons_bbcode" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine la présence d'un bouton BBCode (<img src="../images/icons/bbcode.png" border="0" width="16" height="16" alt="" class="icon" />) dans l'interface d’Agrandissement (EnlargeIt) qui conduira le visiteur à une table où il / elle peut copier du bbcode qui leur permettront de se référer à une image particulière à partir d'un forum ou une application similaire permettant le bbcode. Cette option n'a de sens que si vous voulez que vos visiteurs d'accèdes à vos images via les forums et autres. Habituellement, c'est le cas si vous avez une galerie d'avatar ou similaires. L’option recommandée est &quot;off&quot; n’activez cette option que si vous comprenez l'impact de celle-ci.<br />
+        Le tableau bbcode ressemble à ceci:<br />
+        <table border="0" cellspacing="0" cellpadding="0" class="maintable">
+            <tr>
+                <td class="tableh1" align="center">BBCode</td>
+            </tr>
+            <tr>
+                <td class="tableb" align="center">
+                    <h5 style="margin: 0px; padding: 0px; line-height: 0.8em;">[url][img][/url]</h5>
+                    <textarea rows="5" cols="40" class="textinput">[url=http://votresite.fr/votre_dossier_coppermine/albums/userpics/10001/votreimage.jpg][IMG]http://votresite.fr/votre_dossier_coppermine/albums/userpics/10001/thumb_votreimage.jpg[/IMG][/url]</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableb" align="center">
+                    <h5 style="margin: 0px; padding: 0px; line-height: 0.8em;">[url]titre[/url]</h5>
+                    <textarea rows="3" cols="40" class="textinput" style="">[url=http://votresite.fr/votre_dossier_coppermine/albums/userpics/10001/votreimage.jpg]titre de votre image[/url]</textarea>
+                </td>
+            </tr>
+        </table>
+        Est &quot;désactivé&quot; par défaut.
+        
+        <a name="configuration_buttons_histogram"></a><h4>Affichage du bouton "Histogramme<a href="#configuration_buttons_histogram" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine si un bouton histogramme (<img src="../images/icons/histogram.png" border="0" width="16" height="16" alt="" class="icon" />) doit être disponible sur l'interface de Agrandissement (EnlargeIt).
+		<div class="cpg_message_info">
+            <p>Ce plugin possède une option pour créer et afficher un histogramme pour toutes les images de votre galerie. Il est au-delà de la portée de cette documentation de fournir une explication détaillée sur ce que les histogrammes sont et ce à quoi ils sont supposés être utiliser.</p>
+            <p>Une explication sommaire: l’histogramme d'une image est une représentation graphique de la distribution des tons d'une image numérique.</p>
+            <p>Utilisation recommandée: vous ne devez fournir l'histogramme que si votre public cible sont des photographes et sachant ce qu'est un histogramme et ce pourquoi il peut être utilisé.</p>
+            <p>Liens utiles:</p>
+            <ul>
+                <li><a href="http://fr.wikipedia.org/wiki/Histogramme_%28imagerie_num%C3%A9rique%29" rel="external" class="external">Wikipedia &rarr; Histogramme (imagerie numérique)</a></li>
+                <li><a href="http://www.luminous-landscape.com/tutorials/understanding-series/understanding-histograms.shtml" rel="external" class="external">The Luminous Landscape &rarr; Tutorials &rarr; Understanding Histograms</a></li>
+                <li><a href="http://crackerhammer.com/understanding-histograms.html" rel="external" class="external">Michael Mercadante &rarr; Understanding Histograms</a></li>
+            </ul>
+        </div>
+        <img src="../images/docs/histogram_example.png" border="0" width="284" height="164" alt="" align="right" title="Example histogram file" style="margin-left:5px" />A côté de la case à cocher qui vous permet de basculer l'utilisation histogramme sur On ou Off il y a la méthode que votre système utilise pour l’affichage concernant la version de la bibliothèque GD sur votre serveur. Comme la création d’histogramme demande au minimum GD2, vous ne pouvez pas activer la case à cocher si votre version de GD n'est pas suffisante. Pour plus de détails, connectez-vous sur votre galerie Coppermine en tant qu'administrateur et puis cliquez sur le bouton phpinfo dans le menu Information. Dans l’affichage de phpinfo, accédez à la section GD pour plus de détails. S'il vous plaît comprenez qu’il est au-delà de la portée du support de Coppermine de vous apprendre la configuration d’un serveur web, vous aurez donc besoin de comprendre cela avec votre hébergeur, si vous n'avez pas le support GD2 d’activé.<br />
+        Les options qui correspondante à &quot;<a href="#configuration_setup_histogram">Durée de vie du cache du fichier histogramme</a>&quot; sont grisé si le bouton histogramme n'est pas activé, car elles ne s'appliquent pas.<br />
+        Il est important de comprendre l'impact que la création d'histogrammes peut avoir sur votre serveur: ils peuvent causer une augmentation de la puissance nécessaire de façon considérable, car la création d'histogrammes est un processus qui demande un fort besoin des ressources: l'image est chargé en mémoire et ensuite traitées via diverses procédures qui ne sont pas insignifiante.<br />
+        Est &quot;désactivé&quot; par défaut.
+        
+        <a name="configuration_buttons_navigation"></a><h4>Affichage des boutons de "Navigation"<a href="#configuration_buttons_navigation" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine si les boutons précédent (<img src="../images/icons/previous.png" border="0" width="16" height="16" alt="" class="icon" />) et suivant (<img src="../images/icons/next.png" border="0" width="16" height="16" alt="" class="icon" />) seront affichés le cas échéant (c'est à dire s’il y a une image précédente / suivante dans un album) dans l'interface d’Agrandissement (EnlargeIt) pour faciliter la navigation d'une image à l'autre. Si cette option n'est pas activée, vos visiteurs seront obligés de fermer chaque image et d’aller à l'image suivante en cliquant sur la vignette correspondante. Si vous activez cette option, ils peuvent aller d'une image à l'autre sans avoir besoin de cliquez sur la vignette. Le seul inconvénient de permettre cette option est une interface un peu plus encombrée.<br />
+        Est (et est recommandé) &quot;activé&quot; par défaut.
+         
+        <a name="configuration_buttons_close"></a><h4>Affichage du bouton "Fermeture"<a href="#configuration_buttons_close" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine si un bouton de fermeture (<img src="../images/icons/close.png" border="0" width="16" height="16" alt="" class="icon" />) sera affichée dans l'interface d’Agrandissement (EnlargeIt).<br />
+        Est (et est recommandé) &quot;activé&quot; par défaut.
+        
+        </div>
+    <a name="configuration_buttons_end"></a>
+    
+    <a name="configuration_multimedia"></a><h3>Multimédia<a href="#configuration_multimedia" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    <a name="configuration_multimedia_end"></a>
+        
+        <div class="indent">
+        <a name="configuration_multimedia_imageformats"></a><h4>Formats d'image<a href="#configuration_multimedia_imageformats" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        <p>Sélectionnez les formats de fichiers où le plugin Agrandissement (EnlargeIt!) doit être utilisé via la <a href="#configuration_multi_select">sélection de plusieurs champs</a>. Tous les autres formats de fichiers (si présents dans votre galerie) seront affichés en utilisant le mécanisme "classique" de Coppermine. Ce paramètre ne détermine pas ce que vous pouvez télécharger comme fichiers – Pour le contrôle de cela, allez dans la configuration de Coppermine.</p>
+        <p>Les lignes marquées d'un astérisque (*) indiquent les formats de fichiers qui sont refusés via la configuration de Coppermine, donc il est fort probable que dès le départ ces fichiers n'existent pas dans votre galerie.</p>
+        
+        <a name="configuration_multimedia_videoformats"></a><h4>Formats vidéo<a href="#configuration_multimedia_videoformats" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        <p>Sélectionnez les formats de fichiers où le plugin Agrandissement (EnlargeIt!) doit être utilisé via la <a href="#configuration_multi_select">sélection de plusieurs champs</a>. Tous les autres formats de fichiers (si présents dans votre galerie) seront affichés en utilisant le mécanisme "classique" de Coppermine. Ce paramètre ne détermine pas ce que vous pouvez télécharger comme fichiers – Pour le contrôle de cela, allez dans la configuration de Coppermine.</p>
+        <p>Les lignes marquées d'un astérisque (*) indiquent les formats de fichiers qui sont refusés via la configuration de Coppermine, donc il est fort probable que dès le départ ces fichiers n'existent pas dans votre galerie.</p>
+        
+        <a name="configuration_multimedia_flv"></a><h4>Utilisation d'un logiciel de lecture de fichiers FLV<a href="#configuration_multimedia_flv" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Détermine quel lecteur FLV utiliser. Ne s'applique que si vous avez activé la lecture des FLV en premier lieu dans les options des <a href="#configuration_multimedia_videoformats">formats vidéo</a>.<br />
+        Available options:
+        <ul>
+            <li><em>RphMedia</em></li>
+            <li><em>OS FLV</em> (défaut)</li>
+        </ul> 
+        </div>
+    
+    <a name="configuration_setup"></a><h3>Configuration du plugin<a href="#configuration_setup" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    <a name="configuration_setup_end"></a>
+        <div class="indent">
+			<a name="configuration_setup_adminmenu"></a><h4>Afficher un lien vers la configuration du plugin dans le menu configuration<a href="#configuration_setup_adminmenu" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+			Détermine si un lien vers le panneau de configuration pour le plugin Agrandissement (EnlargeIt!) doit résider dans le menu configuration. Seulement recommandé si vous prévoyez de modifier les paramètres très souvent ou pendant la phase de configuration initiale. Une fois que vous avez correctement configuré le plugin Agrandissement (EnlargeIt) vous devez désactiver le lien du menu configuration pour faire apparaître le menu configuration moins encombré.<br />
+			Est &quot;activé&quot; par défaut.
+			
+			<a name="configuration_setup_histogram"></a><h4>Durée de vie du cache du fichier histogramme<a href="#configuration_setup_histogram" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+			<div class="indent">
+				Par défaut les options qui correspondent à la durée de vie du cache du fichier histogramme sont grisées (désactivés), sauf si vous activez l'option <a href="#configuration_buttons_histogram">Affichage du bouton "Histogramme"</a>.<br />
+				Les options disponibles sont:
+				<ul>
+					<li><em>Illimitée</em></li>
+					<li><em>XX jours</em></li>
+					<li><em>Taille maximum total du fichier de XX MiB</em></li>
+				</ul>
+				<a name="configuration_setup_histogram_concept"></a><h5>Concept<a href="#configuration_setup_histogram_concept" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h5>
+				Pour comprendre l'impact de ces paramètres, vous devez comprendre dans un premier temps ce qu’est le bouton histogramme: chaque fois qu'un visiteur accède à une image en utilisant l'interface d’Agrandissement (EnlargeIt) et qu’il clique le bouton "histogramme", le plugin vérifie si un fichier histogramme existe déjà. S’il n'existe pas, le script crée un nouveau fichier d’histogramme et l’enregistre. Ce fichier enregistré est par la suite intégrés dans les fichiers d’Agrandissement (EnlargeIt), de sorte que le visiteur peut voir l'histogramme actuel.
+				<a name="configuration_setup_histogram_permissions"></a><h5>Permissions<a href="#configuration_setup_histogram_permissions" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h5>
+				<p>Le script tente de créer le fichier de l'histogramme dans le même dossier où l'image originale réside. Par la suite, si les autorisations au niveau du système de fichiers ne sont pas configurés correctement (rappelez-vous: Coppermine a besoin des autorisations RXW sur le dossier albums et tout ce qu'il contient), le plugin ne sera pas en mesure d'enregistrer le fichier de l’histogramme. Par la suite, si le fichier de l’histogramme ne peut être créé, vous devrez d'abord vérifier si le script a obtenu les autorisations nécessaires pour créer le fichier en premier lieu. Reportez-vous à la documentation fournie avec Coppermine, la section "Configuration des permissions" pour en savoir plus. 
+				<a name="configuration_setup_histogram_naming_scheme"></a><h5>Schéma de nommage<a href="#configuration_setup_histogram_naming_scheme" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h5>
+				Le schéma de nommage pour le fichier histogramme est assez simple: il est similaire à celui pour les images avec le préfixe <tt class="code">thumb_</tt> le fichier d’histogramme lui, obtient le préfixe <tt class="code">histogram_</tt>. Par la suite, vous devrez vous assurer de ne pas télécharger des fichiers en utilisant le téléchargement par HTTP classique qui sont préfixés de cette façon, afin de s'assurer qu'il n'y a pas de nommage identique (chose qui devrait être rarement le cas de toute façon).<br />
+				<div class="cpg_example">Si votre fichier d'origine réside à: <br /><tt class="code">http://votresite.fr/votre_dossier_coppermine/albums/userpics/10001/<strong>votreimage.jpg</strong></tt> et votre vignette sera par la suite à <br /><tt class="code">http://votresite.fr/votre_dossier_coppermine/albums/userpics/10001/<strong>thumb_votreimage.jpg</strong></tt>, Le fichier sera de l’histogramme sera à <br /><tt class="code">http://votresite.fr/votre_dossier_coppermine/albums/userpics/10001/<strong>histogram_votreimage.png</strong></tt></div>
+				<a name="configuration_setup_histogram_file_size"></a><h5>Taille du fichier<a href="#configuration_setup_histogram_file_size" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h5>
+				Les dimensions et la taille du fichier de l'histogramme ne correspondent pas aux dimensions ou à la taille de votre image originelle, vous n'avez donc pas à être inquiet sur une possible trop grande consommation d'espace web; ci-dessous il y a un tableau qui indique des exemples sur la consommation d'espace web de certaines images:
+				<table border="0" cellspacing="0" cellpadding="0" class="maintable">
+					<tr>
+						<th class="tableh1" rowspan="2">#</th>
+						<th class="tableh1" colspan="3">Fichier originel</th>
+						<th class="tableh1" colspan="3">Fichier d'histogramme</th>
+					</tr>
+					<tr>
+						<th class="tableh1">Type de fichier</th>
+						<th class="tableh1">Taille du fichier</th>
+						<th class="tableh1">Dimension de l'image</th>
+						<th class="tableh1">Type de fichier</th>
+						<th class="tableh1">Taille du fichier</th>
+						<th class="tableh1">Dimension de l'image</th>
+					</tr>
+					<tr>
+						<td class="tableb">1</td>
+						<td class="tableb">jpg</td>
+						<td class="tableb">32.69 KiB</td>
+						<td class="tableb">391 x 600</td>
+						<td class="tableb">png</td>
+						<td class="tableb">1.64 KiB</td>
+						<td class="tableb">284 x 164</td>
+					</tr>
+					<tr>
+						<td class="tableb tableb_alternate">2</td>
+						<td class="tableb tableb_alternate">jpg</td>
+						<td class="tableb tableb_alternate">20.89 KiB</td>
+						<td class="tableb tableb_alternate">385 x 415</td>
+						<td class="tableb tableb_alternate">png</td>
+						<td class="tableb tableb_alternate">2.10 KiB</td>
+						<td class="tableb tableb_alternate">284 x 164</td>
+					</tr>
+					<tr>
+						<td class="tableb">3</td>
+						<td class="tableb">jpg</td>
+						<td class="tableb">334.30 KiB</td>
+						<td class="tableb">1437 x 1919</td>
+						<td class="tableb">png</td>
+						<td class="tableb">1.22 KiB</td>
+						<td class="tableb">284 x 164</td>
+					</tr>
+					<tr>
+						<td class="tableb tableb_alternate">4</td>
+						<td class="tableb tableb_alternate">png</td>
+						<td class="tableb tableb_alternate">304.30 KiB</td>
+						<td class="tableb tableb_alternate">600 x 450</td>
+						<td class="tableb tableb_alternate">png</td>
+						<td class="tableb tableb_alternate">0.23 KiB</td>
+						<td class="tableb tableb_alternate">284 x 164</td>
+					</tr>
+					<tr>
+						<td class="tableb">5</td>
+						<td class="tableb">jpg</td>
+						<td class="tableb">321.20 KiB</td>
+						<td class="tableb">2048 x 1536</td>
+						<td class="tableb">png</td>
+						<td class="tableb">1.34 KiB</td>
+						<td class="tableb">284 x 164</td>
+					</tr>
+				</table>
+				Comme vous pouvez le voir, les dimensions du fichier histogramme sont toujours les mêmes: leur résolution 284 x 164 pixels est codé en dur dans le plugin Agrandissement (EnlargeIt). De plus le format du fichier de l'histogramme est toujours <tt class="code">png</tt>.
+				
+				<a name="configuration_setup_histogram_age"></a><h5>Suppression automatique du cache du fichier de l’histogramme après un certain temps<a href="#configuration_setup_histogram_age" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h5>
+				L'option &quot;<tt class="code">Durée de vie du cache du fichier histogramme</tt> &rarr; <tt class="code">XX jours</tt> vous permet de spécifier la suppression automatique du cache de l’histogramme après un nombre de jours déterminé. De cette façon, les fichiers d’histogramme qui sont plus âgés que le nombre de jours que vous indiquez seront supprimés chaque fois qu'un visiteur clique sur <em>n'importe</em> quel bouton d’histogramme dans la galerie. Vous pouvez spécifier un nombre de jours compris entre 1 et 365.<br />
+				La valeur par défaut est de 30 jours. Ne s'applique que si le bouton radio en face de cette option a été coché en premier lieu.
+				
+				<a name="configuration_setup_histogram_size"></a><h5>Suppression automatique du cache de l’histogramme via la taille maximum du fichier<a href="#configuration_setup_histogram_size" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h5>
+				L'option &quot;<tt class="code">Durée de vie du cache du fichier histogramme</tt> &rarr; <tt class="code">Taille maximum total du fichier de XX MiB</tt> vous permet de spécifier un maximum concernant la consommation d'espace web de l’ensemble des caches d’histogramme en mémoire. Si le total de la taille de tous les fichiers d’histogramme est plus grand que la valeur que vous indiquez ici, les fichiers d’histogrammes les plus anciens seront supprimés jusqu'à ce que le total soit inférieur à la valeur que vous avez défini. Cette option peut être utilisée pour s'assurer que la consommation d'espace web ne soit jamais plus grande que votre espace web maximum. La routine de collecte des caches qui va supprimer les fichiers les plus anciens sera déclenchée à chaque fois qu'un visiteur cliquera sur <em>n’importe quel</em> bouton histogramme. Vous pouvez spécifier un nombre de jours compris entre 1 et 99.<br />
+				La valeur par défaut est de 10 Mio. Ne s'applique que si le bouton radio en face de cette option a été coché en premier lieu.
+				
+				<a name="configuration_setup_histogram_information"></a><h5>Informations supplémentaires concernant le cache<a href="#configuration_setup_histogram_information" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h5>
+				Si le cache de l’histogramme n'est <strong>pas</strong> vide (c'est à dire si l'option &quot;<a href="#configuration_buttons_histogram">Affichage du bouton "Histogramme"</a>&quot; a été activé et que le formulaire à été valider, il n'y aura plus d’informations disponibles concernant l’option: &quot;Durée de vie du cache du fichier histogramme&quot; la taille réelle du cache en mémoire (le nombre de fichiers ainsi que la consommation d'espace web) sera affiché.
+				
+				<a name="configuration_setup_histogram_default"></a><h5>Valeur par défaut<a href="#configuration_setup_histogram_default" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h5>
+				La sélection par défaut pour la mise en cache de l’histogramme est &quot;<em>illimitée</em>&quot;, ce qui signifie que le cache ne sera jamais effacé. Recommandé si vous avez suffisamment d'espace web disponible.
+			</div>
+        </div>
+	
+	<a name="configuration_color_picker"></a><h3>Nuanciers<a href="#configuration_color_picker" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+	Dans le panneau de configuration du plugin Agrandissement (EnlargeIt!) il y a plusieurs sélecteurs de couleurs qui vous permettent de spécifier une couleur en cliquant dessus. Pour utiliser le <tt class="code">sélecteur de couleur</tt> dont vous avez besoin d'élargissez celui-ci dans un premier temps (par défaut, il est réduit) en utilisant les liens sélecteur de couleur. Vous pouvez alors sélectionner une couleur dans le cercle et ainsi la nuance à l’intérieure de la case. En cliquant sur la case du champ de couleur actuelle. Tous les champs de couleur acceptent la notation de couleur en  hexadécimal avec le signe dièse devant.
+    <a name="configuration_color_picker_end"></a>
+	
+	<a name="configuration_multi_select"></a><h3>Sélection de plusieurs champs<a href="#configuration_multi_select" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+	Maintenez la touche [Ctrl] pour sélectionner plusieurs lignes sur un champ à sélection multiple. Pour ne choisir aucune ligne ou tous, désélectionner la dernière ligne sélectionnés en maintenant la touche [Ctrl] enfoncée, puis en cliquant sur cette dernière ligne restante.
+    <a name="configuration_color_picker_end"></a>
+	
+    
+    </div>
+
+<a name="configuration_end"></a>
+
+<a name="firstaid"></a><h2>Premiers secours - si elle ne fonctionne pas<a href="#firstaid" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<ul>
+    <li>Vérifiez si le visiteur est autorisé à accéder à enlargeit.js et le reste des dossiers et fichiers du plugin (http://chemin.d'accès.à.votre.galerie/plugins/enlargeit/js/enlargeit.js).<br />
+    Le dossier complet doit être accessible via le web pour les visiteurs, car il contient le JavaScript et les fichiers graphiques.</li>
+    <li>Si vous utilisez le plugin SEF, n'oubliez pas de changer le réglage dans la page de configuration d’agrandissement (EnlargeIt!).</li>
+    <li>Si vous utilisez un thème très particulier ou un thème qui n’est pas valide HTML / XHTML, ce plugin ne fonctionnera probablement pas. Je peux vivre avec cela, et il le faut !</li>
+</ul>
+
+<a name="support"></a><h2>Support<a href="#support" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>Si vous avez des problèmes avec ce plugin et que vous avez besoin d’aide, une bonne idée est de visiter le <a href="http://forum.coppermine-gallery.net/index.php/topic,57424.0.html" rel="external" class="external">sujet d’annonce</a> du plugin.</p>
+
+<a name="credits"></a><h2>Crédits<a href="#credits" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+Ce plugin utilise les composants suivants:
+<ul>
+    <li><a href="http://enlargeit.timos-welt.de/" rel="external" class="external">EnlargeIt!</a> technology by Timo Schewe</li>
+    <li><a href="http://forum.coppermine-gallery.net/index.php/topic,43180.0.html" rel="external" class="external">Lecteur FLV</a> par rphMedia</li>
+    <li>Lecteur FLV <a href="http://www.osflv.com/" rel="external" class="external">OSFLV</a></li>
+    <li>Création d'histogramme par <a href="mailto:anton_spaz@yahoo.com" rel="external" class="external">Anton Sparrius</a> (Spaz)</li>
+    <li><a href="http://www.everaldo.com/crystal/" rel="external" class="external">Crystal Clear icons</a> par Everaldo Coelho</li>
+    <li><a href="http://acko.net/dev/farbtastic/" rel="external" class="external">Farbtastic color picker</a> par Steven Wittens</li>
+    <li>Fichier de language Tchèque et Slovaque par <a href="http://dc-foto.com/" rel="external" class="external">Drahus</a></li>
+</ul>
+
+<a name="todo"></a><h2>À faire<a href="#todo" title="Lien vers cette section"><img src="../images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>Il s'agit d'une liste des choses qui pourraient être améliorée dans les versions futures de ce plugin. Il n'y a aucune garantie que cela va réellement se faire un jour ou l’autre, donc s'il vous plaît n’en faites pas la demande sur le forum d'aide.</p>
+<ul>
+    <li>Mettre en œuvre les changements qui allaient dans le plugin Agrandissement (enlargeit) pour cpg1.4.x
+    <ul>
+        <li>Utilisez le curseur de souris comme sablier si navigateur le prend en charge</li>
+        <li>Couleur de l'ombre</li>
+        <li>Bouton de vote</li>
+        <li>Bouton commentaire</li>
+        <li>Bouton pour les carte virtuelle</li>
+        <li>Support de SEF_URL</li>
+    </ul>
+    </li>
+    <li>Ajout d'un aperçu d'animation dans la page de configuration</li>
+    <li>Ajoutez des captures d’écran</li>
+    <li>Ajout du support pour les fichiers qui ne sont pas des images</li>
+	<li>Ajouter la page effacer manuellement le cache de l'histogramme</li>
+</ul>
+
+<div id="doc_footer">
+	<div class="doc_info_wrapper">
+		<span id="doc_last_changed">$LastChangedDate: 2009-12-19 16:48:45 +0100 (sam. 19 déc. 2009) $</span>
+		<span id="doc_revision">$Revision: 6883 $</span>
+	</div>
+</div>
+</body>
+</html>

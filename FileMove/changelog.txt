@@ -1,0 +1,34 @@
+/*******************************************************
+ Coppermine 1.6.x plugin - FileMove
+ *******************************************************
+ Copyright (c) 2003-2017 Coppermine Dev Team
+ *******************************************************
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 3
+ of the License, or (at your option) any later version.
+ *******************************************************
+ Ported to CPG 1.6.x June 2017 {ron4mac}
+ *******************************************************/
+
+Changelog
+=========
+[A] = Added new feature
+[B] = Bugfix (fix something that wasn't working as expected)
+[C] = Cosmetical fix (layout, typo etc.)
+[D] = Documentation improvements
+[M] = Maintenance works
+[O] = Optimization of code
+[S] = Security fix (issues that are related to security)
+********************************************************
+
+2017.08-25 [O] Removed unnecessary language initialization {ron4mac}
+2017.08-25 [M] Added German language file {ron4mac}
+2017.08-25 [M] Remove need for version number in language files {ron4mac}
+2017-07-04 [M] Coding cleanup/enhancement {ron4mac}
+2017-06-25 [A] Ported to CPG 1.6.x {ron4mac}
+2012-01-24 [B] Also move watermark backup files (orig_filname.jpg) if present {eenemeenemuu}
+2012-01-24 [B] Missing button for "move some files" {eenemeenemuu}
+2011-02-27 [C] v1.2 Change plugin acon and some other little improvements {François Keller}
+2011-02-22 [D] Update lang files {Fbleu and Frantz}{François Keller}
+2010-10-21 [A] Porting the plugin to cpg1.5.x {eenemeenemuu}

@@ -1,0 +1,42 @@
+/**************************************************
+  Coppermine 1.6.x Plugin - xfeed
+  *************************************************
+  Copyright (c) 2008 lee (www.mininoteuser.com)
+  Plugin for CPG 1.4 created by Lee
+  Ported to CPG 1.5.x by Aditya Mooley <adityamooley@sanisoft.com>
+  Ported to CPG 1.6.x by ron4mac
+  *************************************************
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+  **************************************************/
+  
+.xfeeds{
+	padding: 2px;
+	display: -moz-inline-box;
+	display: inline-block;
+	width: 100px;
+	height: 20px;
+	overflow: hidden;
+	margin: 0;
+	background-repeat: no-repeat;
+}
+
+.xfeeds select{
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	filter:alpha(opacity=0);
+}
+
+.xfeeds option img{
+	border: 0;
+	margin: 2px;
+}
+
+* html .xfeeds{
+	width:auto;
+	background:none;
+}

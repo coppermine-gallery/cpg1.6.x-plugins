@@ -1,0 +1,134 @@
+/**************************************************
+  Coppermine 1.6.x Plugin - EnlargeIt!
+  *************************************************
+  Copyright (c) 2010 Timos-Welt (www.timos-welt.de)
+  *************************************************
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+ **************************************************/
+
+Changelog
+=========
+[A] = Added new feature
+[B] = Bugfix (fix something that wasn't working as expected)
+[C] = Cosmetical fix (layout, typo etc.)
+[D] = Documentation improvements
+[M] = Maintenance works
+[O] = Optimization of code
+[S] = Security fix (issues that are related to security)
+*********************************************
+
+2017-09-18 [M] Made compatible with (ported to) CPG1.6.x {ron4mac}
+2010-02-14 [D] Added French documentation file and update french lang (Translation by FBleu){François Keller}
+2009-12-16 [M] Version count updated to 1.14 {GauGau}
+2009-12-16 [A] Added German documentation file (partial translation) {GauGau}
+2009-12-16 [B] Fixed issue with file extension in uppercase for the histogram {GauGau}
+2009-12-16 [A] Added table of content to docs {GauGau}
+2009-12-19 [M] Version count updated to 1.13 {GauGau}
+2009-12-16 [A] Added documentation link to config page {GauGau}
+2009-12-16 [A] Added JS check for animation type {GauGau}
+2009-12-16 [A] Added shadow color feature {GauGau}
+2009-12-15 [M] Version count updated to 1.12 {GauGau}
+2009-12-15 [O] Moved admin menu item to the right of the plugin manager {GauGau}
+2009-12-15 [D] Added screenshots to documentation {GauGau}
+2009-12-15 [M] Version count updated to 1.11 {GauGau}
+2009-12-15 [O] Moved maximize-option up on config screen {GauGau}
+2009-12-15 [M] Changed defaults for buttons {GauGau}
+2009-12-15 [M] Removed reference to ImageFlow from credits section, as it is not being used in this version and went into the list in error {GauGau}
+2009-12-15 [O] Hid config options for comment and vote buttons, as the corresponding features aren't implemented yet {GauGau}
+2009-12-15 [D] Added buttons section to docs {GauGau}
+2009-12-14 [M] Version count updated to 1.10 {GauGau}
+2009-12-14 [D] Added some sections to documentation {GauGau}
+2009-12-14 [M] Version count updated to 1.9 {GauGau}
+2009-12-14 [A] Added documentation {GauGau}
+2009-12-14 [M] Renamed readme to changelog {GauGau}
+2009-12-11 [M] Version count updated to 1.8 {GauGau}
+2009-12-11 [M] Backported Czech language file from cpg1.4.x-plugin {GauGau}
+2009-12-11 [M] Backported Slovak language file from cpg1.4.x-plugin {GauGau}
+2009-12-11 [A] Backported JS file from cpg1.4.x-plugin  {GauGau}
+2009-12-11 [B] Fixed improper line break that caused config form not to work on some setups  {Timo}
+2009-12-05 [M] Version count updated to 1.7 {GauGau}
+2009-12-05 [O] Changed default for info button {GauGau}
+2009-12-05 [O] Silenced some notices {GauGau}
+2009-11-30 [C] Backgrounds now use the style sheet classes of the theme instead of the proprietary plugin style {GauGau}
+2009-11-30 [B] Fixed broken feature exif info partially (silencing error messages only) {GauGau}
+2009-11-30 [M] Version count updated to 1.6 {GauGau}
+2009-11-30 [B] Fixed broken feature "rounded corners" {GauGau}
+2009-11-30 [C] Packed enlargit.js {GauGau}
+2009-11-29 [M] Version count updated to 1.5 {GauGau}
+2009-11-29 [A] Adding selection for the files that the plugin should be used with {GauGau}
+2009-11-29 [A] Adding help section to config screen {GauGau}
+2009-11-27 [M] Version count updated to 1.4 {GauGau}
+2009-11-27 [B] Fixed broken output of info.php {GauGau}
+2009-11-26 [A] Added background image preview {GauGau}
+2009-11-26 [A] Added permission checks to download script {GauGau}
+2009-11-26 [A] Added form token check {GauGau}
+2009-11-26 [A] Added credits to config screen output {GauGau}
+2009-11-26 [B] Fixed broken maximize option (permission settings for full-size access exist in cpg1.5.x's core, so there is no need for a granular check inside this plugin) {GauGau}
+2009-11-26 [O] Turned download script into single file {GauGau}
+2009-11-26 [A] Added garbage collection feature for histogram files {GauGau}
+2009-11-25 [M] Version count updated to 1.2 {GauGau}
+2009-11-25 [A] Added histogram cache database recording {GauGau}
+2009-11-25 [A] Added version number output on config screen {GauGau}
+2009-11-24 [M] Version count updated to 1.1 {GauGau}
+2009-11-24 [A] Moved histogram cache from plugin folder to individual storage location of corresponding file {GauGau}
+2009-11-24 [A] Added color variables to histogram output {GauGau}
+2009-11-24 [A] Added needed path variables to codebase and JavaScript file enlargeit_source.js {GauGau}
+2009-11-24 [M] Renamed bbcode file {GauGau}
+2009-11-24 [B] Added switch to only allow histogram if needed image library is available {GauGau}
+2009-11-24 [B] Added index and displayimage page to $enlargeit_pages_array in codebase.php to allow enlargeIt to work on those pages as well {GauGau}
+2009-11-24 [B] Updated credits as per suggestion {GauGau}
+2009-11-24 [M] Version count updated to 1.0 {GauGau}
+2009-11-24 [B] Fixed broken histogram {GauGau}
+2009-11-24 [B] Added missing info file (work in progress) {GauGau}
+2009-11-24 [M] Merged histogram feature into one file instead of two {GauGau}
+2009-11-24 [M] Version count updated to 0.11 {GauGau}
+2009-11-24 [A] Added menu icon {GauGau}
+2009-11-24 [A] Added loader path variable {GauGau}
+2009-11-24 [B] Fixed improper path for enl_gifpath {GauGau}
+2009-11-23 [M] Version count updated to 0.10 {GauGau}
+2009-11-23 [A] Brought German language file up to date {GauGau}
+2009-11-23 [A] Added recommendation for particular options {GauGau}
+2009-11-23 [A] i18n of configuration.php screen {GauGau}
+2009-11-23 [O] Added workaround for config options that were removed in plugin but that the enlargeit.js expects {GauGau}
+2009-11-23 [B] Added missing parameters to embedded JavaScript in codebase.php {Timo}
+2009-11-23 [B] Changed encoding or German language file from iso8859-1 to utf-8 {GauGau}
+2009-11-22 [M] Version count updated to 0.9 {GauGau}
+2009-11-22 [C] Fixed spelling mistake "histogramm" {GauGau}
+2009-11-22 [B] Renamed variable that differed from language file to codebase {GauGau}
+2009-11-22 [M] Renamed style sheet to match coppermine standards {GauGau}
+2009-11-22 [M] Renamed files that get included by URL pattern to be easier to memorize {GauGau}
+2009-11-21 [M] Version count updated to 0.8 {GauGau}
+2009-11-21 [M] Moved include file to plugin root folder for easier maintenance {GauGau}
+2009-11-21 [M] Renamed language variables to match coppermine coding standards {GauGau}
+2009-11-21 [M] Replaced html entities with their equivalents in language files {GauGau}
+2009-11-21 [M] Replaced single quotes in language file strings with double quotes {GauGau}
+2009-11-21 [M] Rolled back changes in JS files as requested by plugin author {GauGau}
+2009-11-21 [D] Added js-alert comments to language file for easier translation {GauGau}
+2009-11-18 [M] Version count updated to 0.7 {GauGau}
+2009-11-18 [A] Dropped usage of separate table to store config settings in favor of regular coppermine config table {GauGau}
+2009-11-18 [C] Restored icons for BBCode and Histogram (own work) {Timo}
+2009-11-18 [B] Fixed bug that made plugin stop working in IE {Timo}
+2009-11-18 [A] Added sub-headers to config screen {GauGau}
+2009-11-17 [M] Version count updated to 0.6 {GauGau}
+2009-11-17 [A] Added buttons to config screen {GauGau}
+2009-11-17 [M] Replaced silk icons with crystal icons for license compliance {GauGau}
+2009-11-17 [A] Added icons {GauGau} 
+2009-11-17 [M] Converted changelog to coppermine standards {GauGau} 
+2009-11-16 [M] Version count updated to 0.5 {GauGau}
+2009-11-16 [M] Added SVN headers {GauGau}
+2009-11-16 [A] Moved images into separate folder, cleaning up js folder {GauGau}
+2009-11-13 [M] Added enlargeit to subversion repository {eenemeenemuu }
+2009-11-11 [A] Favorite button is back {Timo}
+2009-11-11 [A] Histogram  button is back {Timo}
+2009-11-11 [A] Download  button is back {Timo}
+2009-11-11 [A] No longer need to copy anything to gallery root {Timo}
+2009-11-11 [A] Three new animation modes {Timo}
+2009-11-11 [M] Version count updated to 0.4 {Timo}
+2009-11-01 [A] Using new plugin hook for faster processing and no preg_replace anymore {Timo}
+2009-11-01 [M] Version count updated to 0.3 {Timo}
+2009-11-01 [M] First public release {Timo}
+
+
