@@ -11,6 +11,7 @@ if (!USER_ID) {
 // include pertinent script files
 if (defined('PLUGINMGR_PHP')) {
 	echo js_include('plugins/html5slideshow/js/rscp/jquery.colorPicker.min.js', true);
+//	echo js_include('plugins/html5slideshow/js/rscp/jquery.colorPicker.js', true);
 	echo js_include('plugins/html5slideshow/js/config.js', true);
 	echo <<<EOT
 	<script>
@@ -56,7 +57,9 @@ function h5ss_resolve_cfg ($album, $user, &$albname, &$uio)
 {
 	global $CONFIG, $lang_errors, $lang_plugin_html5slideshow;
 
-	$cfg = unserialize($CONFIG['html5slideshow_cfg']);
+	if (GALLERY_ADMIN_MODE && ($CONFIG['html5slideshow_cfg'][0] == 'a')) convertCfgs();
+
+	$cfg = json_decode($CONFIG['html5slideshow_cfg'], true);
 	if (GALLERY_ADMIN_MODE && !$album) return $cfg;
 
 	if ($album) {	// user is configuring their album settings
@@ -73,10 +76,10 @@ function h5ss_resolve_cfg ($album, $user, &$albname, &$uio)
 	}
 
 	$usrData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg`,user_name FROM {$CONFIG['TABLE_USERS']} WHERE user_id = {$user}"));
-	if ($usrCfg = unserialize($usrData['H5ss_cfg'])) {
+	if ($usrCfg = json_decode($usrData['H5ss_cfg'], true)) {
 		$cfg = array_merge($cfg, $usrCfg);
 	}
-	if ($album && ($albCfg = unserialize($albData['H5ss_cfg']))) {
+	if ($album && ($albCfg = json_decode($albData['H5ss_cfg'], true))) {
 		$cfg = array_merge($cfg, $albCfg);
 		$albname .= ' ['.$lang_plugin_html5slideshow['custom'] .']';
 	} else {
@@ -111,7 +114,7 @@ function h5ss_display_form ($cfg, $album, $albname='', $uio)
 		$thead = $lang_plugin_html5slideshow['html5slide']." - ".$lang_gallery_admin_menu['admin_lnk']. helpButton('adm|usr');
 	}
 
-	starttable('100%', $thead, 2);
+	starttable('100%', $thead, 3);
 
 	if (!$album && GALLERY_ADMIN_MODE) {
 	$atAlbum_checked = $cfg['aA'] ? 'checked="checked"' : '';
@@ -123,7 +126,7 @@ function h5ss_display_form ($cfg, $album, $albname='', $uio)
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['atAlbum']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<input type="checkbox" name="atAlbum" {$atAlbum_checked} />
 			<img src="plugins/html5slideshow/css/slideshow.png" style="margin-left:12px;vertical-align:text-bottom" />
 		</td>
@@ -132,7 +135,7 @@ function h5ss_display_form ($cfg, $album, $albname='', $uio)
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['atList']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<input type="checkbox" name="atList" {$atList_checked} />
 			<img src="plugins/html5slideshow/css/slideshow.png" style="margin-left:12px;vertical-align:text-bottom" />
 		</td>
@@ -141,7 +144,7 @@ function h5ss_display_form ($cfg, $album, $albname='', $uio)
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['atThumbs']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<input type="checkbox" name="atThumbs" {$atThumbs_checked} />
 		</td>
 	</tr>
@@ -149,7 +152,7 @@ function h5ss_display_form ($cfg, $album, $albname='', $uio)
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['uAllow']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<input type="checkbox" name="uAllow" {$uAllow_checked} />
 		</td>
 	</tr>
@@ -189,7 +192,7 @@ EOT;
 		$choices .= "<option value=\"$value\" $selected>$value</option>";
 	}
 
-	$dcolors = explode(',', $cfg['dC']);
+	$dcolors = $cfg['dC'];
 
 	$submit_icon = cpg_fetch_icon('ok', 1);
 
@@ -214,12 +217,16 @@ EOT;
 EOT;
 	}
 
+	$ctfsz = array('inherit','medium','large','larger','x-large','xx-large')[isset($cfg['tS']) ? $cfg['tS'] : 0];
+	$fszSel = array('','','','','','');
+	$fszSel[isset($cfg['tS']) ? $cfg['tS'] : 0] = ' selected="selected"';
+
 	echo <<<EOT
 	<tr>
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['newWin']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<input type="checkbox" name="newWin" {$newWin_checked} />
 		</td>
 	</tr>
@@ -227,7 +234,7 @@ EOT;
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['imgSize']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<select class="listbox" name="imgSize">
 				<option value="1"{$sizeSel[1]}>{$lang_plugin_html5slideshow['sizIntr']}</option>
 				<option value="2"{$sizeSel[2]}>{$lang_plugin_html5slideshow['sizFull']}</option>
@@ -238,7 +245,7 @@ EOT;
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['trnType']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<select class="listbox" name="trnType">
 				<option value="n"{$tranSel['n']}>{$lang_plugin_html5slideshow['imgNotr']}</option>
 				<option value="d"{$tranSel['d']}>{$lang_plugin_html5slideshow['imgDzlv']}</option>
@@ -250,7 +257,7 @@ EOT;
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['shuffle']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<input type="checkbox" name="shuffle" {$shuffle_checked} />
 		</td>
 	</tr>
@@ -258,7 +265,7 @@ EOT;
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['autoPlay']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<input type="checkbox" name="autoPlay" {$autoPlay_checked} />
 		</td>
 	</tr>
@@ -266,7 +273,7 @@ EOT;
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['seconds']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<select class="listbox" name="seconds">{$choices}</select>
 		</td>
 	</tr>
@@ -274,7 +281,7 @@ EOT;
 		<td class="tableb">
 			{$lang_plugin_html5slideshow['loopShow']}
 		</td>
-		<td class="tableb">
+		<td colspan="2" class="tableb">
 			<input type="checkbox" name="loopShow" {$loopShow_checked} />
 		</td>
 	</tr>
@@ -285,6 +292,22 @@ EOT;
 		<td class="tableb">
 			<input type="checkbox" name="dispTitl" id="dispTitl" {$dispTitl_checked} onchange="setText()" /> <label for="dispTitl">{$lang_common['title']}</label>
 			<input type="checkbox" name="dispDesc" id="dispDesc" {$dispDesc_checked} onchange="setText()" style="margin-left:3em" /> <label for="dispDesc">{$lang_common['caption']}</label>
+			<span style="margin-left:3em">Font size: </span>
+			<select class="listbox" name="txtSize" id="txtSize" onchange="setText()">
+				<option value="0"{$fszSel[0]}>-default-</option>
+				<option value="1"{$fszSel[1]}>medium</option>
+				<option value="2"{$fszSel[2]}>large</option>
+				<option value="3"{$fszSel[3]}>larger</option>
+				<option value="4"{$fszSel[4]}>x-large</option>
+				<option value="5"{$fszSel[5]}>xx-large</option>
+			</select>
+		</td>
+		<td rowspan="3" class="tableb">
+			<div id="smpl" style="position:relative;text-align:center">
+				<div id="smpl_c">{$lang_plugin_html5slideshow['controls']}<img id="h5ssicons" src="plugins/html5slideshow/css/icons/{$iconset}.png" style="margin-left:10px;padding:2px;vertical-align:middle;" alt="iconset"/></div>
+				<div id="smpl_t" style="padding-top:1px;position:absolute;width:100%;font-size:{$ctfsz}">{$ptext}</div>
+				<div id="smpl_p" style="height:234px"><img src="plugins/html5slideshow/css/smplpic.jpg" alt="" /></div>
+			</div>
 		</td>
 	</tr>
 	<tr>
@@ -296,25 +319,20 @@ EOT;
 		</td>
 	</tr>
 	<tr>
-		<td class="tableb">
+		<td class="tableb" style="vertical-align:top">
 			{$lang_plugin_html5slideshow['colors']}
 		</td>
-		<td class="tableb">
-			<div id="smpl" style="width:50%;float:right;text-align:center">
-				<div id="smpl_c">{$lang_plugin_html5slideshow['controls']}<img id="h5ssicons" src="plugins/html5slideshow/css/icons/{$iconset}.png" style="margin-left:10px;padding:2px;vertical-align:middle;" alt="iconset"/></div>
-				<div id="smpl_t" style="padding-top:1px">{$ptext}</div>
-				<div id="smpl_p" style="height:110px"><img src="plugins/html5slideshow/css/smplpic.jpg" alt="" /></div>
-			</div>
+		<td class="tableb" style="vertical-align:top">
 			<table class="dspcolr">
 				<tr><th></th><th>{$lang_plugin_html5slideshow['background']}</th><th>{$lang_plugin_html5slideshow['foreground']}</th></tr>
 				<tr><td>{$lang_plugin_html5slideshow['ctlarea']}</td><td class="tac"><input id="h5ctrl_b" type="text" name="ctrl_b" value="{$dcolors[0]}" /></td><td class="tac"><input id="h5ctrl_t" type="text" name="ctrl_t" value="{$dcolors[1]}" /></td></tr>
-				<tr><td>{$lang_plugin_html5slideshow['txtarea']}</td><td class="tac"><input id="h5text_b" type="text" name="text_b" value="{$dcolors[2]}" /></td><td class="tac"><input id="h5text_t" type="text" name="text_t" value="{$dcolors[3]}" /></td></tr>
+				<tr><td>{$lang_plugin_html5slideshow['txtarea']}</td><td class="tac"><input id="h5text_b" type="text" name="text_b" value="{$dcolors[2]}" onchange="this.value = toRGBA(this.value,0.5)" /></td><td class="tac"><input id="h5text_t" type="text" name="text_t" value="{$dcolors[3]}" /></td></tr>
 				<tr><td>{$lang_plugin_html5slideshow['picarea']}</td><td class="tac"><input id="h5pica_b" type="text" name="backgrnd" value="{$dcolors[4]}" /></td><td></td></tr>
 			</table>
 		</td>
 	</tr>
 	<tr>
-		<td class="tableb" colspan="2" style="text-align:center">
+		<td class="tableb" colspan="3" style="text-align:center">
 			{$action_sel}<button value="{$lang_common['apply_changes']}" name="submit" class="button" type="submit">{$submit_icon}{$lang_common['apply_changes']}</button>
 		</td>
 	</tr>
@@ -350,6 +368,7 @@ function h5ss_process_form (&$cfg, $album, $user)
 	$cfg['lS'] = $superCage->post->keyExists('loopShow') ? 1 : 0;
 	$cfg['vT'] = $superCage->post->keyExists('dispTitl') ? 1 : 0;
 	$cfg['vD'] = $superCage->post->keyExists('dispDesc') ? 1 : 0;
+	$cfg['tS'] = $superCage->post->keyExists('txtSize') ? (int)$superCage->post->getEscaped('txtSize') : 0;
 	if ($superCage->post->keyExists('seconds')) {
 		$cfg['sD'] = (int)$superCage->post->getEscaped('seconds');
 	}
@@ -368,11 +387,11 @@ function h5ss_process_form (&$cfg, $album, $user)
 	$dcolors[2] = $superCage->post->keyExists('text_b') ? $superCage->post->getEscaped('text_b') : '';
 	$dcolors[3] = $superCage->post->keyExists('text_t') ? $superCage->post->getEscaped('text_t') : '';
 	$dcolors[4] = $superCage->post->keyExists('backgrnd') ? $superCage->post->getEscaped('backgrnd') : '';
-	$cfg['dC'] = join(',',$dcolors);
+	$cfg['dC'] = $dcolors;
 
 	$cfg['iS'] = $superCage->post->keyExists('iconset') ? $superCage->post->getEscaped('iconset') : '';
 
-	$cfgs = serialize($cfg);
+	$cfgs = json_encode($cfg);
 	if ($album) {
 		$act = $superCage->post->getAlpha('action');
 		switch ($act) {
@@ -398,4 +417,40 @@ function h5ss_process_form (&$cfg, $album, $user)
 	echo '<tr><td class="tableb" width="200">'.$lang_plugin_html5slideshow['saved'].'</td></tr>';
 	endtable();
 	echo '<br />';
+}
+
+function cfgConvert ($str)
+{
+	$cfg = unserialize($str);
+	$cfg['dC'] = explode(',', $cfg['dC']);
+	return json_encode($cfg);
+}
+
+function convertCfgs ()
+{
+	global $CONFIG;
+
+	$cfgs = cfgConvert($CONFIG['html5slideshow_cfg']);
+	$CONFIG['html5slideshow_cfg'] = $cfgs;
+	cpg_db_query("UPDATE {$CONFIG['TABLE_CONFIG']} SET value = '{$cfgs}' WHERE name = 'html5slideshow_cfg'");
+
+	$result = cpg_db_query("SELECT `H5ss_cfg`,aid FROM {$CONFIG['TABLE_ALBUMS']} WHERE `H5ss_cfg` > ''");
+	while ($row = cpg_db_fetch_assoc($result)) {
+		if ($row['H5ss_cfg'][0] == 'a') {
+			$cfgs = cfgConvert($row['H5ss_cfg']);
+			cpg_db_query("UPDATE {$CONFIG['TABLE_ALBUMS']} SET `H5ss_cfg` = '{$cfgs}' WHERE aid = {$row['aid']}");
+		}
+	}
+	$result->free();
+
+	$result = cpg_db_query("SELECT `H5ss_cfg`,user_id FROM {$CONFIG['TABLE_USERS']} WHERE `H5ss_cfg` > ''");
+	while ($row = cpg_db_fetch_assoc($result)) {
+		if ($row['H5ss_cfg'][0] == 'a') {
+			$cfgs = cfgConvert($row['H5ss_cfg']);
+			cpg_db_query("UPDATE {$CONFIG['TABLE_USERS']} SET `H5ss_cfg` = '{$cfgs}' WHERE user_id = {$row['user_id']}");
+		}
+	}
+	$result->free();
+
+	msg_box('', 'All configurations converted to new format');
 }

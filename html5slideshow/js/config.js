@@ -5,14 +5,23 @@ var H5ss_pica = null;
 var H5ss_dtcb = null;
 var H5ss_dccb = null;
 
+function toRGBA(C,O) {
+	if (C.match(/^#([0-9A-F]{2})([0-9A-F]{2})([0-9A-F]{2})$/i)) {
+		var c = ([parseInt(RegExp.$1, 16), parseInt(RegExp.$2, 16), parseInt(RegExp.$3, 16)]);
+		if (c.length === 3) {
+			return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + O + ')';
+		}
+	}
+	return C;
+}
 function setCtrlB(v) {
 	H5ss_ctrl.style.backgroundColor = v;
 }
 function setCtrlT(v) {
 	H5ss_ctrl.style.color = v;
 }
-function setTextB(v) {
-	H5ss_text.style.backgroundColor = v;
+function setTextB(v) {	//console.log(v);
+	H5ss_text.style.backgroundColor = toRGBA(v, 0.5);
 }
 function setTextT(v) {
 	H5ss_text.style.color = v;
@@ -28,6 +37,7 @@ function setText() {
 		txt += js_vars.H5ss_lang.capt;
 	}
 	H5ss_text.innerHTML = txt;
+	H5ss_text.style.fontSize = ['inherit','medium','large','x-large','xx-large'][$('#txtSize').val()];
 }
 
 function H5applybg() {

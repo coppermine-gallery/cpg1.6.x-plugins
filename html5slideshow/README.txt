@@ -16,6 +16,11 @@ CPG Site Settings  <--  User Default Settings  <--  Album Specific Settings
 
 When uninstalling this plugin, an option will be provided to keep user and album settings in the database.
 
+Version 1.4.2 Release Notes:
+----------------------------
+Overlay title/caption with choice of font size
+Change of storage method for configurations (JSON)
+
 Version 1.4 Release Notes:
 ----------------------------
 Compatible only with CPG 1.6.x+

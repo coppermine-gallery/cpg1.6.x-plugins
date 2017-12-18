@@ -194,8 +194,8 @@ var	ssCtl = (function() {
 	function loadElm (elm, lix, lft) {
 		elm.eMsg = null;
 		if (vendorQuirk.vendorID == "ff") { elm.src = ''; elm.completed = false; }	//for FF to full load image
-		elm.src = null;
-		elm.src = imagelist[lix].fpath;
+	//	elm.src = null;
+		elm.src = imagelist[lix].fpath;	console.log(elm.src);
 		elm.slidnum = lix;
 		elm.isSized = false;
 		trzn.preS(elm, lft);
@@ -284,7 +284,7 @@ if (LR !== 0) { _titlelm.innerHTML = ""; }
 
 	function preSizeImage (img, cb) {
 		if (!img.complete) { setTimeout(function(){preSizeImage(img, cb)},100); return; }
-		var bH = window.innerHeight - _titlelm.offsetTop,	//// - _titlelm.offsetHeight - 2,
+		var bH = window.innerHeight,
 			bW = window.innerWidth,
 			pW = img.naturalWidth,
 			pH = img.naturalHeight,

@@ -1,7 +1,7 @@
 <?php
 if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
 
-$H5ss_cfg = unserialize($CONFIG['html5slideshow_cfg']);
+$H5ss_cfg = json_decode($CONFIG['html5slideshow_cfg'], true);
 
 // cause the popup script to get included
 //gallery_header seems a reasonable place to make it happen
@@ -71,16 +71,16 @@ function html5slideshow_nav($data) {
 
 function html5slideshow_resolved_cfg($album) {
 	global $CONFIG, $lang_errors, $lang_plugin_html5slideshow;
-	$cfg = unserialize($CONFIG['html5slideshow_cfg']);
+	$cfg = json_decode($CONFIG['html5slideshow_cfg'], true);
 	if ($user = USER_ID) {
 		$usrData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg` FROM {$CONFIG['TABLE_USERS']} WHERE user_id = {$user}"));
-		if ($usrCfg = unserialize($usrData['H5ss_cfg'])) {
+		if ($usrCfg = json_decode($usrData['H5ss_cfg'], true)) {
 			$cfg = array_merge($cfg, $usrCfg);
 		}
 	}
 	if ($album && preg_match("/^\d+$/", $album)) {
 		$albData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg` FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid = {$album}"));
-		if ($albCfg = unserialize($albData['H5ss_cfg'])) {
+		if ($albCfg = json_decode($albData['H5ss_cfg'], true)) {
 			$cfg = array_merge($cfg, $albCfg);
 		}
 	}
@@ -104,18 +104,21 @@ function html5slideshow_install () {
 			'tT'=>'d',	//image transition = dissolve
 			'vT'=>1,	//show Title in text area
 			'vD'=>1,	//show Desc in title area
+			'tS'=>0,	//text size for title/description
 			'sI'=>0,	//shuffle slides for show
 			'aP'=>1,	//autoplay
 			'lS'=>0,	//loop slideshow
 			'sD'=>5,	//slide duration
-			'dC'=>'#666'	//control area background
-				.',#CCC'	//control area text
-				.',#333'	//text area background
-				.',#FFF'	//text area text
-				.',#000',	//pic area background
+			'dC'=>array(
+				 '#666666'		//control area background
+				,'#CCCCCC'		//control area text
+				,'rgba(51,51,51,0.5)'	//text area background
+				,'#FFFFFF'		//text area text
+				,'#000000'		//pic area background
+				),
 			'iS'=>'cb1' //iconset
 		);
-	$cfgs = serialize($html5slideshowCfg);
+	$cfgs = json_encode($html5slideshowCfg);
 	if (!$CONFIG['html5slideshow_cfg']) {
 		cpg_db_query("INSERT INTO {$CONFIG['TABLE_CONFIG']} (name, value) VALUES ('html5slideshow_cfg', '{$cfgs}')");
 		cpg_db_query("ALTER TABLE {$CONFIG['TABLE_ALBUMS']} ADD `H5ss_cfg` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL");

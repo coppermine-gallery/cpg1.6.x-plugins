@@ -181,7 +181,8 @@
 				return (color.charAt(0) === "#") ? color : ("#" + color);
 
 			// Alternatively, check for RGB color, then convert and return it as Hex.
-			} else if (color.match(/^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/)) {
+			} else if (color.match(/^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/)
+					|| color.match(/^rgba\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\,/)) {
 				var c = ([parseInt(RegExp.$1, 10), parseInt(RegExp.$2, 10), parseInt(RegExp.$3, 10)]),
 					pad = function (str) {
 						if (str.length < 2) {

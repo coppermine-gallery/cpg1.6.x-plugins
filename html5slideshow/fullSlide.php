@@ -10,11 +10,11 @@ if ($CONFIG['debug_mode']==1 || ($CONFIG['debug_mode']==2 && GALLERY_ADMIN_MODE)
 	$H5ss_jsf .= '.min.js';
 }
 
-$H5ss_cfg = unserialize($CONFIG['html5slideshow_cfg']);
+$H5ss_cfg = json_decode($CONFIG['html5slideshow_cfg'], true);
 
 $uid = USER_ID;
 $usrData = cpg_db_fetch_assoc(cpg_db_query("SELECT `H5ss_cfg` FROM {$CONFIG['TABLE_USERS']} WHERE user_id = {$uid}"));
-if ($usrCfg = unserialize($usrData['H5ss_cfg'])) {
+if ($usrCfg = json_decode($usrData['H5ss_cfg'], true)) {
 	$H5ss_cfg = array_merge($H5ss_cfg, $usrCfg);
 }
 
@@ -30,7 +30,7 @@ if ($superCage->get->testAlpha('album')) {
 	if (!$albData) {
 	    cpg_die(ERROR, $lang_errors['non_exist_ap']);
 	}
-	if ($albCfg = unserialize($albData['H5ss_cfg'])) {
+	if ($albCfg = json_decode($albData['H5ss_cfg'], true)) {
 		$H5ss_cfg = array_merge($H5ss_cfg, $albCfg);
 	}
 	$usrisown = $H5ss_cfg['uA'] && (USER_ID === $albData['owner']);
@@ -62,7 +62,8 @@ if (!count($filelist)) $errmsg .= $lang_plugin_html5slideshow['noimgerr'];
 if ($H5ss_cfg['sI']) shuffle($filelist);
 $popdwin = ($superCage->get->getInt('h5sspu') == 1);
 $icons = $H5ss_cfg['iS'];
-$dcolors = explode(',', $H5ss_cfg['dC']);
+$dcolors = $H5ss_cfg['dC'];	//explode(',', $H5ss_cfg['dC']);
+$fntSize = array('inherit','medium','large','larger','x-large','xx-large')[isset($H5ss_cfg['tS']) ? $H5ss_cfg['tS'] : 0];
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US" dir="<?=$lang_text_dir?>">
@@ -76,7 +77,7 @@ $dcolors = explode(',', $H5ss_cfg['dC']);
 	html { height:100%; overflow:hidden }
 	body { background-color:<?=$dcolors[4]?>; width:100%; height:100%; overflow:hidden }
 	div#controls { background-color:<?=$dcolors[0]?>; color:<?=$dcolors[1]?>; }
-	div#ptext { background-color:<?=$dcolors[2]?>; color:<?=$dcolors[3]?>; }
+	div#ptext { background-color:<?=$dcolors[2]?>; color:<?=$dcolors[3]?>; font-size:<?=$fntSize?>; position:absolute; z-index:9; }
 	div#screen { background-color:<?=$dcolors[4]?>; overflow:hidden; }
 	div.spribut { background: url('plugins/html5slideshow/css/icons/<?=$icons?>.png') no-repeat; }
 </style>
