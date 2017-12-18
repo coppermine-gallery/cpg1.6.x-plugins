@@ -195,7 +195,7 @@ var	ssCtl = (function() {
 		elm.eMsg = null;
 		if (vendorQuirk.vendorID == "ff") { elm.src = ''; elm.completed = false; }	//for FF to full load image
 	//	elm.src = null;
-		elm.src = imagelist[lix].fpath;	console.log(elm.src);
+		elm.src = imagelist[lix].fpath;
 		elm.slidnum = lix;
 		elm.isSized = false;
 		trzn.preS(elm, lft);

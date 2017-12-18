@@ -20,7 +20,7 @@ function setCtrlB(v) {
 function setCtrlT(v) {
 	H5ss_ctrl.style.color = v;
 }
-function setTextB(v) {	//console.log(v);
+function setTextB(v) {
 	H5ss_text.style.backgroundColor = toRGBA(v, 0.5);
 }
 function setTextT(v) {
