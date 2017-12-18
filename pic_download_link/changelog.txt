@@ -1,0 +1,42 @@
+/**
+ * Coppermine Photo Gallery
+ * Coppermine version: 1.5.xx
+ *
+ * Picture Download Link
+ * Version 1.3
+ *  
+ * Plugin Written by Joe Carver - http://photos-by.joe-carver.com/ - http://gallery.josephcarver.com/natural/ - http://i-imagine.net/artists/
+ * 08 August 2010
+*/
+  
+Changelog
+=========
+[A] = Added new feature
+[B] = Bugfix (fix something that wasn't working as expected)
+[C] = Cosmetical fix (layout, typo etc.)
+[D] = Documentation improvements
+[M] = Maintenance works
+[O] = Optimization of code
+[S] = Security fix (issues that are related to security)
+*********************************************
+
+2010-03-10 [M] Release of version 1.4 {Roland Fulde}
+2010-03-10 [A] Add (undocumented) option whether or not file prefix should be used for the download name when downloading the Intermediate picture (works only with Content-Disposition=yes {Roland Fulde}
+2010-03-10 [B] For some reason the link if placed in the file info section has been empty. Fixed {Roland Fulde}
+2010-03-10 [C] Set default for <span> attribute so that "above" and "below" picture do more what you'd expect {Roland Fulde}
+2010-03-10 [B] Intermediate size download had only been half-implemented. Now also for content-disposition=false {Roland Fulde}
+2010-03-09 [A] Admin option to select between full size or intermediate size download, requested by Mimer {Roland Fulde}
+2011-03-09 [A] Add config option for <span> attribute to allow some layout customization {Roland Fulde}
+2011-03-08 [B] Fix global-local CURRENT_PIC_DATA usage. Should fix the compatibility issue with Lightbox and similar plugins {Roland Fulde}
+2011-03-02 [A] Danish Translation {Mimer}
+2011-01-24 [A] More placement options {Roland Fulde}
+2010-12-30 [M] Release of version 1.3 {Roland Fulde}
+2010-12-30 [A] Configure option to show link only for certain categories {Roland Fulde}
+2010-12-29 [M] Release of version 1.2 {Roland Fulde}
+2010-12-29 [A] German translation {Roland Fulde}
+2010-12-29 [A] Content-Disposition -> Save As box in the browser {Roland Fulde}
+2010-12-29 [B] Language files from lang/ were not picked up {Roland Fulde}
+2010-08-08 [M] Release of version 1.1 {Joe Carver}
+2010-08-08 [A] Config option added to show link to logged users only {Joe Carver}
+2010-08-08 [A] Config option added to show pic in info. table {Joe Carver}
+2010-07-05 [M] Release of version 1.0 {Joe Carver}
