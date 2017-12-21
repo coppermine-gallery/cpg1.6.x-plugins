@@ -49,7 +49,7 @@
 		     $testval = $testarr[0];      
  	             if ($testval != $CONFIG[$san_key]) {
 	                  $CONFIG[$san_key] = $testval;
-	                  cpg_db_query("UPDATE {$CONFIG['TABLE_CONFIG']} SET value='" . mysql_real_escape_string($CONFIG[$san_key]) . "' WHERE name='$san_key'");
+	                  cpg_db_query("UPDATE {$CONFIG['TABLE_CONFIG']} SET value='" . cpg_db_real_escape_string($CONFIG[$san_key]) . "' WHERE name='$san_key'");
         	          $config_changes_counter++;
 		     }
               }

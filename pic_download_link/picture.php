@@ -67,9 +67,8 @@ if ($cage->keyExists ('pid'))
 	//try to keep the pids at least limited to albums they have access to and approved pics.
 	get_meta_album_set(0, $META_ALBUM_SET);
 	$result = cpg_db_query("SELECT filepath, filename FROM {$CONFIG['TABLE_PICTURES']} WHERE approved = 'YES' $META_ALBUM_SET AND pid='$pid'");
-	$row = mysql_fetch_array($result);
-	mysql_free_result($result);
-	mysql_close();
+	$row = cpg_db_fetch_array($result);
+	cpg_db_free_result($result);
 	$filepath = $row['filepath'];
 	$filename = $row['filename'];
 
