@@ -72,6 +72,7 @@ img.sscfg {
 :fullscreen img.sscfg { display: none; }
 
 #ptext {
+	width: 100%;
 	padding: 1px 0;
 	line-height: 1.5em;
 	text-align: center;
@@ -79,6 +80,7 @@ img.sscfg {
 .errMsg {
 	color: red;
 	background-color: yellow;
+	padding: 2px 6px;
 }
 #loading {
 	text-align: center;
@@ -120,6 +122,15 @@ img {
 	transition: 0.75s opacity;
 	transition-delay: 0.25s;
 	transition-timing-function: ease;
+}
+
+/* video/audio */
+.medsld {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	min-width: 100%;
+	max-width: 100%;
 }
 
 /* slide left/right */

@@ -44,14 +44,15 @@ $rowset = get_pic_data($album, $count, $album_name);
 if ($rowset) {
 	foreach ($rowset as $row) {
 		$ftyp = cpg_get_type($row['filename']);
-		if ($ftyp['content'] != 'image') continue;
+		if (!in_array($ftyp['content'], array('image','movie'))) continue;
 		$txtinfo = '';
 		if ($H5ss_cfg['vT']) $txtinfo = trim($row['title']);
 		if ($H5ss_cfg['vD'] && trim($row['caption'])) $txtinfo .= ($txtinfo ? ' ... ' : '') . trim($row['caption']);
 		$fileentry = array(
 				'fpath' => get_pic_url($row, ($H5ss_cfg['pS'] == 1 ? 'normal' : 'fullsize')),
 				'height' => $row['pheight'],
-				'title' => bb_decode($txtinfo)
+				'title' => bb_decode($txtinfo),
+				'mTyp' => $ftyp['content'][0]
 				);
 		$filelist[] = $fileentry;
 	}
@@ -62,7 +63,7 @@ if (!count($filelist)) $errmsg .= $lang_plugin_html5slideshow['noimgerr'];
 if ($H5ss_cfg['sI']) shuffle($filelist);
 $popdwin = ($superCage->get->getInt('h5sspu') == 1);
 $icons = $H5ss_cfg['iS'];
-$dcolors = $H5ss_cfg['dC'];	//explode(',', $H5ss_cfg['dC']);
+$dcolors = $H5ss_cfg['dC'];
 $fntSize = array('inherit','medium','large','larger','x-large','xx-large')[isset($H5ss_cfg['tS']) ? $H5ss_cfg['tS'] : 0];
 ?>
 <!DOCTYPE html>
@@ -81,12 +82,15 @@ $fntSize = array('inherit','medium','large','larger','x-large','xx-large')[isset
 	div#screen { background-color:<?=$dcolors[4]?>; overflow:hidden; }
 	div.spribut { background: url('plugins/html5slideshow/css/icons/<?=$icons?>.png') no-repeat; }
 </style>
+<script src="<?=CPG_JQUERY_VERSION?>" type="text/javascript"></script>
+<script src="plugins/html5slideshow/js/jquery.touchSwipe.min.js" type="text/javascript"></script>
 <script src="plugins/html5slideshow/js/<?=$H5ss_jsf?>" type="text/javascript"></script>
 <script type="text/javascript">
 	var albumID = '<?=$album?>';
 	var popdwin = <?=$popdwin?'true':'false'?>;
 	var imagelist = <?=json_encode($filelist)?>;
 	var imgerror = "<?=$lang_plugin_html5slideshow['imgerror']?>";
+	var viderror = "<?=$lang_plugin_html5slideshow['viderror']?>";
 	ssCtl.autoPlay = <?=$H5ss_cfg['aP']*1?>;
 	ssCtl.repeat = <?=$H5ss_cfg['lS']?'true':'false'?>;
 	ssCtl.slideDur = <?=$H5ss_cfg['sD']*1000?>;
@@ -128,7 +132,6 @@ $fntSize = array('inherit','medium','large','larger','x-large','xx-large')[isset
 		</div>
 		<div id="ptext"></div>
 		<div id="screen" style="height:100%;-webkit-backface-visibility:hidden;">
-			<!-- <img src="plugins/html5slideshow/css/loading.gif" style="position:relative;z-index:99;top:10px;left:50%;margin-left:-30px;" /> -->
 			<p id="loading" style="display:none">∙∙∙LOADING∙∙∙</p>
 		</div>
 		<!-- <div id="status"></div> -->

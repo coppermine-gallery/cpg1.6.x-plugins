@@ -3,30 +3,24 @@
 		vendorQuirk = {
 			vendorID: 'w3',
 			browserPrefix: '',
-//			tranEnd: 'transitionEnd',
 			reqFull: 'requestFullScreen',
 			canFull: 'cancelFullScreen'
 		};
 	if (navigator.userAgent.indexOf('MSIE')!==-1 || navigator.appVersion.indexOf('Trident/') > 0) {
 		vendorQuirk.vendorID = 'ie';
 		vendorQuirk.browserPrefix = 'ms';
-//		vendorQuirk.tranEnd = '';
 	} else if (navigator.userAgent.indexOf('WebKit') > -1) {
 		vendorQuirk.vendorID = 'wk';
 		vendorQuirk.browserPrefix = 'webkit';
-//		vendorQuirk.tranEnd = 'webkitTransitionEnd';
 	} else if (navigator.userAgent.indexOf('Gecko') > -1) {
 		vendorQuirk.vendorID = 'ff';
 		vendorQuirk.browserPrefix = 'moz';
-//		vendorQuirk.tranEnd = 'transitionend';
 	} else if (navigator.userAgent.indexOf('Opera') > -1) {
 		vendorQuirk.vendorID = 'op';
 		vendorQuirk.browserPrefix = 'o';
-//		vendorQuirk.tranEnd = 'oTransitionEnd';
 	} else if (navigator.userAgent.indexOf('KHTML') > -1) {
 		vendorQuirk.vendorID = 'kd';
 		vendorQuirk.browserPrefix = 'khtml';
-//		vendorQuirk.tranEnd = 'khtmlTransitionEnd';
 	}
 	// export quirks
 	window.vendorQuirk = vendorQuirk;
@@ -92,6 +86,8 @@ var	ssCtl = (function() {
 		_ffv = 2,			// frame focus view - generally the middle view of the frame
 		_fle = 0,			// left edge of view frame relative to imagelist
 		_ielms = Array(),	// elements associated with the view frame
+		_imgP = "plugins/html5slideshow/css/",
+		_vELm = null,		// reusable video element
 		_iniClass,
 		_onClass,
 		_trzn,
@@ -195,7 +191,13 @@ var	ssCtl = (function() {
 		elm.eMsg = null;
 		if (vendorQuirk.vendorID == "ff") { elm.src = ''; elm.completed = false; }	//for FF to full load image
 	//	elm.src = null;
-		elm.src = imagelist[lix].fpath;
+		if (imagelist[lix].mTyp == "i") {
+			elm.ism = false;
+			elm.src = imagelist[lix].fpath;
+		} else {
+			elm.ism = true;
+			elm.src = _imgP+"blank.png";
+		}
 		elm.slidnum = lix;
 		elm.isSized = false;
 		trzn.preS(elm, lft);
@@ -228,6 +230,9 @@ var	ssCtl = (function() {
 		_ielms.unshift(rf);
 	}
 	function nextFrame (LR) {
+		_vElm.pause();
+		_vElm.style.display = "none";
+		
 		if (!mySC.repeat) {
 			if ((LR==1 && _fle+_ffv+1==_ill)) {
 				mySC.doMnu(_stop);
@@ -241,7 +246,12 @@ var	ssCtl = (function() {
 //		_titlelm.innerHTML = imagelist[tElm.slidnum].title;
 //		if (tElm.eMsg) { _titlelm.innerHTML += tElm.eMsg; }
 if (LR !== 0) { _titlelm.innerHTML = ""; }
-		positionImage(tElm, function(){ imgPlaced(tElm); /*tElm.className = _onClass;*/});
+		if (tElm.ism) {
+			_vElm.src = imagelist[tElm.slidnum].fpath;
+			_sldnumelm.innerHTML = tElm.slidnum + 1;
+		} else {
+			positionImage(tElm, function(){ imgPlaced(tElm); /*tElm.className = _onClass;*/});
+		}
 //		_sldnumelm.innerHTML = tElm.slidnum + 1;
 		return true;
 	}
@@ -289,7 +299,8 @@ if (LR !== 0) { _titlelm.innerHTML = ""; }
 			pW = img.naturalWidth,
 			pH = img.naturalHeight,
 			fW, fH;
-		if (imagelist[img.slidnum].title) { bH -= 26; }
+		bH -= 24;
+//		if (imagelist[img.slidnum].title) { bH -= 26; }
 		if (pW>0 && pH>0) {
 			fH = pH>bH ? bH : pH;
 			fW = Math.round(pW*fH/pH);
@@ -461,6 +472,7 @@ if (LR !== 0) { _titlelm.innerHTML = ""; }
 		}
 	}
 
+/*
 	function swipe (e) {
 		var te = e.changedTouches[0];
 		var	dx = _tstartx - te.clientX,
@@ -485,6 +497,7 @@ if (LR !== 0) { _titlelm.innerHTML = ""; }
 		_tstartt = e.timeStamp;
 		e.preventDefault();
 	}
+*/
 
 	function winResized () {
 		if (_resizeTime) clearTimeout(_resizeTime);
@@ -496,9 +509,20 @@ if (LR !== 0) { _titlelm.innerHTML = ""; }
 		sspan.innerHTML = Math.round(_slideDur/1000);
 	}
 
+	function medEnded (elm) {
+		if (_running) {
+			nextSlide();
+		}
+	}
+
 	function imgError () {
 		this.eMsg = '<p class="errMsg">'+imgerror+this.src+'</p>';
-		this.src = "plugins/html5slideshow/css/broken.png";
+		this.src = _imgP+"broken.png";
+	}
+
+	function medError (evt) {
+		_titlelm.innerHTML += '<p class="errMsg">'+viderror+this.src+'</p>';
+		if (_running) { _sTimer = setTimeout(function(){nextSlide()}, _slideDur); }
 	}
 
 	mySC.sdur = function(up) {
@@ -509,6 +533,7 @@ if (LR !== 0) { _titlelm.innerHTML = ""; }
 
 	mySC.init = function(fsapi) {
 		var i, ielm, iarea = $id("screen");
+		var curi, curip, curio;
 
 		trzn = t_none;	//use no transition by default
 		_onClass = 'islide img_show';
@@ -537,13 +562,24 @@ if (LR !== 0) { _titlelm.innerHTML = ""; }
 			_ielms.push(ielm);
 			iarea.appendChild(ielm);
 		}
+
+		_vElm = document.createElement("VIDEO");
+		_vElm.style.display="none";
+		_vElm.onerror = medError;
+		_vElm.className = "medsld";
+		_vElm.id = "medsld";
+		_vElm.controls = true;
+		_vElm.onended = function(){medEnded(this);};
+		_vElm.oncanplay = function(){this.style.display="block";this.play()};
+		iarea.appendChild(_vElm);
+
 		// get the middle element of the image frame
 		_ffv = Math.floor(_iecnt/2);
 
 		// watch for swipes
-		iarea.addEventListener('touchstart', touch, false);
-		iarea.addEventListener('touchmove', function(e){e.preventDefault();}, false);
-		iarea.addEventListener('touchend', swipe, false);
+//		iarea.addEventListener('touchstart', touch, false);
+//		iarea.addEventListener('touchmove', function(e){e.preventDefault();}, false);
+//		iarea.addEventListener('touchend', swipe, false);
 
 		_fullScreenApi = fsapi;
 		_sldnumelm = $id("slidnum");
@@ -559,6 +595,29 @@ if (LR !== 0) { _titlelm.innerHTML = ""; }
 			nextFrame(0);
 		}
 		window.onresize = winResized;
+
+		$("#screen").swipe( {
+			swipeStatus: function(event, phase, direction, distance) {
+				if (phase=="start") {
+					curi = _ielms[_ffv];
+					curip = parseFloat(curi.style.left);
+				}
+				if (phase=="move" && mySC.trnType=="s") {
+					if (direction=="left") curi.style.left = curip-distance+"px";
+					else if (direction=="right") curi.style.left = curip+distance+"px";
+				}
+				if (phase=="end") {
+					if (direction=="left") mySC.doMnu(_next);
+					else if (direction=="right") mySC.doMnu(_prev);
+					else if (direction=="up") mySC.doMnu(_rwnd);
+					else if (direction=="down") mySC.doMnu(_last);
+				}
+				if (phase=="cancel") curi.style.left = curip+"px";
+			},
+			triggerOnTouchEnd:false,
+			threshold:90
+		});
+
 	};
 
 	document.addEventListener("keypress", keyPressed, false);

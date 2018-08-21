@@ -71,4 +71,5 @@ $lang_plugin_html5slideshow['imgerror'] = 'NIE MOŻNA WCZYTAĆ ZDJĘCIA: ';
 $lang_plugin_html5slideshow['uninType'] = 'Metoda odinstalowania:';
 $lang_plugin_html5slideshow['fullUnin'] = 'Pełne (wraz ustawieniami użytkowników)';
 $lang_plugin_html5slideshow['partUnin'] = 'Zachowaj ustawienia użytkowników (ułatwia reinstalację)';
-?>
+
+//EOF

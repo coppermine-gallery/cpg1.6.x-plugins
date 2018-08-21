@@ -71,4 +71,5 @@ $lang_plugin_html5slideshow['imgerror'] = 'LA IMAGEN NO SE PUDO CARGAR: ';
 $lang_plugin_html5slideshow['uninType'] = 'Tipo de desinstalación:';
 $lang_plugin_html5slideshow['fullUnin'] = 'Desinstalación completa, borrando todos los ajustes de los usuarios';
 $lang_plugin_html5slideshow['partUnin'] = 'Mantener los ajustes de los usuarios ante una posible re-instalación';
-?>
+
+//EOF

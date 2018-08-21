@@ -16,8 +16,8 @@ $lang_plugin_html5slideshow['togl_a'] = 'Pause/Start';
 $lang_plugin_html5slideshow['togl_t'] = 'wissel tussen pause/run (spatie toets)';
 $lang_plugin_html5slideshow['next_a'] = 'Volgende';
 $lang_plugin_html5slideshow['next_t'] = 'volgende slide (pijl-rechts toets)';
-$lang_plugin_html5slideshow['stop_a'] = 'Beëindig Slideshow';
-$lang_plugin_html5slideshow['stop_t'] = 'Beëindig slideshow (esc toets)';
+$lang_plugin_html5slideshow['stop_a'] = 'Beindig Slideshow';
+$lang_plugin_html5slideshow['stop_t'] = 'Beindig slideshow (esc toets)';
 $lang_plugin_html5slideshow['full_a'] = 'Wissel naar Fullscreen';
 $lang_plugin_html5slideshow['full_t'] = 'wissel naar Fullscreen (tab of enter/return key)';
 $lang_plugin_html5slideshow['minus'] = 'sneller';
@@ -67,7 +67,8 @@ $lang_plugin_html5slideshow['clrusr'] = 'Wis de standaard instellingen';
 
 $lang_plugin_html5slideshow['noimgerr'] = 'Fout: er zijn geen afbeeldingen aanwezig om te tonen';
 
-$lang_plugin_html5slideshow['uninType'] = 'Deïnstalleer type:';
-$lang_plugin_html5slideshow['fullUnin'] = 'Volledige deïnstallatie, verwijder alle gebruikers\' instellingen';
+$lang_plugin_html5slideshow['uninType'] = 'Denstalleer type:';
+$lang_plugin_html5slideshow['fullUnin'] = 'Volledige denstallatie, verwijder alle gebruikers\' instellingen';
 $lang_plugin_html5slideshow['partUnin'] = 'Behoud gebruikers\' instellingen voor een her-installatie';
-?>
+
+//EOF

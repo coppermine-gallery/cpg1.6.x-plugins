@@ -68,8 +68,10 @@ $lang_plugin_html5slideshow['clrusr'] = 'Clear my default settings';
 
 $lang_plugin_html5slideshow['noimgerr'] = 'Error: there are no images to display';
 $lang_plugin_html5slideshow['imgerror'] = 'COULD NOT LOAD IMAGE: ';
+$lang_plugin_html5slideshow['viderror'] = 'COULD NOT PLAY VIDEO: ';
 
 $lang_plugin_html5slideshow['uninType'] = 'Uninstall type:';
 $lang_plugin_html5slideshow['fullUnin'] = 'Full uninstall, deleting all users\' settings';
 $lang_plugin_html5slideshow['partUnin'] = 'Keep users\' settings for possible re-install';
-?>
+
+//EOF
