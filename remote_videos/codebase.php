@@ -1,13 +1,8 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - remote_videos
+  Coppermine 1.6.x Plugin - remote_videos
   *************************************************
-  Copyright (c) 2009-2016 eenemeenemuu
-  *************************************************
-  $HeadURL: https://svn.code.sf.net/p/coppermine/code/branches/cpg1.5.x/plugins/remote_videos/codebase.php $
-  $Revision: 8843 $
-  $LastChangedBy: eenemeenemuu $
-  $Date: 2016-03-23 12:11:09 +0100 (Wed, 23 Mar 2016) $
+  Copyright (c) 2009-2018 eenemeenemuu
   **************************************************/
 
 if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
