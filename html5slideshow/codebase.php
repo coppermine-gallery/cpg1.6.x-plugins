@@ -121,8 +121,8 @@ function html5slideshow_install () {
 	$cfgs = json_encode($html5slideshowCfg);
 	if (!$CONFIG['html5slideshow_cfg']) {
 		cpg_db_query("INSERT INTO {$CONFIG['TABLE_CONFIG']} (name, value) VALUES ('html5slideshow_cfg', '{$cfgs}')");
-		cpg_db_query("ALTER TABLE {$CONFIG['TABLE_ALBUMS']} ADD `H5ss_cfg` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL");
-		cpg_db_query("ALTER TABLE {$CONFIG['TABLE_USERS']} ADD `H5ss_cfg` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL");
+		cpg_db_query("ALTER TABLE {$CONFIG['TABLE_ALBUMS']} ADD `H5ss_cfg` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL");
+		cpg_db_query("ALTER TABLE {$CONFIG['TABLE_USERS']} ADD `H5ss_cfg` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL");
 	}
 	return true;
 }
