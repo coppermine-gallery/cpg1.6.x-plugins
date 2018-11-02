@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Styles>
+	<Style name="textinput" element="input">
+		<Attribute name="class" value="textinput" />
+	</Style>
+	<Style name="listbox" element="input">
+		<Attribute name="class" value="listbox" />
+	</Style>
+	<Style name="button" element="span">
+		<Attribute name="class" value="button" />
+	</Style>
+	<Style name="comment_button" element="span">
+		<Attribute name="class" value="comment_button" />
+	</Style>
+	<Style name="bblink" element="span">
+		<Attribute name="class" value="bblink" />
+	</Style>
+	<Style name="maintable" element="td">
+		<Attribute name="class" value="maintable" />
+	</Style>
+	<Style name="maintable" element="span">
+		<Attribute name="class" value="maintable" />
+	</Style>
+	<Style name="maintable" element="table">
+		<Attribute name="class" value="maintable" />
+	</Style>
+	<Style name="tableh1" element="td">
+		<Attribute name="class" value="tableh1" />
+	</Style>
+	<Style name="tableh1" element="span">
+		<Attribute name="class" value="tableh1" />
+	</Style>
+	<Style name="tableh1" element="table">
+		<Attribute name="class" value="tableh1" />
+	</Style>
+	<Style name="tableh1_compact" element="td">
+		<Attribute name="class" value="tableh1_compact" />
+	</Style>
+	<Style name="tableh1_compact" element="span">
+		<Attribute name="class" value="tableh1_compact" />
+	</Style>
+	<Style name="tableh1_compact" element="table">
+		<Attribute name="class" value="tableh1_compact" />
+	</Style>
+	<Style name="tableh2" element="td">
+		<Attribute name="class" value="tableh2" />
+	</Style>
+	<Style name="tableh2" element="span">
+		<Attribute name="class" value="tableh2" />
+	</Style>
+	<Style name="tableh2" element="table">
+		<Attribute name="class" value="tableh2" />
+	</Style>
+	<Style name="tableh2_compact" element="td">
+		<Attribute name="class" value="tableh2_compact" />
+	</Style>
+	<Style name="tableh2_compact" element="span">
+		<Attribute name="class" value="tableh2_compact" />
+	</Style>
+	<Style name="tableh2_compact" element="table">
+		<Attribute name="class" value="tableh2_compact" />
+	</Style>
+	<Style name="tableb" element="td">
+		<Attribute name="class" value="tableb" />
+	</Style>
+	<Style name="tableb" element="span">
+		<Attribute name="class" value="tableb" />
+	</Style>
+	<Style name="tableb" element="table">
+		<Attribute name="class" value="tableb" />
+	</Style>
+	<Style name="tableb_compact" element="td">
+		<Attribute name="class" value="tableb_compact" />
+	</Style>
+	<Style name="tableb_compact" element="span">
+		<Attribute name="class" value="tableb_compact" />
+	</Style>
+	<Style name="tableb_compact" element="table">
+		<Attribute name="class" value="tableb_compact" />
+	</Style>
+	<Style name="tablef" element="td">
+		<Attribute name="class" value="tablef" />
+	</Style>
+	<Style name="tablef" element="span">
+		<Attribute name="class" value="tablef" />
+	</Style>
+	<Style name="tablef" element="table">
+		<Attribute name="class" value="tablef" />
+	</Style>
+	<Style name="catrow" element="td">
+		<Attribute name="class" value="catrow" />
+	</Style>
+	<Style name="catrow" element="span">
+		<Attribute name="class" value="catrow" />
+	</Style>
+	<Style name="catrow" element="table">
+		<Attribute name="class" value="catrow" />
+	</Style>
+	<Style name="album_stat" element="span">
+		<Attribute name="class" value="album_stat" />
+	</Style>
+	<Style name="thumb_filename" element="span">
+		<Attribute name="class" value="thumb_filename" />
+	</Style>
+	<Style name="thumb_title" element="span">
+		<Attribute name="class" value="thumb_title" />
+	</Style>
+	<Style name="thumb_caption" element="span">
+		<Attribute name="class" value="thumb_caption" />
+	</Style>
+	<Style name="thumb_num_comments" element="span">
+		<Attribute name="class" value="thumb_num_comments" />
+	</Style>
+	<Style name="user_thumb_infobox" element="table">
+		<Attribute name="class" value="user_thumb_infobox" />
+	</Style>
+	<Style name="user_thumb_infobox" element="span">
+		<Attribute name="class" value="user_thumb_infobox" />
+	</Style>
+	<Style name="sortorder_cell" element="td">
+		<Attribute name="class" value="sortorder_cell" />
+	</Style>
+	<Style name="sortorder_options" element="td">
+		<Attribute name="class" value="sortorder_options" />
+	</Style>
+	<Style name="navmenu" element="table">
+		<Attribute name="class" value="navmenu" />
+	</Style>
+	<Style name="navmenu" element="td">
+		<Attribute name="class" value="navmenu" />
+	</Style>
+	<Style name="navmenu" element="span">
+		<Attribute name="class" value="navmenu" />
+	</Style>
+	<Style name="admin_menu_thumb" element="table">
+		<Attribute name="class" value="admin_menu_thumb" />
+	</Style>
+	<Style name="admin_menu_thumb" element="span">
+		<Attribute name="class" value="admin_menu_thumb" />
+	</Style>
+	<Style name="admin_menu_thumb" element="td">
+		<Attribute name="class" value="admin_menu_thumb" />
+	</Style>
+	<Style name="admin_menu" element="td">
+		<Attribute name="class" value="admin_menu" />
+	</Style>
+	<Style name="admin_menu" element="table">
+		<Attribute name="class" value="admin_menu" />
+	</Style>
+	<Style name="admin_menu" element="span">
+		<Attribute name="class" value="admin_menu" />
+	</Style>
+	<Style name="comment_date" element="span">
+		<Attribute name="class" value="comment_date" />
+	</Style>
+	<Style name="image" element="img">
+		<Attribute name="class" value="image" />
+	</Style>
+	<Style name="imageborder" element="td">
+		<Attribute name="class" value="imageborder" />
+	</Style>
+	<Style name="display_media" element="td">
+		<Attribute name="class" value="display_media" />
+	</Style>
+	<Style name="thumbnails" element="td">
+		<Attribute name="class" value="thumbnails" />
+	</Style>
+	<Style name="footer" element="table">
+		<Attribute name="class" value="footer" />
+	</Style>
+	<Style name="footer" element="span">
+		<Attribute name="class" value="footer" />
+	</Style>
+	<Style name="footer" element="td">
+		<Attribute name="class" value="footer" />
+	</Style>
+	<Style name="statlink" element="span">
+		<Attribute name="class" value="statlink" />
+	</Style>
+	<Style name="statlink" element="table">
+		<Attribute name="class" value="statlink" />
+	</Style>
+	<Style name="statlink" element="td">
+		<Attribute name="class" value="statlink" />
+	</Style>
+	<Style name="alblink" element="table">
+		<Attribute name="class" value="alblink" />
+	</Style>
+	<Style name="alblink" element="span">
+		<Attribute name="class" value="alblink" />
+	</Style>
+	<Style name="alblink" element="td">
+		<Attribute name="class" value="alblink" />
+	</Style>
+	<Style name="catlink" element="table">
+		<Attribute name="class" value="catlink" />
+	</Style>
+	<Style name="catlink" element="td">
+		<Attribute name="class" value="catlink" />
+	</Style>
+	<Style name="catlink" element="span">
+		<Attribute name="class" value="catlink" />
+	</Style>
+	<Style name="topmenu" element="table">
+		<Attribute name="class" value="topmenu" />
+	</Style>
+	<Style name="topmenu" element="td">
+		<Attribute name="class" value="topmenu" />
+	</Style>
+	<Style name="topmenu" element="span">
+		<Attribute name="class" value="topmenu" />
+	</Style>
+	<Style name="img_caption_table" element="table">
+		<Attribute name="class" value="img_caption_table" />
+	</Style>
+	<Style name="img_caption_table" element="tr">
+		<Attribute name="class" value="img_caption_table" />
+	</Style>
+	<Style name="img_caption_table" element="td">
+		<Attribute name="class" value="img_caption_table" />
+	</Style>
+	<Style name="debug_text" element="span">
+		<Attribute name="class" value="debug_text" />
+	</Style>
+		<Style name="Image on Left" element="img">
+		<Attribute name="style" value="padding: 5px; margin-right: 5px" />
+		<Attribute name="border" value="2" />
+		<Attribute name="align" value="left" />
+	</Style>
+	<Style name="Image on Right" element="img">
+		<Attribute name="style" value="padding: 5px; margin-left: 5px" />
+		<Attribute name="border" value="2" />
+		<Attribute name="align" value="right" />
+	</Style>
+</Styles>

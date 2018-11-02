@@ -1,0 +1,83 @@
+/**************************************************
+CPG MiniCMS Plugin for Coppermine Photo Gallery
+*************************************************
+Copyright (c) 2005-2006 Donovan Bray <donnoman@donovanbray.com>
+*************************************************
+1.3.0  eXtended miniCMS
+Copyright (C) 2004 Michael Trojacher <m.trojacher@webtips.at>
+Original miniCMS Code (c) 2004 by Tarique Sani <tarique@sanisoft.com>,
+Amit Badkas <amit@sanisoft.com>
+*************************************************
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+*************************************************
+Coppermine version: 1.5.x
+*********************************************
+Changelog
+=========
+[A] = Added new feature
+[B] = Bugfix (fix something that wasn't working as expected)
+[C] = Cosmetical fix (layout, typo etc.)
+[D] = Documentation improvements
+[M] = Maintenance works
+[O] = Optimization of code
+[S] = Security fix (issues that are related to security)
+***************************************************/
+
+2012-05-09 [O] Use default MySQL engine {eenemeenemuu}
+2010-11-30 [M] Public release for cpg1.5.10 {eenemeenemuu}
+2010-11-22 [M] Updated plugin hooks and minimum version info {eenemeenemuu}
+2010-11-19 [B] Fixed issue with special chars for FCKeditor {eenemeenemuu}
+2010-11-09 [B] Fixed language detection {eenemeenemuu}
+2010-11-08 [A] Made fully compatible to cpg1.5.x {eenemeenemuu}
+2010-11-08 [M] Added halnat's version to svn repository {eenemeenemuu}
+2009-12-20 [M] Initial release for CPG 1.5.x {halnat}
+2009-11-03 [M] Release of plugin MiniCMS {GauGau}
+2009-11-03 [M] Removal of reference to cpg-contrib.org because site is down {GauGau}
+2009-11-03 [M] Added MiniCMS to SVN repository of coppermine project {GauGau}
+2009-11-03 [M] Removed reference to versions in file headers for easier maintenance of code base {GauGau}
+2009-11-03 [A] Added German language file {GauGau}
+2009-11-03 [M] Streamlined configuration screen {GauGau}
+2009-11-03 [O] Renamed readme and changelog files {GauGau}
+2009-11-03 [M] Reversed changelog order to match Coppermine guidelines {GauGau}
+2009-11-03 [M] Counted plugin version up to 2.0 {GauGau}
+2009-10-29 [M] Released plugin v1.8.1 {i-imagine}
+2009-10-29 [M] Upgraded to FCKEditor 2.6.5 {i-imagine}
+200?-??-?? [M] Released plugin v1.7 {Donnoman}
+200?-??-?? [B] Changed it so that new MiniCMS articles aren't created until they are saved {Donnoman}
+200?-??-?? [B] Fixed Issue with Bridged Installations {Donnoman}
+200?-??-?? [A] Added the real content title of the first cms article to the html header on the cms page {Donnoman}
+200?-??-?? [B] Eliminated the unbound minicms edit box when veiwing a specific article {Donnoman}
+200?-??-?? [B] Eliminated automatic preview {Donnoman}
+200?-??-?? [C] Moved the preview to be above the editor, on the editor page {Donnoman}
+200?-??-?? [B] Fixed issue where aborting new content creation left an orhpaned entry in the database titled "New Content" {Donnoman}
+2006-11-04 [M] Released plugin v1.6 {Donnoman}
+2006-??-?? [C] Moved configuration button from the admin toolbar to the plugin installed_info section on the plugin manager page {Donnoman}
+2006-??-?? [B] Misc Fixes {Donnoman}
+2005-??-?? [M] Upgraded to FCKEditor 2.3.1 {Donnoman}
+2005-03-06 [M] Released plugin v1.5 {Donnoman}
+2005-03-12 [M] Removed htmlarea and tinymce support files, they will be supported as add-ons {Donnoman}
+2005-02-10 [A] Added RSS capability on "related" page {TranzNDance}
+2005-09-27 [A] Added a link to comments for each image on "related" page {TranzNDance}
+2005-04-10 [B] Fixed problem where some Coppermine themes were using an id of "content", changed minicms to "minicms_content" {Donnoman}
+2005-04-02 [A] Added style.xml support to fckeditor and began using Coppermine's CSS in the editor {Donnoman}
+2005-04-02 [A] Added config option to select active editor {Donnoman}
+2005-03-23 [B] Fixed action buttons in codebase {TranzNDance}
+2005-03-20 [A] Added auto-configuration on db version change {Donnoman}
+2005-03-20 [A] Added config page {Donnoman}
+2005-03-19 [A] Made fckeditor the default {Donnoman}
+2005-03-19 [A] Added fckeditor and tinymce {Donnoman}
+2005-03-19 [A] Added themeable functions and templates {Donnoman}
+2005-03-19 [A] Added "related" page to display content that share keywords {TranzNDance}
+2005-03-12 [M] Released plugin v1.4 {}
+2005-03-12 [A] Add "section" creation to the UI {Donnoman}
+2005-??-?? [B] Fixed Positioning code {Amit/Tarique}
+2005-??-?? [A] Added plugin actions to put content below the breadcrumb on thumbnail.php and displayimage.php {Amit/Tarique}
+2005-??-?? [M] Released plugin v1.3 {Amit/Tarique}
+2005-??-?? [A] Added on plugin install the database updates are shown in pluginmgr.php {Amit/Tarique}
+2005-??-?? [C] Changed pos column name in _cms table to cpos to avoid conflicts with Coppermine {Amit/Tarique}
+2005-??-?? [A] Added Display of SQL entries in the configure section on plugin install {Amit/Tarique}
+2005-??-?? [M] Released plugin v1.0 RC2 {Amit/Tarique}
+
