@@ -69,7 +69,7 @@ if ($superCage->get->getAlpha('do') == 'search') {
     $numpics = $superCage->get->getInt('numpics') ? $superCage->get->getInt('numpics') : cpg_db_result(cpg_db_query("SELECT COUNT(*) FROM {$CONFIG['TABLE_PICTURES']}"),0);   //*GMC 1.6 compat
     $found = $superCage->get->getInt('found') ? $superCage->get->getInt('found') : 0;
 
-    if (!$superCage->get->keyExists('offset')) {
+    if (!$limit_offset) {
         cpg_db_query("DROP TABLE IF EXISTS {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing");
         cpg_db_query("CREATE TABLE {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing (
                         id int(11) NOT NULL auto_increment,
@@ -107,7 +107,7 @@ if ($superCage->get->getAlpha('do') == 'search') {
 
             if ($CONFIG['make_intermediate'] && cpg_picture_dimension_exceeds_intermediate_limit($file['pwidth'], $file['pheight'])) {
                 if(!file_exists($CONFIG['fullpath'].$file['filepath'].$CONFIG['normal_pfx'].$file['filename'])) {
-                    $QUERY_STRING = "INSERT INTO {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing (pid, filepath, filename, type) VALUES('{$file['pid']}', '{$file['filepath']}', '{$CONFIG['normal_pfx']}{$file['filename']}', 'normal')";
+                    $query = "INSERT INTO {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing (pid, filepath, filename, type) VALUES('{$file['pid']}', '{$file['filepath']}', '{$CONFIG['normal_pfx']}{$file['filename']}', 'normal')";
                     cpg_db_query($query);
 //$rows = cpg_db_affected_rows();
 //echo $query.' - '.$rows.' affected.<br />';
