@@ -38,7 +38,7 @@ $author .= '<li>' . sprintf($lang_plugin_annotate['plugin_credit_i18n'], '<a hre
 $author .= '</ul>';
 
 $version = '3.1';
-$plugin_cpg_version = array('min' => '1.5');
+$plugin_cpg_version = array('min' => '1.5.42');
 $install_info = '<a href="http://forum.coppermine-gallery.net/index.php/topic,79517.0.html" rel="external" class="admin_menu">' . $annotate_icon_array['announcement'] . $lang_plugin_annotate['announcement_thread'] . '</a>';
 $extra_info .= '<a href="index.php?file=annotate/admin" class="admin_menu">' . $annotate_icon_array['configure'] . $lang_plugin_annotate['configure_plugin'] . '</a> ';
 $extra_info .= '<a href="index.php?plugin=annotate&amp;update_database" class="admin_menu">' . $annotate_icon_array['update_database'] . $lang_plugin_annotate['update_database'] . '</a> ';
