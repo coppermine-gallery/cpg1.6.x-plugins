@@ -1,0 +1,36 @@
+/**************************************************
+  Coppermine 1.5.x Plugin - Custom Thumbnail
+  *************************************************
+  Copyright (c) 2009 eenemeenemuu
+  *************************************************
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+  ********************************************
+  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/branches/cpg1.5.x/plugins/custom_thumb/changelog.txt $
+  $Revision: 6939 $
+  $LastChangedBy: gaugau $
+  $Date: 2009-12-30 17:02:58 +0100 (Mi, 30 Dez 2009) $
+**************************************************/
+
+Changelog
+=========
+[A] = Added new feature
+[B] = Bugfix (fix something that wasn't working as expected)
+[C] = Cosmetical fix (layout, typo etc.)
+[D] = Documentation improvements
+[M] = Maintenance works
+[O] = Optimization of code
+[S] = Security fix (issues that are related to security)
+*********************************************
+
+2010-07-31 [B] Made it work with SEF_URL plugin {Timo}
+2009-12-30 [M] Counted version up from 1.2 to 1.3 {GauGau}
+2009-12-30 [M] Added changelog file {GauGau}
+2009-12-30 [M] Added French language file {Frantz}
+2009-12-29 [A] i18n (English and German) {eenemeenemuu}
+2009-10-06 [M] Added subversion properties svn-keyword {eenemeenemuu}
+2009-08-14 [O] Added form token check {eenemeenemuu}
+2009-06-22 [O] Changed redirection from pos to pid {eenemeenemuu}
+2009-06-22 [M] Initial release {eenemeenemuu}
