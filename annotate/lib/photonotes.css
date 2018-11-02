@@ -1,0 +1,150 @@
+/**************************************************
+  Coppermine 1.5.x Plugin - Picture Annotation (annotate)
+  *************************************************
+  Copyright (c) 2003-2009 Coppermine Dev Team
+  *************************************************
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+  ********************************************
+  $HeadURL$
+  $Revision$
+  $LastChangedBy$
+  $Date$
+  **************************************************/
+
+/*
+The overall container: always has class="fn-container", and also one of:
+container-inactive container-active
+*/
+
+.fn-container {
+    position: relative;
+}
+
+.fn-container img {
+    /*border-width: 0;*/
+}
+
+.fn-area {
+    position: absolute;
+    border:none;
+    border: 0px solid #D4D82D;
+    margin:1px;
+}
+
+.fn-area-blackborder {
+    border: 1px solid #000;
+}
+
+.fn-area-whiteborder {
+    border: 1px solid #FFF;	
+}
+
+.fn-area-inner {
+    border: 1px solid #000000;
+    background-color:#FFF;
+    filter:alpha(opacity=0);
+    opacity:0;
+    -moz-opacity:0;
+    -khtml-opacity:0;
+    cursor: pointer;
+}
+
+.fn-note {
+    position: absolute;
+    max-width: 250px;
+    padding: 5px;
+    display:none;
+    cursor:default;
+    z-index:5000;
+}
+
+.fn-note-text {
+    text-align: left;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.font-weight-normal {
+    font-weight: normal;
+}
+
+.fn-note-edit-text {
+    border: 1px solid #000000;
+}
+
+.fn-note-edit {
+    display:none;
+}
+
+.fn-note-edit #fn-note-edit-text-textbox {
+    border:0;
+    overflow:visible;
+    margin-bottom:10px;
+    padding:6px;
+    width:236px;
+    margin:0;
+}
+
+/* Note drag/resize UI */
+
+.dragresize {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    font-size: 1px;
+    background: white;
+    border: 1px solid black;
+}
+
+.dragresize-tl {
+    top: -8px;
+    left: -8px;
+    cursor: nw-resize;
+}
+.dragresize-tm {
+    top: -8px;
+    left: 50%;
+    margin-left: -4px;
+    cursor: n-resize;
+}
+.dragresize-tr {
+    top: -8px;
+    right: -8px;
+    cursor: ne-resize;
+}
+
+.dragresize-ml {
+    top: 50%;
+    margin-top: -4px;
+    left: -8px;
+    cursor: w-resize;
+}
+
+.dragresize-mr {
+    top: 50%;
+    margin-top: -4px;
+    right: -8px;
+    cursor: e-resize;
+}
+
+.dragresize-bl {
+    bottom: -8px;
+    left: -8px;
+    cursor: sw-resize;
+}
+.dragresize-bm {
+    bottom: -8px;
+    left: 50%;
+    margin-left: -4px;
+    cursor: s-resize;
+}
+.dragresize-br {
+    bottom: -8px;
+    right: -8px;
+    cursor: se-resize;
+}
