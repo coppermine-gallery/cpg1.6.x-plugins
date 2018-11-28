@@ -1,6 +1,6 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Limit upload
+  Coppermine 1.6.x Plugin - Limit upload
   *************************************************
   Copyright (c) 2010-2018 eenemeenemuu
   *************************************************
@@ -8,11 +8,6 @@
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
-  ********************************************
-  $HeadURL: https://coppermine.svn.sourceforge.net/svnroot/coppermine/branches/cpg1.5.x/plugins/limit_upload/lang/english.php $
-  $Revision: 7775 $
-  $LastChangedBy: eenemeenemuu $
-  $Date: 2010-07-15 15:51:42 +0200 (Do, 15 Jul 2010) $
 **************************************************/
 
 if (!defined('IN_COPPERMINE')) {

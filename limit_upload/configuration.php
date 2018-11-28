@@ -1,6 +1,6 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Limit upload
+  Coppermine 1.6.x Plugin - Limit upload
   *************************************************
   Copyright (c) 2010-2018 eenemeenemuu
   *************************************************
@@ -8,11 +8,6 @@
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
-  ********************************************
-  $HeadURL$
-  $Revision$
-  $LastChangedBy$
-  $Date$
 **************************************************/
 
 require_once "./plugins/limit_upload/lang/english.php";
