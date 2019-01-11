@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<title>Image manipulation plugin for cpg1.5.x</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en" />
+<meta name="copyright" content="Timo Schewe" />
+<meta name="description" content="" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="no" />
+<!--
+  SVN version info:
+
+  $HeadURL$
+  $Revision$
+  $LastChangedBy$
+  $Date$
+-->
+<link rel="stylesheet" type="text/css" href="../../../docs/style/style.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../../../docs/style/screen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../../../docs/style/print.css" media="print" />
+<link rel="shortcut icon" href="../../../favicon.ico" />
+<script src="../../../js/jquery-1.3.2.js" type="text/javascript"></script>
+<script src="../../../js/jquery.treeview.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        $("#toclist").treeview({
+            collapsed: true,
+            animated: "medium",
+            control:"#sidetreecontrol"
+        });
+    });
+</script>
+</head>
+<body>
+<a name="header"></a><h1>Plugin for CPG 1.5.x: Image Manipulation<a href="#header" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h1>
+
+<a name="purpose"></a><h2>What's this?<a href="#purpose" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>This plugin allows the visitor to non-destructively manipulate pictures using new buttons on displayimage.php. Depending on the plugin configuration, the settings for each picture may be saved in a cookie on the visitor's computer (so if a picture is visited again, the old settings will be applied), and the URL may change accordingly (so if the visitor passes on the link, the recepient will see the pic just as the visitor likes it). Check the demo to see what all this means. The plugin will add ~30 kbyte of javascript to the page (slightly less in compatible mode).</p>
+<p>The so-called <em>compatible mode</em> used to be an option of it's own in older versions of this plugin. It has been removed from the list of options because you now have the choice between all buttons and control individually. However, the compatible mode sort-of remained in the background: if the visitor is using IE (where some controls don't work) or if you haven't enabled any of the advanced controls that don't work in IE anyway, a condensed JavaScript file will be loaded instead of the complete one, which is only 17 KB in size instead of 22 KB.</p>
+
+<a name="requirements"></a><h2>Minimum requirements<a href="#requirements" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+The controls in this plugin require JavaScript to be available and enabled in the visitor's browser. The visitor should have a fairly modern browser.
+
+<div class="indent">
+
+    <a name="requirements_compatibility"></a><h3>Browser compatibility<a href="#requirements_compatibility" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    The basic effects work fine with
+    <ul>
+        <li>IE 5.5+</li>
+        <li>Opera 9.5+</li>
+        <li>Firefox 2+</li>
+        <li>Chrome 3+</li>
+        <li>most other modern browsers should work, too or fall back without crashing</li>
+    </ul>
+
+    <a name="requirements_notes"></a><h3>Please note<a href="#requirements_notes" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    <ul>
+        <li>This plugin will only work if 'Insert a transparent overlay to minimize image theft' is deactivated. The plugin's installer will take care of this and turn that option off if it's own. However, as long as you plan to use this plugin your should keep the config option 'Insert a transparent overlay to minimize image theft' deactivated.</li>
+        <li>This plugin and the plugin 'mirror' may not be used at the same time.</li>
+        <li>The buttons will only be available for visitors with javascript turned on. Others won't notice a thing.</li>
+    </ul>
+
+</div>
+
+<a name="install"></a><h2>Install and uninstall<a href="#install" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+Install/uninstall this plugin as any other plugin, using the plugin manager. There are no particular install/uninstall steps that differ from "regular" plugins.
+
+<a name="configuration"></a><h2>Configuration<a href="#configuration" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+After installing the plugin you can access the plugin's configuration screen at any time by clicking on the corresponding link on the plugin manager page.<br />
+On the plugin configuration screen you can enable or disable what controls will be available.
+
+<div class="indent">
+    <a name="configuration_cookies"></a><h3>Use cookies<a href="#configuration_cookies" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    Determine if the script will store the visitor's preferences for a particular image inside a cookie. If enabled, the manipulation will be re-applied if the visitor returns to a particular image. Turn this off if your gallery has many files with PIDs above 10,000.
+    
+    <a name="configuration_url"></a><h3>Use URL values<a href="#configuration_url" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    If enabled, the changes a visitor applies using this plugin's controls will have an impact on the URL. Subsequently, if a visitor bookmarks a URL or sends the URL to a friend, the changes will be applied on the target PC as well.
+    
+    <a name="configuration_button"></a><h3>Enable the following buttons<a href="#configuration_button" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    The checkboxes in this row allow you to determine which buttons will be displayed for the visitors. Each checkbox here correlates to one button.
+    
+    <div class="indent">
+    
+        <a name="configuration_button_reset"></a><h4>Display "reset" button<a href="#configuration_button_reset" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Determine if the reset button should be displayed that will allow the visitor to undo his manipulations to a particular image. This is the most basic button that you should enable if you enable any other button. It should work in all modern browsers.<br />
+        Default (and recommended) value is "enabled".
+        
+        <a name="configuration_button_bw_sepia"></a><h4>Display "black and white" or "sepia" button<a href="#configuration_button_bw_sepia" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        The sepia effect will show an image as if it was an aged black and white photography<br />
+        In IE 5-8, the sepia filter doesn't work and therefore is not being displayed for visitors using Microsoft's Internet Explorer before version 9. Instead, they will see the button "black and white", which will apply nearly the same effect, but not using the brown colors that old photograps usually have, but simply a greyscale palette.
+        
+        <a name="configuration_button_flip_vertically"></a><h4>Display "flip vertically" button<a href="#configuration_button_flip_vertically" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        When enabled a button is being displayed that allows the visitor to flip the image vertically, i.e. make the photo display upside down. A second click will revert the change - the image will be displayed as usual.<br />
+        Usually it doesn't make much sense to display that control, as there is hardly any practical use for it - it's just a gimmick that your visitors can play with.
+        
+        <a name="configuration_button_flip_horizontally"></a><h4>Display "flip horizontally" button<a href="#configuration_button_flip_horizontally" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        When enabled a button is being displayed that allows the visitor to flip the image horizontally, i.e. make the left and right side of the photo swap palces as if mirrored. A second click will revert the change - the image will be displayed as usual.<br />
+        Usually it doesn't make much sense to display that control, as there is hardly any practical use for it - it's just a gimmick that your visitors can play with.
+        
+        <a name="configuration_button_invert"></a><h4>Display "invert" button<a href="#configuration_button_invert" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        This buttons gives your visitors the ability to invert all colors in an image, making it look into a negative image.
+        
+        <a name="configuration_button_emboss"></a><h4>Display "emboss" button<a href="#configuration_button_emboss" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        This button will allow the visitor to apply an emboss filter on an image, which will make it look as if it was cut out of a metall plate.
+        
+        <a name="configuration_button_blur"></a><h4>Display "blur" button<a href="#configuration_button_blur" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        When applying the gaussian blur button the visitor will see the image in an "unsharp" way.
+        
+    </div>
+    
+    <a name="configuration_controls"></a><h3>Enable the following controls<a href="#configuration_controls" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    The checkboxes in this row allow you to determine which controls will be displayed for the visitors. Each checkbox here correlates to one control. A control is a feature similar to a button, but it is not just a simple yes/no toggle, but a LED slider that allows your visitors to determine how much of the filter will be applied to an image.<br />
+    WHile the buttons above are merely a toy for visitors to play with, the controls can be used to a certain extent to adapt an image to a users monitor brightness (although it would of course be better to actually calibrate the monitor instead of playing with the controls for an individual pic.
+    
+    <div class="indent">
+        
+        <a name="configuration_controls_brightness"></a><h4>Display "brightness" control<a href="#configuration_controls_brightness" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        This is the most basic and most powerfull control of the entire plugin. It allows you to control the brightness, which can be particularly helpfull if you have a dark image that looks better in dark colors, but details can be seen if the user turns the brightness control up.
+        
+        <a name="configuration_controls_contrast"></a><h4>Display "contrast" control<a href="#configuration_controls_contrast" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        The contrast control allows your visitors to fine-tune the contrast for each image.<br />
+        This control doesn't work in IE 5-8 and therefore is not being displayed for visitors using Microsoft's Internet Explorer before version 9.
+        
+        <a name="configuration_controls_saturation"></a><h4>Display "saturation" control<a href="#configuration_controls_saturation" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        The saturation control allows your visitors to individually assign a saturation level to each image.<br />
+        This control doesn't work in IE 5-8 and therefore is not being displayed for visitors using Microsoft's Internet Explorer before version 9.
+        
+        <a name="configuration_controls_sharpness"></a><h4>Display "sharpness" control<a href="#configuration_controls_sharpness" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        This control doesn't work in IE 5-8 and therefore is not being displayed for visitors using Microsoft's Internet Explorer before version 9.
+        
+        
+    
+    </div>
+</div>
+
+<a name="glossary"></a><h2>Glossary<a href="#glossary" title="Link to this section"><img src="../../../docs/en/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>This is a list of definitions of the terms used on this page that are related to color theory:</p>
+<ul>
+    <li>In colorimetry and color theory, colorfulness, chroma, and <strong>saturation</strong> are related but distinct concepts referring to the perceived intensity of a specific color. Colorfulness is the difference between a color against gray. Chroma is the difference of a color against the brightness of another color which appears white under similar viewing conditions. Saturation is the difference of a color against its own brightness. [<a href="http://en.wikipedia.org/wiki/Saturation_%28color_theory%29" rel="external" class="external">more</a>]</li>
+    <li>Perceived <strong>sharpness</strong> is a combination of both resolution and acutance: it is thus a combination of the captured resolution, which cannot be changed in processing, and of acutance, which can be so changed. [<a href="http://en.wikipedia.org/wiki/Sharpness_%28visual%29#Sharpness" rel="external" class="external">more</a>]</li>
+    <li><strong>Contrast</strong> is the difference in visual properties that makes an object (or its representation in an image) distinguishable from other objects and the background. [<a href="http://en.wikipedia.org/wiki/Contrast_%28vision%29" rel="external" class="external">more</a>]</li>
+    <li>Image embossing is a computer graphics technique where each pixel of an image is replaced either by a highlight or a shadow, depending on light/dark boundaries on the original image. [<a href="http://en.wikipedia.org/wiki/Image_embossing" rel="external" class="external">more</a>]</li>
+</ul>
+
+</body>
+</html>

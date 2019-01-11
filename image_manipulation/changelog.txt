@@ -1,0 +1,72 @@
+/**************************************************
+  Coppermine 1.5.x Plugin - Image manipulation
+  *************************************************
+  Copyright (c) 2010 Timo Schewe (www.timos-welt.de)
+  *************************************************
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 3 of the License, or
+  (at your option) any later version.
+  ********************************************
+  $HeadURL$
+  $Revision$
+  $LastChangedBy$
+  $Date$
+  **************************************************/
+
+Changelog
+=========
+[A] = Added new feature
+[B] = Bugfix (fix something that wasn't working as expected)
+[C] = Cosmetical fix (layout, typo etc.)
+[D] = Documentation improvements
+[M] = Maintenance works
+[O] = Optimization of code
+[S] = Security fix (issues that are related to security)
+*********************************************
+
+2011-07-11 [A] IE9 supports canvas mode => added {Timo}
+2010-02-17 [B] Removed buttons and sliders from documents {eenemeenemuu}
+2010-02-17 [O] Apply plugin hook only if DISPLAYIMAGE_PHP is set {eenemeenemuu}
+2010-01-28 [B] Reduced number of cookies to 1/400 to make Firefox work even better {Timo}
+2010-01-28 [M] Version count updated to 2.2 {Timo}
+2010-01-28 [B] Reduced number of cookies to 1/100 to make Firefox work {Timo}
+2010-01-15 [M] Version count updated to 2.0 {Timo}
+2010-01-17 [C] Replaced <button> tags for sliders {eenemeenemuu}
+2010-01-16 [B] Fixed broken uninstall queries related to transparent overlay preservation {GauGau}
+2010-01-15 [O] Removed compressed JS file because JSmin plugin is available {Timo}
+2010-01-15 [B] Controls were visible in slideshow {Timo}
+2010-01-15 [M] Version count updated to 1.9 {Timo}
+2010-01-13 [M] Version count updated to 1.8 {Timo}
+2010-01-13 [B] Sharpness icon didn't show {Timo}
+2010-01-13 [D] Updated German documentation (rest) {Timo}
+2010-01-11 [D] Updated German documentation (partially) {GauGau}
+2010-01-11 [D] Updated English documentation {GauGau}
+2010-01-11 [M] Removed unused variables from JS {Timo}
+2010-01-11 [M] Version count updated to 1.7 {GauGau}
+2010-01-11 [A] Added install check for incompatibilities {GauGau
+2010-01-10 [O] Added source file and compressed JS file to save bandwidth {Timo}
+2010-01-10 [B] Fixed missing semicolons in JS source code {Timo}
+2010-01-10 [B] Invert was executed differently in IE and other Browsers making the URL feature useless {Timo}
+2010-01-10 [M] Version count updated to 1.6 {Timo}
+2010-01-10 [A] Added icons for LED sliders {Timo}
+2010-01-09 [M] Version count updated to 1.5 {GauGau}
+2010-01-09 [A] Added icons to config screen {GauGau}
+2010-01-09 [A] Added check for transparent overlay setting to config screen {GauGau}
+2010-01-09 [O] Renamed functions to make sure that the name doesn't collide with other plugins {GauGau}
+2010-01-09 [A] Added config options to enable or disable each control independantly {GauGau}
+2010-01-09 [B] Fixed bug where config changes didn't stick {GauGau}
+2010-01-09 [M] Version count updated to 1.4 {Timo}
+2010-01-09 [B] Fixed broken feature "highlight active buttons in red" (Buttons didn't show their state anymore) {Timo}
+2010-01-08 [A] Added icons {GauGau}
+2010-01-08 [O] Renamed some language array index names for clarification {GauGau}
+2010-01-08 [O] Removed unneeded variable definitions from JS file {GauGau}
+2010-01-08 [O] Converted HTML equivalents (&uuml; e.a.) to utf-8 encoded characters {GauGau}
+2010-01-08 [O] Converted files from ANSI to utf-8 encoding {GauGau}
+2010-01-08 [D] Added anchors to headers as per http://documentation.coppermine-gallery.net/en/dev_documentation.htm#dev_documentation_heading_anchors {GauGau}
+2010-01-08 [O] Replaced deprecated HTML tag <b> with <strong> {GauGau}
+2010-01-08 [A] Usability improvement of config form {GauGau}
+2010-01-08 [A] Disabling transparent overlay during install {GauGau}
+2010-01-08 [O] Renamed language array {GauGau}
+2010-01-08 [M] Version count updated to 1.3 {GauGau}
+2010-01-08 [M] Created changelog file {GauGau}

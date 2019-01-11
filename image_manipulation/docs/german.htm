@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<title>Image Manipulation PlugIn für cpg1.5.x</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en" />
+<meta name="copyright" content="Timo Schewe" />
+<meta name="description" content="" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="no" />
+<!--
+  SVN version info:
+
+  $HeadURL$
+  $Revision$
+  $LastChangedBy$
+  $Date$
+-->
+<link rel="stylesheet" type="text/css" href="../../../docs/style/style.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../../../docs/style/screen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../../../docs/style/print.css" media="print" />
+<link rel="shortcut icon" href="../../../favicon.ico" />
+<script src="../../../js/jquery-1.3.2.js" type="text/javascript"></script>
+<script src="../../../js/jquery.treeview.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        $("#toclist").treeview({
+            collapsed: true,
+            animated: "medium",
+            control:"#sidetreecontrol"
+        });
+    });
+</script>
+</head>
+<body>
+<a name="header"></a><h1>Plugin für CPG 1.5.x: Image Manipulation<a href="#header" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h1>
+
+<a name="purpose"></a><h2>Worum geht's?<a href="#purpose" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p> Dieses PlugIn ermöglicht es dem Besucher, non-destruktiv die Bilder auf der Seite displayimage.php zu verändern. Je nach Konfiguration des PlugIns werden die Einstellungen für jedes Bild in einem Cookie auf dem Computer des Besuchers gespeichert (besucht er dasselbe Bild später erneut, so sind seine Einstellungen wieder da), und die URL wird dynamisch angepasst (gibt der Besucher also den Link an jemand anders weiter, so sieht der das Bild mit dem Einstellungen, die er bevorzugte). Dieses PlugIn fügt etwa 30 KByte an Javascript zur Seite hinzu.</p>
+
+<a name="requirements"></a><h2>Mindestvoraussetzungen<a href="#requirements" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+Damit dieses Plugin benutzt werden kann ist es erforderlich, dass im Browser des Besuchers JavaScript verfügbar und aktiviert ist. Ein halbwegs moderner Browser wird ebenfalls benötigt.
+
+<div class="indent">
+
+    <a name="requirements_compatibility"></a><h3>Browser-Kompatibilität<a href="#requirements_compatibility" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    Die Basis-Effekte funktionieren mit
+    <ul>
+        <li>IE 5.5+</li>
+        <li>Opera 9.5+</li>
+        <li>Firefox 2+</li>
+        <li>Chrome 3+</li>
+        <li>die meisten anderen modernen Browser sollten ebenfalls funktionieren oder zumindest nicht abstürzen</li>
+    </ul>
+
+    <a name="requirements_notes"></a><h3>Merke<a href="#requirements_notes" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    <ul>
+        <li>Dieses Plugin wird nur funktionieren, wenn "Transparente Grafik über dem tatsächlichen Bild einfügen, um Bilderdiebstahl zu reduzieren" deaktiviert ist. Die Installationsroutine des Plugins sorgt dafür und deaktiviert diese Option, falls sie aktiviert ist. SOlange Du planst, dieses Plugin zu benutzen sollte die genannte Option deaktiviert bleiben.</li>
+        <li>Dieses Plugin und das "Mirror"-Plugin sind nicht miteinander kompatibel und können nicht gleichzeitig verwendet werden.</li>
+        <li>Die Schaltflächen sind nur für Besucher mit aktiviertem JavaScript verfügbar. Alle anderen werden von dem Plugin nichts zu Gesicht bekommen.</li>
+    </ul>
+
+</div>
+
+<a name="install"></a><h2>Installation und De-Installation<a href="#install" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+Installiere/deinstalliere dieses Plugin wie jedes andere Plugin über den Plugin-Manager. Es existieren keine speziellen Zusatzschritte, die sich von der Installationsprozedur normaler Plugins unterscheidet.
+
+<a name="configuration"></a><h2>Konfiguration<a href="#configuration" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+Nach erfolgter Installation kannst Du die Plugin-Einstellungen jederzeit über den entsprechenden Link innerhalb des Plugin-Managers erreichen.<br />
+Auf der Konfigurations-Seite kannst Du auswählen, welche Schaltflächen und Kontrollstrukturen des Plugins verfügbar sein sollen
+
+<div class="indent">
+    <a name="configuration_cookies"></a><h3>Cookies benutzen<a href="#configuration_cookies" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    Legt fest, ob das Skript die vom Besucher vorgenommenen Einstellungen zu jedem einzelnen Bild innerhalb eines Cookies speichert. Wenn diese Option aktiviert wird werden die Filter erneut angewendet, wenn der Besucher das Bild erneut im Browser betrachtet. Diese Option sollte in Gallerien, die Dateien mit PIDs über 10.000 verwenden, ausgeschaltet werden.
+    
+    <a name="configuration_url"></a><h3>URL-Werte benutzen<a href="#configuration_url" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    Falls aktiviert haben die Einstellungen des Besuchers eine Auswirkung auf die URL der besuchten Seite. Wenn die Seite dann als Lesezeichen gespeichert oder an einen Freund geschickt wird werden die vorgenommenen Änderungen ebenfalls auf dem Zielrechner vorgenommen.
+    
+    <a name="configuration_button"></a><h3>Folgende Schaltflächen aktivieren<a href="#configuration_button" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    Die Kontrollkästchen in dieser Zeile ermöglichen es, festzulegen welche Schaltflächen für die Besucher verfügbar sein sollen. Jedes Kontrollkästchen entspricht dabei einer Schaltfläche.
+    
+    <div class="indent">
+    
+        <a name="configuration_button_reset"></a><h4>"Originalbild"-Schaltfläche anzeigen<a href="#configuration_button_reset" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Legt fest, ob eine "Originalbild"-Schaltfäche angezeigt werden soll, mit der der Besucher seine Manipulationen an einem Bild ungeschehen machen kann. Dies ist die grundlegendste Schaltfläche und sollte aktiviert werden, wenn irgend eine andere Schaltfläche ebenfalls aktiviert wurde. Diese Schaltfäche sollte in allen Browsern funktionieren.<br />
+        Standardwert ist "aktiviert" (empfohlen).
+        
+        <a name="configuration_button_bw_sepia"></a><h4>"Schwarzweiß"- oder "Sepia"-Schaltfläche anzeigen<a href="#configuration_button_bw_sepia" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Der Sepia-Effekt stellt das Bild wie eine gealterte Schwarzweißfotografie dar.<br />
+        Im Internet-Explorer vor Version 9 funktioniert dieser Filter nicht und wird durch einen Knopf 'Schwarzweiß' ersetzt, der nahezu denselben Effekt produziert, jedoch auf die braune Einfärbung des Bildes verzichten muss.
+        
+        <a name="configuration_button_flip_vertically"></a><h4>"Spiegeln vertikal"-Schaltfläche anzeigen<a href="#configuration_button_flip_vertically" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Ist diese Schaltfläche aktiv, so wird ein Knopf angezeigt, mit dessen Hilfe das Bild vertikal gespiegelt werden kann. Ein zweiter Klick macht den Effekt rückgängig.<br />
+        Normalerweise macht es wenig Sinn diesen Knopf anzuzeigen, da es wenig praktischen Nutzwert dafür gibt - es ist eher eine Spielerei, mit der der Besucher experimentieren kann.
+        
+        <a name="configuration_button_flip_horizontally"></a><h4>"Spiegeln horizontal"-Schaltfläche anzeigen<a href="#configuration_button_flip_horizontally" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Ist diese Schaltfläche aktiv, so wird ein Knopf angezeigt, mit dessen Hilfe das Bild horizontal gespiegelt werden kann. Ein zweiter Klick macht den Effekt rückgängig.<br />
+        Normalerweise macht es wenig Sinn diesen Knopf anzuzeigen, da es wenig praktischen Nutzwert dafür gibt - es ist eher eine Spielerei, mit der der Besucher experimentieren kann.
+        
+        <a name="configuration_button_invert"></a><h4>"Negativ"-Schaltfläche anzeigen<a href="#configuration_button_invert" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Diese Schaltfläche gibt dem Besucher die Möglichkeit, das Bild mit invertierten Farben anzuzeigen, so dass es wie ein Filmnegativ aussieht. Ein zweiter Klick darauf schaltet den Effekt wieder aus.
+        
+        <a name="configuration_button_emboss"></a><h4>"Relief"-Schaltfläche anzeigen<a href="#configuration_button_emboss" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Diese Schaltfläche schaltet einen Relief-Filter ein, so dass das Bild aussieht, als wäre es in eine Metallplatte geschnitten. Ein zweiter Klick darauf schaltet den Effekt wieder aus.
+        
+        <a name="configuration_button_blur"></a><h4>"Weichzeichnen"-Schaltfläche anzeigen<a href="#configuration_button_blur" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Wird diese Schaltfläche benutzt, so sieht der Benutzer das Bild auf eine 'unscharfe' Art und Weise. Ein zweiter Klick darauf schaltet den Effekt wieder aus.
+        
+    </div>
+    
+    <a name="configuration_controls"></a><h3>Folgende Schieberegler aktivieren<a href="#configuration_controls" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h3>
+    Die Kontrollkästchen in dieser Zeile erlauben es zu bestimmen, welche Steuerelemente für den Besucher angezeigt werden. Jedes Kästchen steht für einen Regler. Ein Regler ist ähnlich wie ein Knopf, aber nicht nur ein simpler ein/aus-Schalter, sondern ein LED-Regler der dem Benutzer erlaubt, die Intensität eines Effekts festzulegen.<br />
+    Während die o. g. Schaltflächen eher ein Spielzeug für den Besucher sind, erlauben es die Regler, bis zu einem gewissen Grad die Bilder an die eigene Bildschirmhelligkeit anzupassen.
+    
+    <div class="indent">
+        
+        <a name="configuration_controls_brightness"></a><h4>Schieberegler "Helligkeit" anzeigen<a href="#configuration_controls_brightness" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Dies ist der einfachste und gleichzeitig leistungsfähigste Regler des ganzen Plugins. Er erlaubt es die Helligkeit des Bildes zu beeinflussen, was bei zu dunkel aufgenommenen Bildern oder zu dunkel eingestelltem Monitor sehr hilfreich sein kann.
+        
+        <a name="configuration_controls_contrast"></a><h4>Schieberegler "Kontrast" anzeigen<a href="#configuration_controls_contrast" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Erlaubt es dem Besucher, den Kontrast des Bildes zu ändern. Helligkeitsunterschiede werden dadurch verstärkt.<br />
+        Dieser Regler funktioniert nicht im Internet-Explorer vor Version 9 und wird dort daher nicht angezeigt.
+        
+        <a name="configuration_controls_saturation"></a><h4>Schieberegler "Sättigung" anzeigen<a href="#configuration_controls_saturation" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+        Der Sättigungs-Regler erlaubt dem Besucher, die intensität der Farben zu beeinflussen. Flaue Bilder können so lebendiger anzeigt werden.<br />
+        Dieser Regler funktioniert nicht im Internet-Explorer vor Version 9 und wird dort daher nicht angezeigt.
+        
+        <a name="configuration_controls_sharpness"></a><h4>Schieberegler "Schärfe" anzeigen<a href="#configuration_controls_sharpness" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h4>
+    Erlaubt dem Besucher, unscharfe Bilder schärfer darzustellen. Zuviel des Guten verschlechtert die Bildqualität.
+        Dieser Regler funktioniert nicht im Internet-Explorer vor Version 9 und wird dort daher nicht angezeigt.
+    
+    </div>
+</div>
+
+<a name="glossary"></a><h2>Glossar<a href="#glossary" title="Link to this section"><img src="../../../docs/de/images/anchor.gif" width="15" height="9" border="0" alt="" /></a></h2>
+<p>Dies ist eine Liste der Begriffsdefinitionen auf dieser Seite, die die Farbtheorie betreffen:</p>
+<ul>
+    <li>Die Farbsättigung (oder auch einfach Sättigung) ist – neben Farbton und Helligkeit – eine der drei vom Menschen als grundlegend empfundenen Eigenschaften einer Farbe. Sie beschreibt die Qualität der Farbwirkung. [<a href="http://de.wikipedia.org/wiki/Farbs%C3%A4ttigung" rel="external" class="external">mehr...</a>]</li>
+    <li>Die Unterscheidbarkeit von Details in einem Bild wird Schärfe genannt. Schärfe ist bei der technischen Umsetzung der Fotografie immer das wichtigste Ziel. [<a href="http://de.wikipedia.org/wiki/Sch%C3%A4rfe_(Fotografie)" rel="external" class="external">mehr...</a>]</li>
+    <li>Kontrast bezeichnet den Unterschied zwischen hellen und dunklen Bereichen eines Bildes (es unterscheidet helle und dunkle Farben). Umgangssprachlich wird auch von Brillanz gesprochen, die aber im Unterschied dazu technisch nicht definiert ist. [<a href="http://de.wikipedia.org/wiki/Kontrast" rel="external" class="external">mehr...</a>]</li>
+</ul>
+
+
+</body>
+</html>
