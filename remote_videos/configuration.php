@@ -2,7 +2,7 @@
 /**************************************************
   Coppermine 1.6.x Plugin - remote_videos
   *************************************************
-  Copyright (c) 2009-2018 eenemeenemuu
+  Copyright (c) 2009-2019 eenemeenemuu
   **************************************************/
 
 $name = 'Remote Videos';
@@ -25,4 +25,4 @@ $install_info = <<<EOT
     <strong>Please consider your country's law, if you are liable when embedding content.</strong>
 EOT;
 
-?>
+//EOF

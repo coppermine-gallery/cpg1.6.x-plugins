@@ -2,7 +2,7 @@
 /**************************************************
   Coppermine 1.6.x Plugin - remote_videos
   *************************************************
-  Copyright (c) 2009-2018 eenemeenemuu
+  Copyright (c) 2009-2019 eenemeenemuu
   **************************************************/
 
 if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
@@ -23,18 +23,18 @@ function remote_videos_upload_permission($aid) {
 
     // check if user can upload to the current album
     if (!GALLERY_ADMIN_MODE) {
-        $row = mysql_fetch_assoc(cpg_db_query("SELECT uploads, owner FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid = $aid LIMIT 1"));
+        $row = cpg_db_fetch_assoc(cpg_db_query("SELECT uploads, owner FROM {$CONFIG['TABLE_ALBUMS']} WHERE aid = $aid LIMIT 1"));
         if ($row['owner'] == USER_ID) {
             return TRUE;
         } elseif ($row['uploads'] == 'YES') {
             $result = cpg_db_query("SELECT can_upload_pictures FROM {$CONFIG['TABLE_USERGROUPS']} WHERE group_id IN (".implode(',', $USER_DATA['groups']).")");
-            while ($row = mysql_fetch_assoc($result)) {
+            while ($row = cpg_db_fetch_assoc($result)) {
                 if ($row['can_upload_pictures']) {
                     return TRUE;
                     break;
                 }
             }
-            mysql_free_result($result);
+            cpg_db_free_result($result);
         } else {
             return FALSE;
         }
@@ -132,7 +132,7 @@ function remote_videos_html_replace($params, $pic_html) {
     global $CONFIG, $CURRENT_PIC_DATA;
     $check_result = preg_match($params['search_pattern']."i", file_get_contents(urldecode($CURRENT_PIC_DATA['url'])), $video_id);
     if ($check_result == "1") {
-        $row = cpg_db_fetch_array(cpg_db_query("SELECT pwidth, pheight FROM {$CONFIG['TABLE_PICTURES']} WHERE pid = '{$CURRENT_PIC_DATA['pid']}'"), MYSQL_ASSOC, true);
+        $row = cpg_db_fetch_assoc(cpg_db_query("SELECT pwidth, pheight FROM {$CONFIG['TABLE_PICTURES']} WHERE pid = '{$CURRENT_PIC_DATA['pid']}' LIMIT 1"));
         $pwidth = $row['pwidth'];
         $pheight = $row['pheight'];
         if ($pwidth == 0 || $pheight == 0) {
@@ -427,5 +427,4 @@ function remote_videos_other_media($pic_html) {
     return $pic_html;
 }
 
-
-?>
+//EOF

@@ -2,7 +2,7 @@
 /**************************************************
   Coppermine 1.6.x Plugin - remote_videos
   *************************************************
-  Copyright (c) 2009-2018 eenemeenemuu
+  Copyright (c) 2009-2019 eenemeenemuu
   **************************************************/
 
 if (!GALLERY_ADMIN_MODE) {
@@ -195,4 +195,4 @@ echo "<input type=\"submit\" value=\"{$lang_common['apply_changes']}\" name=\"su
 echo "<input type=\"reset\" value=\"reset\" name=\"reset\" class=\"button\" /> </form>";
 pagefooter();
 
-?>
+//EOF
