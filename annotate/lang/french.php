@@ -1,18 +1,13 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Picture Annotation (annotate)
+  Coppermine 1.6.x Plugin - Picture Annotation (annotate)
   *************************************************
-  Copyright (c) 2003-2009 Coppermine Dev Team
+  Copyright (c) 2003-2019 Coppermine Dev Team
   *************************************************
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
-  ********************************************
-  $HeadURL$
-  $Revision$
-  $LastChangedBy$
-  $Date$
   **************************************************/
 
 if (!defined('IN_COPPERMINE')) {
@@ -24,6 +19,7 @@ $lang_plugin_annotate['plugin_name'] = 'Picture Annotation (Annotations d\'image
 $lang_plugin_annotate['plugin_description'] = 'Ajouter des annotations textuelles à vos images';
 $lang_plugin_annotate['plugin_credit_creator'] = 'Créé par %s pour cpg1.4.x';
 $lang_plugin_annotate['plugin_credit_porter'] = 'Porté pour cpg1.5.x par %s';
+$lang_plugin_annotate['plugin_credit_porter16'] = 'Porté pour cpg1.6.x par %s';
 $lang_plugin_annotate['plugin_credit_js'] = 'Bibliothèques JavaScript utilisé de %s et %s';
 $lang_plugin_annotate['plugin_credit_i18n'] = 'Internationalisation par %s';
 $lang_plugin_annotate['submit_to_install'] = 'Valider le formulaire pour installer le plugin';
@@ -90,4 +86,6 @@ $lang_plugin_annotate['annotations_album'] = 'Annotations sur cette album';
 $lang_plugin_annotate['annotated_pics'] = 'Photos annotées dans cet album';
 $lang_plugin_annotate['filter_annotations'] = 'Filtrer les annotations';
 $lang_plugin_annotate['search_results'] = 'Résultats de la recherche';
-?>
+
+
+//EOF

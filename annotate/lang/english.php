@@ -1,18 +1,13 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Picture Annotation (annotate)
+  Coppermine 1.6.x Plugin - Picture Annotation (annotate)
   *************************************************
-  Copyright (c) 2003-2009 Coppermine Dev Team
+  Copyright (c) 2003-2019 Coppermine Dev Team
   *************************************************
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
-  ********************************************
-  $HeadURL$
-  $Revision$
-  $LastChangedBy$
-  $Date$
   **************************************************/
 
 if (!defined('IN_COPPERMINE')) {
@@ -24,6 +19,7 @@ $lang_plugin_annotate['plugin_name'] = 'Picture Annotation';
 $lang_plugin_annotate['plugin_description'] = 'Add text annotations to your images';
 $lang_plugin_annotate['plugin_credit_creator'] = 'Created by %s for cpg1.4.x';
 $lang_plugin_annotate['plugin_credit_porter'] = 'Ported to cpg1.5.x by %s';
+$lang_plugin_annotate['plugin_credit_porter16'] = 'Ported to cpg1.6.x by %s';
 $lang_plugin_annotate['plugin_credit_js'] = 'JavaScript libraries used by %s and %s';
 $lang_plugin_annotate['plugin_credit_i18n'] = 'Internationalization by %s';
 $lang_plugin_annotate['submit_to_install'] = 'Submit the form to install the plugin';
@@ -91,4 +87,5 @@ $lang_plugin_annotate['annotated_pics'] = 'Annotated pictures in this album';
 $lang_plugin_annotate['filter_annotations'] = 'Filter annotations';
 $lang_plugin_annotate['search_results'] = 'Search results';
 $lang_plugin_annotate['disable_mobile'] = 'Disable for mobile devices (needs the <a href="http://forum.coppermine-gallery.net/index.php/topic,74827.0.html" class="external" rel="external">Theme switch plugin</a>)';
-?>
+
+//EOF

@@ -1,18 +1,13 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Picture Annotation (annotate)
+  Coppermine 1.6.x Plugin - Picture Annotation (annotate)
   *************************************************
-  Copyright (c) 2003-2009 Coppermine Dev Team
+  Copyright (c) 2003-2019 Coppermine Dev Team
   *************************************************
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
-  ********************************************
-  $HeadURL$
-  $Revision$
-  $LastChangedBy$
-  $Date$
   **************************************************/
 
 if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
@@ -303,6 +298,7 @@ function arrayToJS4($array, $baseName) {
 
 function annotate_install() {
     global $thisplugin, $CONFIG;
+    define('UPDATE_PHP', true);
     // Create the super cage
     $superCage = Inspekt::makeSuperCage();
     $annotate_installation = 1;
@@ -1170,4 +1166,4 @@ function annotate_notes_editable() {
     }
 }
 
-?>
+//EOF

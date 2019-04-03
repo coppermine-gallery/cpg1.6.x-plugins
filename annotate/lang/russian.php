@@ -1,18 +1,13 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Picture Annotation (annotate)
+  Coppermine 1.6.x Plugin - Picture Annotation (annotate)
   *************************************************
-  Copyright (c) 2003-2009 Coppermine Dev Team
+  Copyright (c) 2003-2019 Coppermine Dev Team
   *************************************************
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
-  ********************************************
-  $HeadURL$
-  $Revision$
-  $LastChangedBy$
-  $Date$
   **************************************************/
 
 if (!defined('IN_COPPERMINE')) {
@@ -24,6 +19,7 @@ $lang_plugin_annotate['plugin_name'] = 'Отметки на изображени
 $lang_plugin_annotate['plugin_description'] = 'Добавляет отметки на ваши изображения';
 $lang_plugin_annotate['plugin_credit_creator'] = 'Создан %s для cpg1.4.x';
 $lang_plugin_annotate['plugin_credit_porter'] = 'Портирован %s на cpg1.5.x';
+$lang_plugin_annotate['plugin_credit_porter16'] = 'Портирован %s на cpg1.6.x';
 $lang_plugin_annotate['plugin_credit_js'] = 'Использованы библиотеки JavaScript от %s и %s';
 $lang_plugin_annotate['plugin_credit_i18n'] = 'Интернационализации %s.</LI><LI>Перевод <a href="http://forum.coppermine-gallery.net/index.php?action=profile;u=57421" rel="external" class="external">MISHA</a>. Помощь в переводе <a href="http://forum.coppermine-gallery.net/index.php?action=profile;u=5943" rel="external" class="external">Makc666</a>.';
 $lang_plugin_annotate['submit_to_install'] = 'Заполните форму, чтобы установить плагин';
@@ -90,4 +86,5 @@ $lang_plugin_annotate['annotations_album'] = 'Отметок в этом аль�
 $lang_plugin_annotate['annotated_pics'] = 'Изображений с отметками в этом альбоме';
 $lang_plugin_annotate['filter_annotations'] = 'Фильтр отметок';
 $lang_plugin_annotate['search_results'] = 'Результаты поиска';
-?>
+
+//EOF

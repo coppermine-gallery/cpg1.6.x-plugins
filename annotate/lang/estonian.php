@@ -1,18 +1,13 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Picture Annotation (annotate)
+  Coppermine 1.6.x Plugin - Picture Annotation (annotate)
   *************************************************
-  Copyright (c) 2003-2009 Coppermine Dev Team
+  Copyright (c) 2003-2019 Coppermine Dev Team
   *************************************************
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
-  ********************************************
-  $HeadURL$
-  $Revision$
-  $LastChangedBy$
-  $Date$
   **************************************************/
 
 if (!defined('IN_COPPERMINE')) {
@@ -24,6 +19,7 @@ $lang_plugin_annotate['plugin_name'] = 'Pildi annoteerimine';
 $lang_plugin_annotate['plugin_description'] = 'Annotatsioonide lisamine piltidele';
 $lang_plugin_annotate['plugin_credit_creator'] = 'Autor (CM versioonid cpg1.4.x): %s';
 $lang_plugin_annotate['plugin_credit_porter'] = 'CM versioonidele cpg1.5.x portis: %s';
+$lang_plugin_annotate['plugin_credit_porter16'] = 'CM versioonidele cpg1.6.x portis: %s';
 $lang_plugin_annotate['plugin_credit_js'] = 'Kasutatud JavaScripti teegid: %s ja %s';
 $lang_plugin_annotate['plugin_credit_i18n'] = 'Hargmaistamine (i18n): %s';
 $lang_plugin_annotate['submit_to_install'] = 'Plugina installeerimiseks saatke ankeet.';
@@ -91,4 +87,5 @@ $lang_plugin_annotate['annotated_pics'] = 'Annoteeritud pildid selles albumis';
 $lang_plugin_annotate['filter_annotations'] = 'Otsing annotatsioonidest';
 $lang_plugin_annotate['search_results'] = 'Otsingu tulemused';
 $lang_plugin_annotate['disable_mobile'] = 'Mobiilseadmetel annotatsioone ei kuvata (sel juhul on vaja pluginat <a href="http://forum.coppermine-gallery.net/index.php/topic,74827.0.html" class="external" rel="external">Theme switch</a>)';
-?>
+
+//EOF
