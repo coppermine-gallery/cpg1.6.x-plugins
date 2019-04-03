@@ -38,6 +38,7 @@ $lang_plugin_annotate['error_saving_note'] = 'Fehler beim Speichern'; // JS-aler
 $lang_plugin_annotate['onsave_not_implemented'] = 'onsave muss implementiert sein, damit man tatsächlich etwas speichern kann'; // JS-alert
 $lang_plugin_annotate['permissions'] = 'Berechtigungen';
 $lang_plugin_annotate['group'] = 'Gruppe';
+$lang_plugin_annotate['guest'] = 'Gast';
 $lang_plugin_annotate['guests'] = 'Gäste';
 $lang_plugin_annotate['registered_users'] = 'Registrierte Benutzer';
 $lang_plugin_annotate['administrators'] = 'Administratoren';

@@ -38,6 +38,7 @@ $lang_plugin_annotate['error_saving_note'] = 'Ошибка сохранения 
 $lang_plugin_annotate['onsave_not_implemented'] = 'onsave должно быть внедрено, чтобы *реально* сохранять'; // JS-alert
 $lang_plugin_annotate['permissions'] = 'Разрешения';
 $lang_plugin_annotate['group'] = 'Группа';
+$lang_plugin_annotate['guest'] = 'гость';
 $lang_plugin_annotate['guests'] = 'Гости';
 $lang_plugin_annotate['registered_users'] = 'Зарегистрированные пользователи';
 $lang_plugin_annotate['administrators'] = 'Администраторы';

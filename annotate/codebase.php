@@ -107,6 +107,13 @@ function annotate_file_data($data) {
         $notes[] = $row;
     }
     cpg_db_free_result($result);
+    $sql = "SELECT n.*, \"".cpg_db_real_escape_string($lang_plugin_annotate['guest'])."\" AS user_name FROM {$CONFIG['TABLE_PREFIX']}plugin_annotate n WHERE n.pid = {$data['pid']} AND user_id = 0 ORDER BY note ASC";
+    $result = cpg_db_query($sql);
+    while ($row = cpg_db_fetch_assoc($result)) {
+        //$row['note'] = addslashes($row['note']);
+        $notes[] = $row;
+    }
+    cpg_db_free_result($result);
     $nr_notes = count($notes);
 
     // Promote annotations to guests

@@ -38,6 +38,7 @@ $lang_plugin_annotate['error_saving_note'] = 'Erreur d\'enregistrement de note';
 $lang_plugin_annotate['onsave_not_implemented'] = 'OnSave doit être mis en œuvre pour *réellement* sauvegarder'; // JS-alert
 $lang_plugin_annotate['permissions'] = 'Permissions';
 $lang_plugin_annotate['group'] = 'Groupe';
+$lang_plugin_annotate['guest'] = 'Visiteur';
 $lang_plugin_annotate['guests'] = 'Visiteurs';
 $lang_plugin_annotate['registered_users'] = 'Utilisateur enregistré';
 $lang_plugin_annotate['administrators'] = 'Administrateurs';

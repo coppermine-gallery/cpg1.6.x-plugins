@@ -38,6 +38,7 @@ $lang_plugin_annotate['error_saving_note'] = 'Viga annotatsiooni salvestamisel';
 $lang_plugin_annotate['onsave_not_implemented'] = 'Et *tegelikult* salvestada, peab <i>onsave</i> töötama.'; // JS-alert
 $lang_plugin_annotate['permissions'] = 'Õigused';
 $lang_plugin_annotate['group'] = 'Grupp';
+$lang_plugin_annotate['guest'] = 'Külalise';
 $lang_plugin_annotate['guests'] = 'Külalised';
 $lang_plugin_annotate['registered_users'] = 'Registreeritud kasutajad';
 $lang_plugin_annotate['administrators'] = 'Administraatorid';
