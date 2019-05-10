@@ -79,7 +79,7 @@ function file_replacer_page_start() {
                     // resize picture if it's bigger than the max width or height for uploaded pictures 
                     if (max($imagesize[0], $imagesize[1]) > $CONFIG['max_upl_width_height']) {
                         if ((USER_IS_ADMIN && $CONFIG['auto_resize'] == 1) || (!USER_IS_ADMIN && $CONFIG['auto_resize'] > 0)) {
-                            resize_image($image, $image, $CONFIG['max_upl_width_height'], $CONFIG['thumb_method'], 'any', 'false'); // hard-coded 'any' according to configuration string 'Max width or height for uploaded pictures'
+                            resize_image($image, $image, $CONFIG['max_upl_width_height'], 'any', 'false'); // hard-coded 'any' according to configuration string 'Max width or height for uploaded pictures'
                             $imagesize = cpg_getimagesize($image);
                         } elseif (USER_IS_ADMIN) {
                             // skip resizing for admin
@@ -92,7 +92,7 @@ function file_replacer_page_start() {
                     }
 
                     // create backup of full sized picture if watermark is enabled for full sized pictures
-                    if (!file_exists($orig) && $CONFIG['enable_watermark'] == '1' && ($CONFIG['which_files_to_watermark'] == 'both' || $CONFIG['which_files_to_watermark'] == 'original'))  {
+                    if ($CONFIG['enable_watermark'] == '1' && ($CONFIG['which_files_to_watermark'] == 'both' || $CONFIG['which_files_to_watermark'] == 'original'))  {
                         if (!copy($image, $orig)) {
                             return false;
                         } else {
@@ -102,7 +102,7 @@ function file_replacer_page_start() {
 
                     //if (!file_exists($thumb)) {
                         // create thumbnail
-                        if (($result = resize_image($work_image, $thumb, $CONFIG['thumb_width'], $CONFIG['thumb_method'], $CONFIG['thumb_use'], "false", 1)) !== true) {
+                        if (($result = resize_image($work_image, $thumb, $CONFIG['thumb_width'], $CONFIG['thumb_use'], "false", 1)) !== true) {
                             return $result;
                         }
                     //}
@@ -111,7 +111,7 @@ function file_replacer_page_start() {
                         // create intermediate sized picture
                         $resize_method = $CONFIG['picture_use'] == "thumb" ? ($CONFIG['thumb_use'] == "ex" ? "any" : $CONFIG['thumb_use']) : $CONFIG['picture_use'];
                         $watermark = ($CONFIG['enable_watermark'] == '1' && ($CONFIG['which_files_to_watermark'] == 'both' || $CONFIG['which_files_to_watermark'] == 'resized')) ? 'true' : 'false';
-                        if (($result = resize_image($work_image, $normal, $CONFIG['picture_width'], $CONFIG['thumb_method'], $resize_method, $watermark)) !== true) {
+                        if (($result = resize_image($work_image, $normal, $CONFIG['picture_width'], $resize_method, $watermark)) !== true) {
                             return $result;
                         }
                     }
@@ -119,7 +119,7 @@ function file_replacer_page_start() {
                     // watermark full sized picture
                     if ($CONFIG['enable_watermark'] == '1' && ($CONFIG['which_files_to_watermark'] == 'both' || $CONFIG['which_files_to_watermark'] == 'original')) {
                         $wm_max_upl_width_height = $picture_original_size ? max($imagesize[0], $imagesize[1]) : $CONFIG['max_upl_width_height']; // use max aspect of original image if it hasn't been resized earlier
-                        if (($result = resize_image($work_image, $image, $wm_max_upl_width_height, $CONFIG['thumb_method'], 'any', 'true')) !== true) {
+                        if (($result = resize_image($work_image, $image, $wm_max_upl_width_height, 'any', 'true')) !== true) {
                             return $result;
                         }
                     }
@@ -142,10 +142,13 @@ function file_replacer_page_start() {
 
                 cpg_db_query("DELETE FROM {$CONFIG['TABLE_EXIF']} WHERE pid = '$pid' LIMIT 1");
 
+/*
+                //not needed, exif data is read after redirection anyway
                 if ($CONFIG['read_exif_data']) {
                     include("include/exif_php.inc.php");
                     exif_parse_file($image, $pid);
                 }
+*/
     
                 $CONFIG['site_url'] = rtrim($CONFIG['site_url'], '/');
             } else {
