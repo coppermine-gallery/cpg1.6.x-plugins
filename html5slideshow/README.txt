@@ -16,6 +16,19 @@ CPG Site Settings  <--  User Default Settings  <--  Album Specific Settings
 
 When uninstalling this plugin, an option will be provided to keep user and album settings in the database.
 
+Version 1.4.5 Release Notes:
+----------------------------
+Do not provide slideshow to unlogged users if prevented in configuration.
+
+Version 1.4.4 Release Notes:
+----------------------------
+Correct issue causing failure to create new albums when using mySQL 5.7
+
+Version 1.4.3 Release Notes:
+----------------------------
+Play some videos as part of slideshow
+Improved touch swipe actions
+
 Version 1.4.2 Release Notes:
 ----------------------------
 Overlay title/caption with choice of font size

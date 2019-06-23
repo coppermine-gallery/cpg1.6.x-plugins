@@ -36,6 +36,10 @@ if ($superCage->get->testAlpha('album')) {
 	$usrisown = $H5ss_cfg['uA'] && (USER_ID === $albData['owner']);
 }
 
+if (!USER_ID && $CONFIG['allow_unlogged_access'] < 3) {
+	$H5ss_cfg['pS'] = 1;
+}
+
 $fprefix = $H5ss_cfg['pS'] == 1 ? 'normal_' : '';
 get_meta_album_set($superCage->get->getInt('cat'));
 $count = 0;

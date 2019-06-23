@@ -30,13 +30,15 @@ function html5slideshow_addpops($data) {
 // Modify template header
 function html5slideshow_header($html) {
 	global $CONFIG, $CURRENT_ALBUM_DATA, $lang_plugin_html5slideshow;
-	$album = $CURRENT_ALBUM_DATA['aid'];
-	if ($album) {
-		$H5ss_cfg = html5slideshow_resolved_cfg($album);
-		$imgcode = '<img src="plugins/html5slideshow/css/slideshow.png" alt="'.$lang_plugin_html5slideshow['slideshow'].'" title="'.$lang_plugin_html5slideshow['slideshow'].'" style="vertical-align:text-bottom;" />';
-		$html['{ALBUM_NAME}'] .= '&nbsp;&nbsp;<a href="index.php?file=html5slideshow/fullSlide&album='.$album
-			.($H5ss_cfg['nW'] ? '" onClick="h5ss_pop(this.href,event); return false;">' : '">')
-			.$imgcode.'</a>';
+	if (USER_ID || $CONFIG['allow_unlogged_access'] > 1) {
+		$album = $CURRENT_ALBUM_DATA['aid'];
+		if ($album) {
+			$H5ss_cfg = html5slideshow_resolved_cfg($album);
+			$imgcode = '<img src="plugins/html5slideshow/css/slideshow.png" alt="'.$lang_plugin_html5slideshow['slideshow'].'" title="'.$lang_plugin_html5slideshow['slideshow'].'" />';
+			$html['{ALBUM_NAME}'] .= '&nbsp;&nbsp;<a href="index.php?file=html5slideshow/fullSlide&album='.$album
+				.($H5ss_cfg['nW'] ? '" onClick="h5ss_pop(this.href,event); return false;">' : '">')
+				.$imgcode.'</a>';
+		}
 	}
 	return $html;
 }
@@ -44,27 +46,31 @@ function html5slideshow_header($html) {
 // Modify template album list
 function html5slideshow_alblist($params) {
 	global $CONFIG, $CURRENT_ALBUM_DATA, $lang_plugin_html5slideshow;
-	preg_match('/=(\d+)$/', $params['{ALB_LINK_TGT}'], $mtchs);
-	$album = $mtchs[1];
-	if ($album) {
-		$H5ss_cfg = html5slideshow_resolved_cfg($album);
-		$imgcode = '<img src="plugins/html5slideshow/css/slideshow.png" alt="'.$lang_plugin_html5slideshow['slideshow'].'" title="'.$lang_plugin_html5slideshow['slideshow'].'" style="vertical-align:text-bottom;" />';
-		$params['{ALBUM_TITLE}'] .= '</a>&nbsp;&nbsp;<a href="index.php?file=html5slideshow/fullSlide&album='.$album
-			.($H5ss_cfg['nW'] ? '" onClick="h5ss_pop(this.href,event); return false;">' : '">')
-			.$imgcode;
+	if (USER_ID || $CONFIG['allow_unlogged_access'] > 1) {
+		preg_match('/=(\d+)$/', $params['{ALB_LINK_TGT}'], $mtchs);
+		$album = $mtchs[1];
+		if ($album) {
+			$H5ss_cfg = html5slideshow_resolved_cfg($album);
+			$imgcode = '<img src="plugins/html5slideshow/css/slideshow.png" alt="'.$lang_plugin_html5slideshow['slideshow'].'" title="'.$lang_plugin_html5slideshow['slideshow'].'" />';
+			$params['{ALBUM_TITLE}'] .= '</a>&nbsp;&nbsp;<a href="index.php?file=html5slideshow/fullSlide&album='.$album
+				.($H5ss_cfg['nW'] ? '" onClick="h5ss_pop(this.href,event); return false;">' : '">')
+				.$imgcode;
+		}
 	}
 	return $params;
 }
 
 function html5slideshow_nav($data) {
 	global $CONFIG, $JS, $album, $cat;
-	$H5ss_cfg = html5slideshow_resolved_cfg($album);
-	if (isset($JS['vars']['buttons']['slideshow_tgt'])) {
-		$url = 'index.php?file=html5slideshow/fullSlide&album='.$album.'&cat='.$cat;
-		if ($H5ss_cfg['nW']) {
-			$url = 'javascript:h5ss_pop(\'' . $url . '\');';
+	if (USER_ID || $CONFIG['allow_unlogged_access'] > 1) {
+		$H5ss_cfg = html5slideshow_resolved_cfg($album);
+		if (isset($JS['vars']['buttons']['slideshow_tgt'])) {
+			$url = 'index.php?file=html5slideshow/fullSlide&album='.$album.'&cat='.$cat;
+			if ($H5ss_cfg['nW']) {
+				$url = 'javascript:h5ss_pop(\'' . $url . '\');';
+			}
+			$JS['vars']['buttons']['slideshow_tgt'] = $url;
 		}
-		$JS['vars']['buttons']['slideshow_tgt'] = $url;
 	}
 	return $data;
 }
