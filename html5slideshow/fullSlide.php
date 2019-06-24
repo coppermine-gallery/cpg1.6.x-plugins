@@ -46,6 +46,12 @@ $count = 0;
 $album_name = '';
 $rowset = get_pic_data($album, $count, $album_name);
 if ($rowset) {
+	if ($pid = $superCage->get->getInt('pid')) {
+		for ($i=0; $i<count($rowset); $i++) {
+			if ($rowset[$i]['pid'] == $pid) break;
+		}
+		if ($i > 0) $rowset = array_merge(array_slice($rowset, $i), array_slice($rowset, 0, $i));
+	}
 	foreach ($rowset as $row) {
 		$ftyp = cpg_get_type($row['filename']);
 		if (!in_array($ftyp['content'], array('image','movie'))) continue;

@@ -1,5 +1,5 @@
 <?php
-if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
+defined('IN_COPPERMINE') or die('Not in Coppermine...');
 
 $H5ss_cfg = json_decode($CONFIG['html5slideshow_cfg'], true);
 
@@ -22,13 +22,15 @@ if ($H5ss_cfg['aT']) {
 	$thisplugin->add_filter('file_data','html5slideshow_nav');
 }
 
-function html5slideshow_addpops($data) {
+function html5slideshow_addpops ($data)
+{
 	js_include('plugins/html5slideshow/js/h5ss.js');
 	return $data;
 }
 
 // Modify template header
-function html5slideshow_header($html) {
+function html5slideshow_header ($html)
+{
 	global $CONFIG, $CURRENT_ALBUM_DATA, $lang_plugin_html5slideshow;
 	if (USER_ID || $CONFIG['allow_unlogged_access'] > 1) {
 		$album = $CURRENT_ALBUM_DATA['aid'];
@@ -44,7 +46,8 @@ function html5slideshow_header($html) {
 }
 
 // Modify template album list
-function html5slideshow_alblist($params) {
+function html5slideshow_alblist ($params)
+{
 	global $CONFIG, $CURRENT_ALBUM_DATA, $lang_plugin_html5slideshow;
 	if (USER_ID || $CONFIG['allow_unlogged_access'] > 1) {
 		preg_match('/=(\d+)$/', $params['{ALB_LINK_TGT}'], $mtchs);
@@ -60,12 +63,13 @@ function html5slideshow_alblist($params) {
 	return $params;
 }
 
-function html5slideshow_nav($data) {
-	global $CONFIG, $JS, $album, $cat;
+function html5slideshow_nav ($data)
+{
+	global $CONFIG, $JS, $CURRENT_PIC_DATA, $album, $cat;
 	if (USER_ID || $CONFIG['allow_unlogged_access'] > 1) {
 		$H5ss_cfg = html5slideshow_resolved_cfg($album);
 		if (isset($JS['vars']['buttons']['slideshow_tgt'])) {
-			$url = 'index.php?file=html5slideshow/fullSlide&album='.$album.'&cat='.$cat;
+			$url = 'index.php?file=html5slideshow/fullSlide&album='.$album.'&pid='.$CURRENT_PIC_DATA['pid'].'&cat='.$cat;
 			if ($H5ss_cfg['nW']) {
 				$url = 'javascript:h5ss_pop(\'' . $url . '\');';
 			}
@@ -75,7 +79,8 @@ function html5slideshow_nav($data) {
 	return $data;
 }
 
-function html5slideshow_resolved_cfg($album) {
+function html5slideshow_resolved_cfg ($album)
+{
 	global $CONFIG, $lang_errors, $lang_plugin_html5slideshow;
 	$cfg = json_decode($CONFIG['html5slideshow_cfg'], true);
 	if ($user = USER_ID) {
@@ -97,7 +102,8 @@ function html5slideshow_resolved_cfg($album) {
 /***** INSTALL/UNINSTALL *****/
 
 $thisplugin->add_action('plugin_install', 'html5slideshow_install');
-function html5slideshow_install () {
+function html5slideshow_install ()
+{
 	global $CONFIG;
 	//these config item names are necessarily small because of 255 char limit in CPG config values
 	$html5slideshowCfg = array(
@@ -134,7 +140,8 @@ function html5slideshow_install () {
 }
 
 $thisplugin->add_action('plugin_uninstall', 'html5slideshow_uninstall');
-function html5slideshow_uninstall () {
+function html5slideshow_uninstall ()
+{
 	global $CONFIG, $superCage;
 
 	if ($superCage->post->keyExists('H5ss_submit') && $superCage->post->keyExists('uiType')) {
@@ -150,7 +157,8 @@ function html5slideshow_uninstall () {
 }
 
 $thisplugin->add_action('plugin_cleanup', 'html5slideshow_cleanup');
-function html5slideshow_cleanup() {
+function html5slideshow_cleanup ()
+{
 	global $lang_common, $superCage, $lang_plugin_html5slideshow;
 
 	echo '<form name="cpgform" id="cpgform" action="'.$superCage->server->getEscaped('REQUEST_URI').'" method="post">';
