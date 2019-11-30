@@ -1,6 +1,6 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Check files
+  Coppermine 1.6.x Plugin - Check files
   *************************************************
   Copyright (c) 2012 eenemeenemuu
   *************************************************
@@ -9,11 +9,6 @@
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
   ********************************************
-  $HeadURL$
-  $Revision$
-  $Author$
-  $LastChangedBy$
-  $Date$
 **************************************************/
 
 /* Change log
@@ -23,12 +18,13 @@
   (favpics stored as base64 encoded serialized array that each need to be retrieved, reviewed, and updated if needed...)
 - Changed all mysql references to CPG functions for 1.6 compatibility (raised MIN level of CPG required to 1.5.42 where these were added)
 - Updated version to 0.3
+2019-10-17 by ron4mac
+- Corrected incompatibilities with CPG 1.6.x
+- Updated version to 0.3.1
 */
 
-$name = 'Check Files';
+$name = 'Check files';
 $description = 'Adds 2 options to the admin menu:<ol><li>Check if all files in the database exist in the albums directory (with the possibility to delete the affected entries from the database)</li><li>Check if all files in the albums directory exist in the database</li></ol>';
 $author = '<a href="http://forum.coppermine-gallery.net/index.php?action=profile;u=24278" rel="external" class="external">eenemeenemuu</a>';
-$version = '0.4';
-$plugin_cpg_version = array('min' => '1.5.42');                                 // raised min to use new cpg_db functions              //*GMC
-
-?>
+$version = '0.3.1';
+$plugin_cpg_version = array('min' => '1.6.03');

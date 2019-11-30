@@ -1,6 +1,6 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Check files
+  Coppermine 1.6.x Plugin - Check files
   *************************************************
   Copyright (c) 2012 eenemeenemuu
   *************************************************
@@ -9,11 +9,6 @@
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
   ********************************************
-  $HeadURL$
-  $Revision$
-  $Author$
-  $LastChangedBy$
-  $Date$
 **************************************************/
 
 if (!GALLERY_ADMIN_MODE) {
@@ -37,8 +32,8 @@ if ($superCage->get->getAlpha('do') == 'dashboard') {
             </td>
         </tr>
 EOT;
+	endtable();
     pagefooter();
-    die();
 }
 
 if ($superCage->get->getAlpha('do') == 'continue') {
@@ -69,7 +64,7 @@ if ($superCage->get->getAlpha('do') == 'search') {
     $numpics = $superCage->get->getInt('numpics') ? $superCage->get->getInt('numpics') : cpg_db_result(cpg_db_query("SELECT COUNT(*) FROM {$CONFIG['TABLE_PICTURES']}"),0);   //*GMC 1.6 compat
     $found = $superCage->get->getInt('found') ? $superCage->get->getInt('found') : 0;
 
-    if (!$limit_offset) {
+    if (!$superCage->get->keyExists('offset')) {
         cpg_db_query("DROP TABLE IF EXISTS {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing");
         cpg_db_query("CREATE TABLE {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing (
                         id int(11) NOT NULL auto_increment,
@@ -91,8 +86,8 @@ if ($superCage->get->getAlpha('do') == 'search') {
         if (!file_exists($CONFIG['fullpath'].$file['filepath'].$file['filename'])) {
             $query = "INSERT INTO {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing (pid, filepath, filename, type) VALUES('{$file['pid']}', '{$file['filepath']}', '{$file['filename']}', 'fullsize')";
             cpg_db_query($query);
-//$rows = cpg_db_affected_rows();
-//echo $query.' - '.$rows.' affected.<br />';
+$rows = cpg_db_affected_rows();
+echo $query.' - '.$rows.' affected.<br />';
             $found++;
         }
 
@@ -100,17 +95,17 @@ if ($superCage->get->getAlpha('do') == 'search') {
             if (!file_exists($CONFIG['fullpath'].$file['filepath'].$CONFIG['thumb_pfx'].$file['filename'])) {
                 $query = "INSERT INTO {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing (pid, filepath, filename, type) VALUES('{$file['pid']}', '{$file['filepath']}', '{$CONFIG['thumb_pfx']}{$file['filename']}', 'thumb')";
                 cpg_db_query($query);
-//$rows = cpg_db_affected_rows();
-//echo $query.' - '.$rows.' affected.<br />';
+$rows = cpg_db_affected_rows();
+echo $query.' - '.$rows.' affected.<br />';
                 $found++;
             }
 
             if ($CONFIG['make_intermediate'] && cpg_picture_dimension_exceeds_intermediate_limit($file['pwidth'], $file['pheight'])) {
                 if(!file_exists($CONFIG['fullpath'].$file['filepath'].$CONFIG['normal_pfx'].$file['filename'])) {
-                    $query = "INSERT INTO {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing (pid, filepath, filename, type) VALUES('{$file['pid']}', '{$file['filepath']}', '{$CONFIG['normal_pfx']}{$file['filename']}', 'normal')";
+                    $QUERY_STRING = "INSERT INTO {$CONFIG['TABLE_PREFIX']}plugin_check_files_missing (pid, filepath, filename, type) VALUES('{$file['pid']}', '{$file['filepath']}', '{$CONFIG['normal_pfx']}{$file['filename']}', 'normal')";
                     cpg_db_query($query);
-//$rows = cpg_db_affected_rows();
-//echo $query.' - '.$rows.' affected.<br />';
+$rows = cpg_db_affected_rows();
+echo $query.' - '.$rows.' affected.<br />';
                     $found++;
                 }
             }
@@ -226,5 +221,3 @@ if ($superCage->get->getAlpha('do') == 'delete') {
 
     header("Location: index.php?file=check_files/missing_files&do=view");
 }
-
-?>

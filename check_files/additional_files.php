@@ -1,6 +1,6 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Check files
+  Coppermine 1.6.x Plugin - Check files
   *************************************************
   Copyright (c) 2012 eenemeenemuu
   *************************************************
@@ -9,11 +9,6 @@
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
   ********************************************
-  $HeadURL$
-  $Revision$
-  $Author$
-  $LastChangedBy$
-  $Date$
 **************************************************/
 
 if (!GALLERY_ADMIN_MODE) {
@@ -41,8 +36,8 @@ if ($superCage->get->getAlpha('do') == 'dashboard') {
             </td>
         </tr>
 EOT;
+	endtable();
     pagefooter();
-    die();
 }
 
 if ($superCage->get->getAlpha('do') == 'continue') {
@@ -286,5 +281,3 @@ if ($superCage->get->getAlpha('do') == 'delete') {                              
                                                                                                                                                                   //*GMC
     header("Location: index.php?file=check_files/additional_files&do=view");                                                                                      //*GMC
 }                                                                                                                                                                 //*GMC
-
-?>

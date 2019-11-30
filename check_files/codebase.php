@@ -1,6 +1,6 @@
 <?php
 /**************************************************
-  Coppermine 1.5.x Plugin - Check files
+  Coppermine 1.6.x Plugin - Check files
   *************************************************
   Copyright (c) 2012 eenemeenemuu
   *************************************************
@@ -9,11 +9,6 @@
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
   ********************************************
-  $HeadURL$
-  $Revision$
-  $Author$
-  $LastChangedBy$
-  $Date$
 **************************************************/
 
 if (!defined('IN_COPPERMINE')) die('Not in Coppermine...');
@@ -66,5 +61,3 @@ function check_files_uninstall() {
     cpg_db_query("DELETE FROM {$CONFIG['TABLE_CONFIG']} WHERE name LIKE 'plugin_check_files_%'");
     return true;
 }
-
-?>
