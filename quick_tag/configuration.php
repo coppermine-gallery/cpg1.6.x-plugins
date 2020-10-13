@@ -14,7 +14,7 @@ $plugin_cpg_version = array('min' => '1.6');
 $announcement_icon = cpg_fetch_icon('announcement', 1);
 
 $extra_info = $install_info = <<<EOT
-    <a href="http://forum.coppermine-gallery.net/index.php/topic,77715.0.html" rel="external" class="admin_menu">{$announcement_icon}Announcement thread</a>
+    <a href="http://forum.coppermine-gallery.net/index.php/topic,80279.0.html" rel="external" class="admin_menu">{$announcement_icon}Announcement thread</a>
 EOT;
 
 //EOF
