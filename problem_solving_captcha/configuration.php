@@ -13,7 +13,7 @@ if ($CONFIG['lang'] != 'english' && file_exists("./plugins/problem_solving_captc
 $name = $lang_plugin_problem_solving_captcha['problem_solving_captcha'];
 $description = $lang_plugin_problem_solving_captcha['description'];
 $author = '<a href="http://forum.coppermine-gallery.net/index.php?action=profile;u=24278" rel="external" class="external">eenemeenemuu</a>';
-$version = '1.1';
+$version = '1.2';
 $plugin_cpg_version = array('min' => '1.5');
 $extra_info = '<a href="index.php?file=problem_solving_captcha/admin" class="admin_menu">'.cpg_fetch_icon('config', 1).$name.' '.$lang_gallery_admin_menu['admin_lnk'].'</a>';
 $extra_info .= $install_info = '<a href="http://forum.coppermine-gallery.net/index.php/topic,79602.0.html" rel="external" class="admin_menu">'.cpg_fetch_icon('announcement', 1).$lang_plugin_problem_solving_captcha['announcement_thread'].'</a>';

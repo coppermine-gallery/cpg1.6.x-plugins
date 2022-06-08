@@ -44,6 +44,7 @@ $thisplugin->add_filter('captcha_ecard_print', 'psc_captcha_print');
 function psc_captcha_print($captcha_print) {
     $question = psc_get_random_question();
     $additional_hidden_field = '<div style="display:none"><textarea class="textinput" id="comment" name="comment"></textarea></div>';
+    $captcha_print = preg_replace('/maxlength="[0-9]+"/', '', $captcha_print);
     $captcha_print = str_replace('<img src="captcha.php" align="middle" border="0" alt="" />', $question['text'].'<input type="hidden" name="captcha_id" value="'.$question['id'].'" />'.$additional_hidden_field, $captcha_print);
     return $captcha_print;
 }
