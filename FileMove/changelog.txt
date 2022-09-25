@@ -22,9 +22,10 @@ Changelog
 [S] = Security fix (issues that are related to security)
 ********************************************************
 
-2017.08-25 [O] Removed unnecessary language initialization {ron4mac}
-2017.08-25 [M] Added German language file {ron4mac}
-2017.08-25 [M] Remove need for version number in language files {ron4mac}
+2022-09-25 [M] Made code compatible with PHP 8 {ron4mac}
+2017-08-25 [O] Removed unnecessary language initialization {ron4mac}
+2017-08-25 [M] Added German language file {ron4mac}
+2017-08-25 [M] Remove need for version number in language files {ron4mac}
 2017-07-04 [M] Coding cleanup/enhancement {ron4mac}
 2017-06-25 [A] Ported to CPG 1.6.x {ron4mac}
 2012-01-24 [B] Also move watermark backup files (orig_filname.jpg) if present {eenemeenemuu}

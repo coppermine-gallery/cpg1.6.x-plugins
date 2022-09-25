@@ -15,7 +15,7 @@
 $name = $lang_plugin_FileMove['display_name'];
 $author = $lang_plugin_FileMove['author'] . $lang_plugin_FileMove['ported'];
 $description = $lang_plugin_FileMove['description'];
-$version = "1.4.1";
+$version = "1.4.2";
 $plugin_cpg_version = array('min' => '1.6');
 $extra_info = $lang_plugin_FileMove['extra_info'];
 $install_info = $lang_plugin_FileMove['install_info'];

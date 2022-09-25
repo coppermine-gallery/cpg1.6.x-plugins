@@ -64,11 +64,11 @@ function indent ($max)
 function notAltImg ($entry)
 {
 	global $CONFIG;
-	if (strpos($entry, stristr($entry,$CONFIG['normal_pfx'])) !== 0 &&
-		strpos($entry, stristr($entry,$CONFIG['thumb_pfx'])) !== 0 &&
-		strpos($entry, stristr($entry,$CONFIG['orig_pfx'])) !== 0)
-		return true;
-	return false;
+	if (stripos($entry, $CONFIG['normal_pfx']) === 0 ||
+		stripos($entry, $CONFIG['thumb_pfx']) === 0 ||
+		stripos($entry, $CONFIG['orig_pfx']) === 0)
+		return false;
+	return true;
 }
 
 /******************************************
@@ -176,7 +176,8 @@ function list_dir ($path, $step, $dfolder, $selection, $selection1, $Drep)
 *********************************/
 function file_dir ($dfolder, $nb)
 {
-	global $num,$lang_plugin_FileMove,$CONFIG;
+	global $num, $lang_plugin_FileMove, $CONFIG;
+	$files = [];
 	$n = 0;
 	$ignore = array(
 		'.',
@@ -193,14 +194,19 @@ function file_dir ($dfolder, $nb)
 			if (in_array($file, $ignore)) continue;
 			if (is_file($dfolder.'/'.$file)) {
 				if (notAltImg($file)) {
-					if ($n < $nb) {
-						echo '<td><input type="checkbox" class="fm-fchkb" name="file_name[]" value="'.$file.'" />'.extension($file).$file.'</td>';
-						$n++;
-						if ($n == $nb) {
-							echo '</tr><tr class="fm-frow">';
-							$n = 0;
-						}
-					}
+					$files[] = $file;
+				}
+			}
+		}
+		closedir($dir);
+		natcasesort($files);
+		foreach ($files as $file) {
+			if ($n < $nb) {
+				echo '<td><input type="checkbox" class="fm-fchkb" name="file_name[]" value="'.$file.'" />'.extension($file).$file.'</td>';
+				$n++;
+				if ($n == $nb) {
+					echo '</tr><tr class="fm-frow">';
+					$n = 0;
 				}
 			}
 		}

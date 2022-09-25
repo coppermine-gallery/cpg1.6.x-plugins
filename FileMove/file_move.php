@@ -54,7 +54,7 @@ if ($superCage->post->keyExists('file_name')) {
 	echo '<tr><td>';
 } else {
 	//affichage du contenu du répertoire
-	$nb = 4;	//Change this value according the column number you will display
+	$nb = 2;	//Change this value according the column number you will display
 	echo '<form name="file" action="" method="post">';
 	starttable('100%', $lang_plugin_FileMove['DFolder'].$Drep, $nb);
 	echo '<tr class="fm-frow">';
